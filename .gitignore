@@ -4,6 +4,7 @@
 # Folders
 img/
 thrash/
+bin/
 
 # Object files
 *.o
