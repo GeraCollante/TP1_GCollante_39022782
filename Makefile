@@ -15,7 +15,6 @@ AUTH			:=auth
 # 	COMPILE OPTIONS 
 CC				:= gcc
 CFLAGS			:= -I$(INCLUDE) -std=gnu11 -Wall -Werror -pedantic -Wextra -Wconversion -O1
-#LDFLAGS			:= -lssl -lcrypto
 LDLIBS			:= -lssl -lcrypto
 DOXYGEN 		:= doxygen
 DOXYFILE 		:= doxyfile
@@ -31,7 +30,6 @@ SRCSFILES		:= $(addprefix $(SERVER_SOURCE)/, fileserv.c mq.c md5.c)
 OBJSCLIENT		:= $(addprefix $(CLIENT_SOURCE)/, $(SRCSCLIENT:.c=.o))
 OBJSSERVER		:= $(addprefix $(SERVER_SOURCE)/, $(SRCSSERVER:.c=.o))
 OBJSAUTH		:= $(addprefix $(SERVER_SOURCE)/, $(SRCSAUTH:.c=.o))
-#OBJSFILES		:= $(SRCSFILES:.c=.o)
 
 all:	clean create
 
