@@ -1,0 +1,84 @@
+\section{server/mq.c File Reference}
+\label{mq_8c}\index{server/mq.\+c@{server/mq.\+c}}
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+Include dependency graph for mq.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mq_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ mqid} ()
+\begin{DoxyCompactList}\small\item\em Creation of the message queue id. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ rcv\+\_\+msg} (int msqid, char $\ast$msg, long mtype)
+\begin{DoxyCompactList}\small\item\em Wrapper to receive messages from the message queue. \end{DoxyCompactList}\item 
+void \textbf{ snd\+\_\+msg} (int msqid, char $\ast$msg, long mtype)
+\begin{DoxyCompactList}\small\item\em Wrapper to send messages to the message queue. \end{DoxyCompactList}\item 
+void \textbf{ mq\+\_\+info} (int msqid)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{mq_8c_ad6373ac4d80e0c6198e95bb3a0515ff4}} 
+\index{mq.\+c@{mq.\+c}!mq\+\_\+info@{mq\+\_\+info}}
+\index{mq\+\_\+info@{mq\+\_\+info}!mq.\+c@{mq.\+c}}
+\subsubsection{mq\+\_\+info()}
+{\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+\mbox{\label{mq_8c_aa6a2e92e60754c750bebd73bced350fd}} 
+\index{mq.\+c@{mq.\+c}!mqid@{mqid}}
+\index{mqid@{mqid}!mq.\+c@{mq.\+c}}
+\subsubsection{mqid()}
+{\footnotesize\ttfamily int mqid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creation of the message queue id. 
+
+\begin{DoxyReturn}{Returns}
+Message queue id 
+\end{DoxyReturn}
+\mbox{\label{mq_8c_a9fdea1732b3a3772bedad98f1a635e08}} 
+\index{mq.\+c@{mq.\+c}!rcv\+\_\+msg@{rcv\+\_\+msg}}
+\index{rcv\+\_\+msg@{rcv\+\_\+msg}!mq.\+c@{mq.\+c}}
+\subsubsection{rcv\+\_\+msg()}
+{\footnotesize\ttfamily char$\ast$ rcv\+\_\+msg (\begin{DoxyParamCaption}\item[{int}]{msqid,  }\item[{char $\ast$}]{msg,  }\item[{long}]{mtype }\end{DoxyParamCaption})}
+
+
+
+Wrapper to receive messages from the message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & Message queue ide \\
+\hline
+{\em msg} & Message received from message queue \\
+\hline
+{\em mtype} & Message type that identifies the process from which the message should be received \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String with the message extracted from the message queue 
+\end{DoxyReturn}
+\mbox{\label{mq_8c_a7d2e21e44f7a9a63f9f7a9020dd61719}} 
+\index{mq.\+c@{mq.\+c}!snd\+\_\+msg@{snd\+\_\+msg}}
+\index{snd\+\_\+msg@{snd\+\_\+msg}!mq.\+c@{mq.\+c}}
+\subsubsection{snd\+\_\+msg()}
+{\footnotesize\ttfamily void snd\+\_\+msg (\begin{DoxyParamCaption}\item[{int}]{msqid,  }\item[{char $\ast$}]{msg,  }\item[{long}]{mtype }\end{DoxyParamCaption})}
+
+
+
+Wrapper to send messages to the message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & Message queue ide \\
+\hline
+{\em msg} & Message received from message queue \\
+\hline
+{\em mtype} & Message type that identifies the process from which the message should be received \\
+\hline
+\end{DoxyParams}

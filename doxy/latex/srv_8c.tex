@@ -1,0 +1,123 @@
+\section{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/srv.c File Reference}
+\label{srv_8c}\index{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/srv.\+c@{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/srv.\+c}}
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+Include dependency graph for srv.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{srv_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ func} (int sockfd)
+\item 
+void \textbf{ echo} (int sockfd)
+\item 
+void \textbf{ login\+Handler} (int sockfd, int msqid)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
+int \textbf{ wait\+Cli} (int sockfd)
+\begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
+void \textbf{ minimain} ()
+\item 
+void \textbf{ rcv\+Cmd} (int sockfd, int msqid)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
+int \textbf{ main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+long \textbf{ mtype} = 10
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{srv_8c_a0033423d840f5e71860d9e37b43d6fac}} 
+\index{srv.\+c@{srv.\+c}!echo@{echo}}
+\index{echo@{echo}!srv.\+c@{srv.\+c}}
+\subsubsection{echo()}
+{\footnotesize\ttfamily void echo (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+\mbox{\label{srv_8c_ac17020a38607ab29ce18939d5194a32a}} 
+\index{srv.\+c@{srv.\+c}!func@{func}}
+\index{func@{func}!srv.\+c@{srv.\+c}}
+\subsubsection{func()}
+{\footnotesize\ttfamily void func (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+\mbox{\label{srv_8c_a3c622a991710c831fbb1b5514d0699eb}} 
+\index{srv.\+c@{srv.\+c}!login\+Handler@{login\+Handler}}
+\index{login\+Handler@{login\+Handler}!srv.\+c@{srv.\+c}}
+\subsubsection{login\+Handler()}
+{\footnotesize\ttfamily void login\+Handler (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{srv_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{srv.\+c@{srv.\+c}!main@{main}}
+\index{main@{main}!srv.\+c@{srv.\+c}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{srv_8c_a6dcd28aa1f6d9481a210ca831514248b}} 
+\index{srv.\+c@{srv.\+c}!minimain@{minimain}}
+\index{minimain@{minimain}!srv.\+c@{srv.\+c}}
+\subsubsection{minimain()}
+{\footnotesize\ttfamily void minimain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{srv_8c_a0f2216ae019052f383a3ed9f03df052e}} 
+\index{srv.\+c@{srv.\+c}!rcv\+Cmd@{rcv\+Cmd}}
+\index{rcv\+Cmd@{rcv\+Cmd}!srv.\+c@{srv.\+c}}
+\subsubsection{rcv\+Cmd()}
+{\footnotesize\ttfamily void rcv\+Cmd (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{srv_8c_a3ce2890f28931d91797e27834f0a1bfa}} 
+\index{srv.\+c@{srv.\+c}!wait\+Cli@{wait\+Cli}}
+\index{wait\+Cli@{wait\+Cli}!srv.\+c@{srv.\+c}}
+\subsubsection{wait\+Cli()}
+{\footnotesize\ttfamily int wait\+Cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+
+
+Waiting for the client to connect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int sockfd 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\label{srv_8c_a6e71692f0e74d6cd516fa62386afcfb4}} 
+\index{srv.\+c@{srv.\+c}!mtype@{mtype}}
+\index{mtype@{mtype}!srv.\+c@{srv.\+c}}
+\subsubsection{mtype}
+{\footnotesize\ttfamily long mtype = 10}
+

@@ -1,0 +1,92 @@
+\section{include/socket.h File Reference}
+\label{socket_8h}\index{include/socket.\+h@{include/socket.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+Include dependency graph for socket.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{socket_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{socket_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ M\+AX}~1024
+\item 
+\#define \textbf{ P\+O\+RT}~10035
+\item 
+\#define \textbf{ SA}~struct sockaddr
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ srv\+\_\+socket} ()
+\begin{DoxyCompactList}\small\item\em Create, assign port, bind and listen of socket server. \end{DoxyCompactList}\item 
+int \textbf{ cli\+\_\+socket} ()
+\begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{socket_8h_a392fb874e547e582e9c66a08a1f23326}} 
+\index{socket.\+h@{socket.\+h}!M\+AX@{M\+AX}}
+\index{M\+AX@{M\+AX}!socket.\+h@{socket.\+h}}
+\subsubsection{M\+AX}
+{\footnotesize\ttfamily \#define M\+AX~1024}
+
+\mbox{\label{socket_8h_a614217d263be1fb1a5f76e2ff7be19a2}} 
+\index{socket.\+h@{socket.\+h}!P\+O\+RT@{P\+O\+RT}}
+\index{P\+O\+RT@{P\+O\+RT}!socket.\+h@{socket.\+h}}
+\subsubsection{P\+O\+RT}
+{\footnotesize\ttfamily \#define P\+O\+RT~10035}
+
+\mbox{\label{socket_8h_a1e43924adac4ae865aa0acf79710261c}} 
+\index{socket.\+h@{socket.\+h}!SA@{SA}}
+\index{SA@{SA}!socket.\+h@{socket.\+h}}
+\subsubsection{SA}
+{\footnotesize\ttfamily \#define SA~struct sockaddr}
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{socket_8h_a9c129efbce40f3061d7899d2adf36a55}} 
+\index{socket.\+h@{socket.\+h}!cli\+\_\+socket@{cli\+\_\+socket}}
+\index{cli\+\_\+socket@{cli\+\_\+socket}!socket.\+h@{socket.\+h}}
+\subsubsection{cli\+\_\+socket()}
+{\footnotesize\ttfamily int cli\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creation, assign IP and port of client socket. Connect to server is included. 
+
+\begin{DoxyReturn}{Returns}
+sockfd 
+\end{DoxyReturn}
+\mbox{\label{socket_8h_abaa85d7aff16c338adf9a408c151bc28}} 
+\index{socket.\+h@{socket.\+h}!srv\+\_\+socket@{srv\+\_\+socket}}
+\index{srv\+\_\+socket@{srv\+\_\+socket}!socket.\+h@{socket.\+h}}
+\subsubsection{srv\+\_\+socket()}
+{\footnotesize\ttfamily int srv\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create, assign port, bind and listen of socket server. 
+
+\begin{DoxyReturn}{Returns}
+int sockfd 
+\end{DoxyReturn}

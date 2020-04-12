@@ -1,0 +1,129 @@
+\section{cliente/prompt.c File Reference}
+\label{prompt_8c}\index{cliente/prompt.\+c@{cliente/prompt.\+c}}
+{\ttfamily \#include \char`\"{}prompt.\+h\char`\"{}}\newline
+Include dependency graph for prompt.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{prompt_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \textbf{ read\+\_\+line} (void)
+\begin{DoxyCompactList}\small\item\em read line from stdin \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \textbf{ split\+\_\+line} (char $\ast$line)
+\item 
+int \textbf{ argc} (char $\ast$$\ast$n)
+\begin{DoxyCompactList}\small\item\em Count the number of strings in a string array. \end{DoxyCompactList}\item 
+int \textbf{ get\+\_\+cmd} (char $\ast$$\ast$args, int n\+\_\+args)
+\begin{DoxyCompactList}\small\item\em Select type of command. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ cmd\+\_\+prompt} (char $\ast$str\+\_\+to\+\_\+server)
+\begin{DoxyCompactList}\small\item\em Prompt for the user. \end{DoxyCompactList}\item 
+int \textbf{ is\+\_\+exit} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em In case of the user has selected the exit command, then exit the prompt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{prompt_8c_a29367ea7e75861b6b3db15e6d3a030ce}} 
+\index{prompt.\+c@{prompt.\+c}!argc@{argc}}
+\index{argc@{argc}!prompt.\+c@{prompt.\+c}}
+\subsubsection{argc()}
+{\footnotesize\ttfamily int argc (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{n }\end{DoxyParamCaption})}
+
+
+
+Count the number of strings in a string array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & array of strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of strings 
+\end{DoxyReturn}
+\mbox{\label{prompt_8c_ac78cdc81595d63a0c876d3e3e8d2db70}} 
+\index{prompt.\+c@{prompt.\+c}!cmd\+\_\+prompt@{cmd\+\_\+prompt}}
+\index{cmd\+\_\+prompt@{cmd\+\_\+prompt}!prompt.\+c@{prompt.\+c}}
+\subsubsection{cmd\+\_\+prompt()}
+{\footnotesize\ttfamily char$\ast$ cmd\+\_\+prompt (\begin{DoxyParamCaption}\item[{char $\ast$}]{str\+\_\+to\+\_\+server }\end{DoxyParamCaption})}
+
+
+
+Prompt for the user. 
+
+All possibilities are contemplated to achieve robust behavior of the function. This may make it look a bit complex but it is properly documented for understanding the code. 
+\begin{DoxyParams}{Parameters}
+{\em str\+\_\+to\+\_\+server} & String to be sent to the server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to string  
+\end{DoxyReturn}
+Start of the prompt, it is kept in a do-\/while loop until the user enters a valid command.\mbox{\label{prompt_8c_a4eab3617254ab77fc2a44c5ff882f5f3}} 
+\index{prompt.\+c@{prompt.\+c}!get\+\_\+cmd@{get\+\_\+cmd}}
+\index{get\+\_\+cmd@{get\+\_\+cmd}!prompt.\+c@{prompt.\+c}}
+\subsubsection{get\+\_\+cmd()}
+{\footnotesize\ttfamily int get\+\_\+cmd (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{args,  }\item[{int}]{n\+\_\+args }\end{DoxyParamCaption})}
+
+
+
+Select type of command. 
+
+In case the first argument is any of the valid commands, the function will return an int greater than or equal to zero. If not it will return a negative int. 
+\begin{DoxyParams}{Parameters}
+{\em args} & Array of tokenized strings coming from user prompt \\
+\hline
+{\em n\+\_\+args} & Number of elements of array args \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\label{prompt_8c_a9882fc592454588fc3587f2ec03e09ab}} 
+\index{prompt.\+c@{prompt.\+c}!is\+\_\+exit@{is\+\_\+exit}}
+\index{is\+\_\+exit@{is\+\_\+exit}!prompt.\+c@{prompt.\+c}}
+\subsubsection{is\+\_\+exit()}
+{\footnotesize\ttfamily int is\+\_\+exit (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+In case of the user has selected the exit command, then exit the prompt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & str\+\_\+to\+\_\+server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\label{prompt_8c_ac14a4d3d27ec36419b82f72342be3a65}} 
+\index{prompt.\+c@{prompt.\+c}!read\+\_\+line@{read\+\_\+line}}
+\index{read\+\_\+line@{read\+\_\+line}!prompt.\+c@{prompt.\+c}}
+\subsubsection{read\+\_\+line()}
+{\footnotesize\ttfamily char$\ast$ read\+\_\+line (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+read line from stdin 
+
+\begin{DoxyReturn}{Returns}
+char $\ast$ with the line 
+\end{DoxyReturn}
+\mbox{\label{prompt_8c_a0fa6791564b78ce51a5c31ddd923b892}} 
+\index{prompt.\+c@{prompt.\+c}!split\+\_\+line@{split\+\_\+line}}
+\index{split\+\_\+line@{split\+\_\+line}!prompt.\+c@{prompt.\+c}}
+\subsubsection{split\+\_\+line()}
+{\footnotesize\ttfamily char$\ast$$\ast$ split\+\_\+line (\begin{DoxyParamCaption}\item[{char $\ast$}]{line }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ 
+\end{DoxyReturn}

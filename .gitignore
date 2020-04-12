@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# Folders
+img/
+thrash/
+
 # Object files
 *.o
 *.ko

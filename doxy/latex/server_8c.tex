@@ -1,0 +1,102 @@
+\section{server/server.c File Reference}
+\label{server_8c}\index{server/server.\+c@{server/server.\+c}}
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+Include dependency graph for server.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ login\+\_\+handler} (int sockfd, int msqid)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
+int \textbf{ wait\+Cli} (int sockfd)
+\begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
+long \textbf{ get\+\_\+1st\+\_\+char} (char $\ast$str)
+\item 
+long \textbf{ cmd\+\_\+handler} (char $\ast$cmd, char $\ast$msg)
+\item 
+void \textbf{ rcv\+\_\+cmd} (int sockfd, int msqid)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
+int \textbf{ main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{server_8c_a9fab57195d50c5f2b55f2744232ad64d}} 
+\index{server.\+c@{server.\+c}!cmd\+\_\+handler@{cmd\+\_\+handler}}
+\index{cmd\+\_\+handler@{cmd\+\_\+handler}!server.\+c@{server.\+c}}
+\subsubsection{cmd\+\_\+handler()}
+{\footnotesize\ttfamily long cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{cmd,  }\item[{char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+\mbox{\label{server_8c_a224345045f1250d5768d42d8cc9e3dab}} 
+\index{server.\+c@{server.\+c}!get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}}
+\index{get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}!server.\+c@{server.\+c}}
+\subsubsection{get\+\_\+1st\+\_\+char()}
+{\footnotesize\ttfamily long get\+\_\+1st\+\_\+char (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\label{server_8c_a7c71d69d21fd5c82ce5af6aee230d25e}} 
+\index{server.\+c@{server.\+c}!login\+\_\+handler@{login\+\_\+handler}}
+\index{login\+\_\+handler@{login\+\_\+handler}!server.\+c@{server.\+c}}
+\subsubsection{login\+\_\+handler()}
+{\footnotesize\ttfamily void login\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{server_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{server.\+c@{server.\+c}!main@{main}}
+\index{main@{main}!server.\+c@{server.\+c}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{server_8c_abccdfc478d69333f46803552eba43cbb}} 
+\index{server.\+c@{server.\+c}!rcv\+\_\+cmd@{rcv\+\_\+cmd}}
+\index{rcv\+\_\+cmd@{rcv\+\_\+cmd}!server.\+c@{server.\+c}}
+\subsubsection{rcv\+\_\+cmd()}
+{\footnotesize\ttfamily void rcv\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{server_8c_a3ce2890f28931d91797e27834f0a1bfa}} 
+\index{server.\+c@{server.\+c}!wait\+Cli@{wait\+Cli}}
+\index{wait\+Cli@{wait\+Cli}!server.\+c@{server.\+c}}
+\subsubsection{wait\+Cli()}
+{\footnotesize\ttfamily int wait\+Cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+
+
+Waiting for the client to connect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int sockfd 
+\end{DoxyReturn}

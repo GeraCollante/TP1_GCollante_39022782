@@ -1,0 +1,120 @@
+\section{include/auth.h File Reference}
+\label{auth_8h}\index{include/auth.\+h@{include/auth.\+h}}
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for auth.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{auth_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{auth_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ user}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ B\+U\+F\+F\+S\+I\+ZE}~1024
+\item 
+\#define \textbf{ U\+S\+E\+RS}~3
+\item 
+\#define \textbf{ D\+E\+B\+UG}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ load\+\_\+db} ()
+\begin{DoxyCompactList}\small\item\em Load users to DB from C\+SV file. \end{DoxyCompactList}\item 
+void \textbf{ change\+\_\+pass} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\item 
+void \textbf{ save\+\_\+db} ()
+\begin{DoxyCompactList}\small\item\em Save DB changes in C\+SV file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ user} \textbf{ users} [\textbf{ U\+S\+E\+RS}]
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{auth_8h_a39912bfe2a55f30e269196f9141d845d}} 
+\index{auth.\+h@{auth.\+h}!B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}!auth.\+h@{auth.\+h}}
+\subsubsection{B\+U\+F\+F\+S\+I\+ZE}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+S\+I\+ZE~1024}
+
+\mbox{\label{auth_8h_ad72dbcf6d0153db1b8d8a58001feed83}} 
+\index{auth.\+h@{auth.\+h}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!auth.\+h@{auth.\+h}}
+\subsubsection{D\+E\+B\+UG}
+{\footnotesize\ttfamily \#define D\+E\+B\+UG~0}
+
+\mbox{\label{auth_8h_a322789c10f93ef5e09a1d5f17aabf0e3}} 
+\index{auth.\+h@{auth.\+h}!U\+S\+E\+RS@{U\+S\+E\+RS}}
+\index{U\+S\+E\+RS@{U\+S\+E\+RS}!auth.\+h@{auth.\+h}}
+\subsubsection{U\+S\+E\+RS}
+{\footnotesize\ttfamily \#define U\+S\+E\+RS~3}
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{auth_8h_a97aeb8e1fb29fa958c8ea862bda5ba69}} 
+\index{auth.\+h@{auth.\+h}!change\+\_\+pass@{change\+\_\+pass}}
+\index{change\+\_\+pass@{change\+\_\+pass}!auth.\+h@{auth.\+h}}
+\subsubsection{change\+\_\+pass()}
+{\footnotesize\ttfamily void change\+\_\+pass (\begin{DoxyParamCaption}\item[{char $\ast$}]{user,  }\item[{char $\ast$}]{pass }\end{DoxyParamCaption})}
+
+
+
+Change user pass in DB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{auth_8h_a6115e4f2f17d1ecbd69a148fbc06b830}} 
+\index{auth.\+h@{auth.\+h}!load\+\_\+db@{load\+\_\+db}}
+\index{load\+\_\+db@{load\+\_\+db}!auth.\+h@{auth.\+h}}
+\subsubsection{load\+\_\+db()}
+{\footnotesize\ttfamily void load\+\_\+db (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Load users to DB from C\+SV file. 
+
+\mbox{\label{auth_8h_afeb75f74451938ff9dc7617224f6fe3f}} 
+\index{auth.\+h@{auth.\+h}!save\+\_\+db@{save\+\_\+db}}
+\index{save\+\_\+db@{save\+\_\+db}!auth.\+h@{auth.\+h}}
+\subsubsection{save\+\_\+db()}
+{\footnotesize\ttfamily void save\+\_\+db (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Save DB changes in C\+SV file. 
+
+
+
+\subsection{Variable Documentation}
+\mbox{\label{auth_8h_ad1b6438b2448da2b01d9887f58f5fb66}} 
+\index{auth.\+h@{auth.\+h}!users@{users}}
+\index{users@{users}!auth.\+h@{auth.\+h}}
+\subsubsection{users}
+{\footnotesize\ttfamily struct \textbf{ user} users[\textbf{ U\+S\+E\+RS}]}
+

@@ -1,0 +1,169 @@
+\section{include/prompt.h File Reference}
+\label{prompt_8h}\index{include/prompt.\+h@{include/prompt.\+h}}
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for prompt.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{prompt_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{prompt_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE}~1024
+\item 
+\#define \textbf{ L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE}~64
+\item 
+\#define \textbf{ L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM}~\char`\"{} \textbackslash{}t\textbackslash{}r\textbackslash{}n\textbackslash{}a\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ argc} (char $\ast$$\ast$)
+\begin{DoxyCompactList}\small\item\em Count the number of strings in a string array. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ cmd\+\_\+prompt} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Prompt for the user. \end{DoxyCompactList}\item 
+int \textbf{ get\+\_\+cmd} (char $\ast$$\ast$, int)
+\begin{DoxyCompactList}\small\item\em Select type of command. \end{DoxyCompactList}\item 
+int \textbf{ is\+\_\+exit} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em In case of the user has selected the exit command, then exit the prompt. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ read\+\_\+line} (void)
+\begin{DoxyCompactList}\small\item\em read line from stdin \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \textbf{ split\+\_\+line} (char $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{prompt_8h_acffba4e12894ca7015d00aaf3a2354cc}} 
+\index{prompt.\+h@{prompt.\+h}!L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE@{L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE}}
+\index{L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE@{L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE}!prompt.\+h@{prompt.\+h}}
+\subsubsection{L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE}
+{\footnotesize\ttfamily \#define L\+S\+H\+\_\+\+R\+L\+\_\+\+B\+U\+F\+S\+I\+ZE~1024}
+
+\mbox{\label{prompt_8h_a5fcc970b08ffddb25a45ab3a875f0905}} 
+\index{prompt.\+h@{prompt.\+h}!L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE@{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE}}
+\index{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE@{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE}!prompt.\+h@{prompt.\+h}}
+\subsubsection{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE}
+{\footnotesize\ttfamily \#define L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+B\+U\+F\+S\+I\+ZE~64}
+
+\mbox{\label{prompt_8h_a27250e82bec993130c5547a5671d61da}} 
+\index{prompt.\+h@{prompt.\+h}!L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM@{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM}}
+\index{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM@{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM}!prompt.\+h@{prompt.\+h}}
+\subsubsection{L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM}
+{\footnotesize\ttfamily \#define L\+S\+H\+\_\+\+T\+O\+K\+\_\+\+D\+E\+L\+IM~\char`\"{} \textbackslash{}t\textbackslash{}r\textbackslash{}n\textbackslash{}a\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{prompt_8h_a6e01607df1054a4c8bcb9604eb191df7}} 
+\index{prompt.\+h@{prompt.\+h}!argc@{argc}}
+\index{argc@{argc}!prompt.\+h@{prompt.\+h}}
+\subsubsection{argc()}
+{\footnotesize\ttfamily int argc (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{n }\end{DoxyParamCaption})}
+
+
+
+Count the number of strings in a string array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & array of strings \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of strings 
+\end{DoxyReturn}
+\mbox{\label{prompt_8h_ae3a964495cbc932650f78912457f90af}} 
+\index{prompt.\+h@{prompt.\+h}!cmd\+\_\+prompt@{cmd\+\_\+prompt}}
+\index{cmd\+\_\+prompt@{cmd\+\_\+prompt}!prompt.\+h@{prompt.\+h}}
+\subsubsection{cmd\+\_\+prompt()}
+{\footnotesize\ttfamily char$\ast$ cmd\+\_\+prompt (\begin{DoxyParamCaption}\item[{char $\ast$}]{str\+\_\+to\+\_\+server }\end{DoxyParamCaption})}
+
+
+
+Prompt for the user. 
+
+All possibilities are contemplated to achieve robust behavior of the function. This may make it look a bit complex but it is properly documented for understanding the code. 
+\begin{DoxyParams}{Parameters}
+{\em str\+\_\+to\+\_\+server} & String to be sent to the server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to string  
+\end{DoxyReturn}
+Start of the prompt, it is kept in a do-\/while loop until the user enters a valid command.\mbox{\label{prompt_8h_ae8fac212768cd6eac01f65cf151b3a43}} 
+\index{prompt.\+h@{prompt.\+h}!get\+\_\+cmd@{get\+\_\+cmd}}
+\index{get\+\_\+cmd@{get\+\_\+cmd}!prompt.\+h@{prompt.\+h}}
+\subsubsection{get\+\_\+cmd()}
+{\footnotesize\ttfamily int get\+\_\+cmd (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{args,  }\item[{int}]{n\+\_\+args }\end{DoxyParamCaption})}
+
+
+
+Select type of command. 
+
+In case the first argument is any of the valid commands, the function will return an int greater than or equal to zero. If not it will return a negative int. 
+\begin{DoxyParams}{Parameters}
+{\em args} & Array of tokenized strings coming from user prompt \\
+\hline
+{\em n\+\_\+args} & Number of elements of array args \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\label{prompt_8h_aaae547d76bf7da0f67987d3f2f2d537f}} 
+\index{prompt.\+h@{prompt.\+h}!is\+\_\+exit@{is\+\_\+exit}}
+\index{is\+\_\+exit@{is\+\_\+exit}!prompt.\+h@{prompt.\+h}}
+\subsubsection{is\+\_\+exit()}
+{\footnotesize\ttfamily int is\+\_\+exit (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+In case of the user has selected the exit command, then exit the prompt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & str\+\_\+to\+\_\+server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\label{prompt_8h_ac14a4d3d27ec36419b82f72342be3a65}} 
+\index{prompt.\+h@{prompt.\+h}!read\+\_\+line@{read\+\_\+line}}
+\index{read\+\_\+line@{read\+\_\+line}!prompt.\+h@{prompt.\+h}}
+\subsubsection{read\+\_\+line()}
+{\footnotesize\ttfamily char$\ast$ read\+\_\+line (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+read line from stdin 
+
+\begin{DoxyReturn}{Returns}
+char $\ast$ with the line 
+\end{DoxyReturn}
+\mbox{\label{prompt_8h_ae3787b54051a7b49115846f09e9716c9}} 
+\index{prompt.\+h@{prompt.\+h}!split\+\_\+line@{split\+\_\+line}}
+\index{split\+\_\+line@{split\+\_\+line}!prompt.\+h@{prompt.\+h}}
+\subsubsection{split\+\_\+line()}
+{\footnotesize\ttfamily char$\ast$$\ast$ split\+\_\+line (\begin{DoxyParamCaption}\item[{char $\ast$}]{line }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$$\ast$ 
+\end{DoxyReturn}

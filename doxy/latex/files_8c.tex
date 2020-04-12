@@ -1,0 +1,88 @@
+\section{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/files.c File Reference}
+\label{files_8c}\index{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/files.\+c@{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/files.\+c}}
+{\ttfamily \#include \char`\"{}md5.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for files.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{files_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ B\+U\+F\+F\+S\+I\+ZE}~256
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \textbf{ readable\+\_\+fs} (double size, char $\ast$buf)
+\begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ send\+Files\+Info} (char $\ast$files\+Info)
+\begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+int \textbf{ main} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{files_8c_a39912bfe2a55f30e269196f9141d845d}} 
+\index{files.\+c@{files.\+c}!B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}!files.\+c@{files.\+c}}
+\subsubsection{B\+U\+F\+F\+S\+I\+ZE}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+S\+I\+ZE~256}
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{files_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{files.\+c@{files.\+c}!main@{main}}
+\index{main@{main}!files.\+c@{files.\+c}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{files_8c_a0fee72390d56ff2ec8ea2b6f2c423f5b}} 
+\index{files.\+c@{files.\+c}!readable\+\_\+fs@{readable\+\_\+fs}}
+\index{readable\+\_\+fs@{readable\+\_\+fs}!files.\+c@{files.\+c}}
+\subsubsection{readable\+\_\+fs()}
+{\footnotesize\ttfamily char$\ast$ readable\+\_\+fs (\begin{DoxyParamCaption}\item[{double}]{size,  }\item[{char $\ast$}]{buf }\end{DoxyParamCaption})}
+
+
+
+Parser that returns in human-\/readable format the size of a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & in bytes from file \\
+\hline
+{\em buf} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string what contains human-\/readable size of file 
+\end{DoxyReturn}
+\mbox{\label{files_8c_a31c6dc9ce767584979bcd916919f66fc}} 
+\index{files.\+c@{files.\+c}!send\+Files\+Info@{send\+Files\+Info}}
+\index{send\+Files\+Info@{send\+Files\+Info}!files.\+c@{files.\+c}}
+\subsubsection{send\+Files\+Info()}
+{\footnotesize\ttfamily char$\ast$ send\+Files\+Info (\begin{DoxyParamCaption}\item[{char $\ast$}]{files\+Info }\end{DoxyParamCaption})}
+
+
+
+Collection of the required information for each file in a specific folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files\+Info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string ready to be printed or sent 
+\end{DoxyReturn}

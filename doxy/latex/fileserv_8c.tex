@@ -1,0 +1,84 @@
+\section{server/fileserv.c File Reference}
+\label{fileserv_8c}\index{server/fileserv.\+c@{server/fileserv.\+c}}
+{\ttfamily \#include \char`\"{}md5.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for fileserv.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fileserv_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \textbf{ readable\+\_\+fs} (long int size, char $\ast$buf)
+\begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ files\+\_\+info} (char $\ast$files\+Info)
+\begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+int \textbf{ cmd\+\_\+handler} (int msqid)
+\item 
+int \textbf{ main} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{fileserv_8c_a975d9337db509c0204b110f51d723160}} 
+\index{fileserv.\+c@{fileserv.\+c}!cmd\+\_\+handler@{cmd\+\_\+handler}}
+\index{cmd\+\_\+handler@{cmd\+\_\+handler}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{cmd\+\_\+handler()}
+{\footnotesize\ttfamily int cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+\mbox{\label{fileserv_8c_a28f9a6d37e4dbc8b5bf5fad1025285e3}} 
+\index{fileserv.\+c@{fileserv.\+c}!files\+\_\+info@{files\+\_\+info}}
+\index{files\+\_\+info@{files\+\_\+info}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{files\+\_\+info()}
+{\footnotesize\ttfamily char$\ast$ files\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{files\+Info }\end{DoxyParamCaption})}
+
+
+
+Collection of the required information for each file in a specific folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files\+Info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string ready to be printed or sent 
+\end{DoxyReturn}
+\mbox{\label{fileserv_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{fileserv.\+c@{fileserv.\+c}!main@{main}}
+\index{main@{main}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{fileserv_8c_acb8985a720cf17b68e99872ba793f2cc}} 
+\index{fileserv.\+c@{fileserv.\+c}!readable\+\_\+fs@{readable\+\_\+fs}}
+\index{readable\+\_\+fs@{readable\+\_\+fs}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{readable\+\_\+fs()}
+{\footnotesize\ttfamily char$\ast$ readable\+\_\+fs (\begin{DoxyParamCaption}\item[{long int}]{size,  }\item[{char $\ast$}]{buf }\end{DoxyParamCaption})}
+
+
+
+Parser that returns in human-\/readable format the size of a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & in bytes from file \\
+\hline
+{\em buf} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string what contains human-\/readable size of file 
+\end{DoxyReturn}
