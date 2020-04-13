@@ -1,11 +1,8 @@
 \section{server/server.c File Reference}
 \label{server_8c}\index{server/server.\+c@{server/server.\+c}}
-{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$sys/types.\+h$>$}\newline
-{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
-Include dependency graph for server.\+c\+:\nopagebreak
+{\ttfamily \#include \char`\"{}server.\+h\char`\"{}}\newline
+Include dependency graph for server.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,18 +12,18 @@ Include dependency graph for server.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \textbf{ main} ()
+\item 
 void \textbf{ login\+\_\+handler} (int sockfd, int msqid)
 \begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
-int \textbf{ wait\+Cli} (int sockfd)
+int \textbf{ wait\+\_\+cli} (int sockfd)
 \begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
 long \textbf{ get\+\_\+1st\+\_\+char} (char $\ast$str)
-\item 
+\begin{DoxyCompactList}\small\item\em Get the 1st char of str. \end{DoxyCompactList}\item 
 long \textbf{ cmd\+\_\+handler} (char $\ast$cmd, char $\ast$msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Decode the str that comes from the client and then be forwarded to A\+UT or F\+LS as appropriate. \end{DoxyCompactList}\item 
 void \textbf{ rcv\+\_\+cmd} (int sockfd, int msqid)
-\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
-int \textbf{ main} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -36,12 +33,38 @@ int \textbf{ main} ()
 \subsubsection{cmd\+\_\+handler()}
 {\footnotesize\ttfamily long cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{cmd,  }\item[{char $\ast$}]{msg }\end{DoxyParamCaption})}
 
+
+
+Decode the str that comes from the client and then be forwarded to A\+UT or F\+LS as appropriate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & \\
+\hline
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+long m\+\_\+type 
+\end{DoxyReturn}
 \mbox{\label{server_8c_a224345045f1250d5768d42d8cc9e3dab}} 
 \index{server.\+c@{server.\+c}!get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}}
 \index{get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}!server.\+c@{server.\+c}}
 \subsubsection{get\+\_\+1st\+\_\+char()}
 {\footnotesize\ttfamily long get\+\_\+1st\+\_\+char (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
 
+
+
+Get the 1st char of str. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+long 
+\end{DoxyReturn}
 \mbox{\label{server_8c_a7c71d69d21fd5c82ce5af6aee230d25e}} 
 \index{server.\+c@{server.\+c}!login\+\_\+handler@{login\+\_\+handler}}
 \index{login\+\_\+handler@{login\+\_\+handler}!server.\+c@{server.\+c}}
@@ -73,7 +96,7 @@ Login handler between auth and server.
 
 
 
-Login handler between auth and server. 
+Login handler between [A\+UT] and [S\+RV]. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -82,11 +105,11 @@ Login handler between auth and server.
 {\em msqid} & \\
 \hline
 \end{DoxyParams}
-\mbox{\label{server_8c_a3ce2890f28931d91797e27834f0a1bfa}} 
-\index{server.\+c@{server.\+c}!wait\+Cli@{wait\+Cli}}
-\index{wait\+Cli@{wait\+Cli}!server.\+c@{server.\+c}}
-\subsubsection{wait\+Cli()}
-{\footnotesize\ttfamily int wait\+Cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+\mbox{\label{server_8c_ad26b08974642b47dc5bf48289824f655}} 
+\index{server.\+c@{server.\+c}!wait\+\_\+cli@{wait\+\_\+cli}}
+\index{wait\+\_\+cli@{wait\+\_\+cli}!server.\+c@{server.\+c}}
+\subsubsection{wait\+\_\+cli()}
+{\footnotesize\ttfamily int wait\+\_\+cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
 
 
 

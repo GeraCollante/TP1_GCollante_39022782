@@ -68,38 +68,35 @@ $(function() {
 <div class="title">client.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="socket_8h_source.html">socket.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="prompt_8h_source.html">prompt.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
-<code>#include &lt;termios.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="client_8h_source.html">client.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for client.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="client_8c__incl.png" border="0" usemap="#cliente_2client_8c" alt=""/></div>
 <map name="cliente_2client_8c" id="cliente_2client_8c">
-<area shape="rect" id="node2" href="socket_8h.html" title="socket.h" alt="" coords="545,80,617,107"/>
-<area shape="rect" id="node13" href="prompt_8h.html" title="prompt.h" alt="" coords="193,80,266,107"/>
-<area shape="rect" id="node14" href="common_8h.html" title="common.h" alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node2" href="client_8h.html" title="client.h" alt="" coords="585,80,649,107"/>
+<area shape="rect" id="node3" href="socket_8h.html" title="socket.h" alt="" coords="545,155,617,181"/>
+<area shape="rect" id="node14" href="prompt_8h.html" title="prompt.h" alt="" coords="193,155,266,181"/>
+<area shape="rect" id="node15" href="common_8h.html" title="common.h" alt="" coords="5,229,88,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d2a952bfee88348e1792d66acf01e38"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a0d2a952bfee88348e1792d66acf01e38">login</a> (char *userpass)</td></tr>
 <tr class="memdesc:a0d2a952bfee88348e1792d66acf01e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt for userpass ingress.  <a href="#a0d2a952bfee88348e1792d66acf01e38">More...</a><br /></td></tr>
 <tr class="separator:a0d2a952bfee88348e1792d66acf01e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af00002a7d3df82f54b2041a687797915"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#af00002a7d3df82f54b2041a687797915">check_status</a> (int status)</td></tr>
-<tr class="memdesc:af00002a7d3df82f54b2041a687797915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if status if 0.  <a href="#af00002a7d3df82f54b2041a687797915">More...</a><br /></td></tr>
+<tr class="memdesc:af00002a7d3df82f54b2041a687797915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check status.  <a href="#af00002a7d3df82f54b2041a687797915">More...</a><br /></td></tr>
 <tr class="separator:af00002a7d3df82f54b2041a687797915"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a471ae164131962c0fe21a47e23706139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a471ae164131962c0fe21a47e23706139">login_handler</a> (int sockfd)</td></tr>
 <tr class="memdesc:a471ae164131962c0fe21a47e23706139"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connection between the server and the client is handled from this function, which is also responsible for the message passage between these.  <a href="#a471ae164131962c0fe21a47e23706139">More...</a><br /></td></tr>
 <tr class="separator:a471ae164131962c0fe21a47e23706139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4117102389756aee8467678b28f484ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a4117102389756aee8467678b28f484ed">send_cmd</a> (int sockfd, char *cmd)</td></tr>
+<tr class="memdesc:a4117102389756aee8467678b28f484ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send message to the server through a socket.  <a href="#a4117102389756aee8467678b28f484ed">More...</a><br /></td></tr>
 <tr class="separator:a4117102389756aee8467678b28f484ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="af00002a7d3df82f54b2041a687797915"></a>
@@ -118,7 +115,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if status if 0. </p>
+<p>Check status. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td></td></tr>
@@ -225,6 +222,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Send message to the server through a socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockfd</td><td></td></tr>
+    <tr><td class="paramname">cmd</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

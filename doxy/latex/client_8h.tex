@@ -1,0 +1,106 @@
+\section{include/client.h File Reference}
+\label{client_8h}\index{include/client.\+h@{include/client.\+h}}
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}prompt.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for client.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{client_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{client_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \textbf{ login} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Prompt for userpass ingress. \end{DoxyCompactList}\item 
+int \textbf{ check\+\_\+status} (int)
+\begin{DoxyCompactList}\small\item\em Check status. \end{DoxyCompactList}\item 
+void \textbf{ login\+\_\+handler} (int)
+\begin{DoxyCompactList}\small\item\em The connection between the server and the client is handled from this function, which is also responsible for the message passage between these. \end{DoxyCompactList}\item 
+void \textbf{ send\+\_\+cmd} (int, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Send message to the server through a socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{client_8h_af8b753753a0d32bcef5a40e1a49b7a18}} 
+\index{client.\+h@{client.\+h}!check\+\_\+status@{check\+\_\+status}}
+\index{check\+\_\+status@{check\+\_\+status}!client.\+h@{client.\+h}}
+\subsubsection{check\+\_\+status()}
+{\footnotesize\ttfamily int check\+\_\+status (\begin{DoxyParamCaption}\item[{int}]{status }\end{DoxyParamCaption})}
+
+
+
+Check status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status 
+\end{DoxyReturn}
+\mbox{\label{client_8h_a184b4ae1814dc2cdcea053bafd7f097f}} 
+\index{client.\+h@{client.\+h}!login@{login}}
+\index{login@{login}!client.\+h@{client.\+h}}
+\subsubsection{login()}
+{\footnotesize\ttfamily char$\ast$ login (\begin{DoxyParamCaption}\item[{char $\ast$}]{userpass }\end{DoxyParamCaption})}
+
+
+
+Prompt for userpass ingress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em userpass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+userpass 
+\end{DoxyReturn}
+\mbox{\label{client_8h_a98d7f4c6baab897a754ea7a006c5cb11}} 
+\index{client.\+h@{client.\+h}!login\+\_\+handler@{login\+\_\+handler}}
+\index{login\+\_\+handler@{login\+\_\+handler}!client.\+h@{client.\+h}}
+\subsubsection{login\+\_\+handler()}
+{\footnotesize\ttfamily void login\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+
+
+The connection between the server and the client is handled from this function, which is also responsible for the message passage between these. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{client_8h_a3f2e03899acbcffa63c626522bfb6c40}} 
+\index{client.\+h@{client.\+h}!send\+\_\+cmd@{send\+\_\+cmd}}
+\index{send\+\_\+cmd@{send\+\_\+cmd}!client.\+h@{client.\+h}}
+\subsubsection{send\+\_\+cmd()}
+{\footnotesize\ttfamily void send\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{char $\ast$}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Send message to the server through a socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em cmd} & \\
+\hline
+\end{DoxyParams}

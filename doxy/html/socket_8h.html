@@ -89,10 +89,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="socket_8h__dep__incl.png" border="0" usemap="#include_2socket_8hdep" alt=""/></div>
 <map name="include_2socket_8hdep" id="include_2socket_8hdep">
-<area shape="rect" id="node2" href="client_8c.html" title="cliente/client.c" alt="" coords="5,80,112,107"/>
-<area shape="rect" id="node3" href="socket__client_8c.html" title="cliente/socket_client.c" alt="" coords="136,80,288,107"/>
-<area shape="rect" id="node4" href="server_8c.html" title="server/server.c" alt="" coords="312,80,421,107"/>
-<area shape="rect" id="node5" href="socket__server_8c.html" title="server/socket_server.c" alt="" coords="445,80,600,107"/>
+<area shape="rect" id="node2" href="socket__client_8c.html" title="cliente/socket_client.c" alt="" coords="5,80,157,107"/>
+<area shape="rect" id="node3" href="client_8h.html" title="include/client.h" alt="" coords="181,80,291,107"/>
+<area shape="rect" id="node5" href="server_8h.html" title="include/server.h" alt="" coords="315,80,429,107"/>
+<area shape="rect" id="node7" href="socket__server_8c.html" title="server/socket_server.c" alt="" coords="453,80,608,107"/>
+<area shape="rect" id="node4" href="client_8c.html" title="cliente/client.c" alt="" coords="183,155,289,181"/>
+<area shape="rect" id="node6" href="server_8c.html" title="server/server.c" alt="" coords="317,155,427,181"/>
 </map>
 </div>
 </div>
@@ -104,17 +106,20 @@ Macros</h2></td></tr>
 <tr class="separator:a392fb874e547e582e9c66a08a1f23326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a614217d263be1fb1a5f76e2ff7be19a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a>&#160;&#160;&#160;10035</td></tr>
 <tr class="separator:a614217d263be1fb1a5f76e2ff7be19a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e43924adac4ae865aa0acf79710261c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a1e43924adac4ae865aa0acf79710261c">SA</a>&#160;&#160;&#160;struct sockaddr</td></tr>
+<tr class="memitem:a1e43924adac4ae865aa0acf79710261c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a1e43924adac4ae865aa0acf79710261c">SA</a>&#160;&#160;&#160;struct   sockaddr</td></tr>
 <tr class="separator:a1e43924adac4ae865aa0acf79710261c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abaa85d7aff16c338adf9a408c151bc28"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#abaa85d7aff16c338adf9a408c151bc28">srv_socket</a> ()</td></tr>
-<tr class="memdesc:abaa85d7aff16c338adf9a408c151bc28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create, assign port, bind and listen of socket server.  <a href="#abaa85d7aff16c338adf9a408c151bc28">More...</a><br /></td></tr>
-<tr class="separator:abaa85d7aff16c338adf9a408c151bc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c129efbce40f3061d7899d2adf36a55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a9c129efbce40f3061d7899d2adf36a55">cli_socket</a> ()</td></tr>
-<tr class="memdesc:a9c129efbce40f3061d7899d2adf36a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation, assign IP and port of client socket. Connect to server is included.  <a href="#a9c129efbce40f3061d7899d2adf36a55">More...</a><br /></td></tr>
-<tr class="separator:a9c129efbce40f3061d7899d2adf36a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904ce9e03065ab436ce8c5d97c557c5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a904ce9e03065ab436ce8c5d97c557c5c">srv_socket</a> (void)</td></tr>
+<tr class="memdesc:a904ce9e03065ab436ce8c5d97c557c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create, assign port, bind and listen of socket server.  <a href="#a904ce9e03065ab436ce8c5d97c557c5c">More...</a><br /></td></tr>
+<tr class="separator:a904ce9e03065ab436ce8c5d97c557c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c5da4ed280f280eb2984b4b4191203e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a5c5da4ed280f280eb2984b4b4191203e">cli_socket</a> (void)</td></tr>
+<tr class="memdesc:a5c5da4ed280f280eb2984b4b4191203e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation, assign IP and port of client socket. Connect to server is included.  <a href="#a5c5da4ed280f280eb2984b4b4191203e">More...</a><br /></td></tr>
+<tr class="separator:a5c5da4ed280f280eb2984b4b4191203e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1bc7f68e6545e809e6b75b737fcbbe3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aa1bc7f68e6545e809e6b75b737fcbbe3">wait_cli</a> (int)</td></tr>
+<tr class="memdesc:aa1bc7f68e6545e809e6b75b737fcbbe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waiting for the client to connect.  <a href="#aa1bc7f68e6545e809e6b75b737fcbbe3">More...</a><br /></td></tr>
+<tr class="separator:aa1bc7f68e6545e809e6b75b737fcbbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a392fb874e547e582e9c66a08a1f23326"></a>
@@ -152,7 +157,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SA&#160;&#160;&#160;struct sockaddr</td>
+          <td class="memname">#define SA&#160;&#160;&#160;struct   sockaddr</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -160,8 +165,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9c129efbce40f3061d7899d2adf36a55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c129efbce40f3061d7899d2adf36a55">&#9670;&nbsp;</a></span>cli_socket()</h2>
+<a id="a5c5da4ed280f280eb2984b4b4191203e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c5da4ed280f280eb2984b4b4191203e">&#9670;&nbsp;</a></span>cli_socket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,6 +174,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int cli_socket </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -180,8 +186,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abaa85d7aff16c338adf9a408c151bc28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaa85d7aff16c338adf9a408c151bc28">&#9670;&nbsp;</a></span>srv_socket()</h2>
+<a id="a904ce9e03065ab436ce8c5d97c557c5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904ce9e03065ab436ce8c5d97c557c5c">&#9670;&nbsp;</a></span>srv_socket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,6 +195,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int srv_socket </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -196,6 +203,33 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create, assign port, bind and listen of socket server. </p>
+<dl class="section return"><dt>Returns</dt><dd>int sockfd </dd></dl>
+
+</div>
+</div>
+<a id="aa1bc7f68e6545e809e6b75b737fcbbe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1bc7f68e6545e809e6b75b737fcbbe3">&#9670;&nbsp;</a></span>wait_cli()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wait_cli </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sockfd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Waiting for the client to connect. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockfd</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>int sockfd </dd></dl>
 
 </div>

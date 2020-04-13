@@ -13,11 +13,12 @@ Include dependency graph for auth.\+h\+:\nopagebreak
 \includegraphics[width=350pt]{auth_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=210pt]{auth_8h__dep__incl}
+\includegraphics[width=240pt]{auth_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Data Structures}
@@ -28,20 +29,34 @@ struct \textbf{ user}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \textbf{ B\+U\+F\+F\+S\+I\+ZE}~1024
+\#define \textbf{ L\+O\+G\+IN}~1
 \item 
 \#define \textbf{ U\+S\+E\+RS}~3
-\item 
-\#define \textbf{ D\+E\+B\+UG}~0
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \textbf{ load\+\_\+db} ()
-\begin{DoxyCompactList}\small\item\em Load users to DB from C\+SV file. \end{DoxyCompactList}\item 
 void \textbf{ change\+\_\+pass} (char $\ast$, char $\ast$)
 \begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\item 
-void \textbf{ save\+\_\+db} ()
+int \textbf{ check\+\_\+block} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Check the number of user blocks. \end{DoxyCompactList}\item 
+int \textbf{ cmd\+\_\+handler} (int, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\item 
+void \textbf{ increase\+\_\+block} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Increase number of blocks according to user. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ get\+\_\+pass} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Returns the pass substr of str. \end{DoxyCompactList}\item 
+int \textbf{ get\+\_\+status} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Get the status of check userpass. \end{DoxyCompactList}\item 
+void \textbf{ last\+\_\+connect} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Registers the date of the login of a user saving the value in the database. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ list\+\_\+users} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em List users in DB. \end{DoxyCompactList}\item 
+void \textbf{ load\+\_\+db} (void)
+\begin{DoxyCompactList}\small\item\em Load users to DB from C\+SV file. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ login\+\_\+handler} (int, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and srv. \end{DoxyCompactList}\item 
+void \textbf{ save\+\_\+db} (void)
 \begin{DoxyCompactList}\small\item\em Save DB changes in C\+SV file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -51,17 +66,11 @@ struct \textbf{ user} \textbf{ users} [\textbf{ U\+S\+E\+RS}]
 
 
 \subsection{Macro Definition Documentation}
-\mbox{\label{auth_8h_a39912bfe2a55f30e269196f9141d845d}} 
-\index{auth.\+h@{auth.\+h}!B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}}
-\index{B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}!auth.\+h@{auth.\+h}}
-\subsubsection{B\+U\+F\+F\+S\+I\+ZE}
-{\footnotesize\ttfamily \#define B\+U\+F\+F\+S\+I\+ZE~1024}
-
-\mbox{\label{auth_8h_ad72dbcf6d0153db1b8d8a58001feed83}} 
-\index{auth.\+h@{auth.\+h}!D\+E\+B\+UG@{D\+E\+B\+UG}}
-\index{D\+E\+B\+UG@{D\+E\+B\+UG}!auth.\+h@{auth.\+h}}
-\subsubsection{D\+E\+B\+UG}
-{\footnotesize\ttfamily \#define D\+E\+B\+UG~0}
+\mbox{\label{auth_8h_a2cc44bf853cfd679b56807b198735596}} 
+\index{auth.\+h@{auth.\+h}!L\+O\+G\+IN@{L\+O\+G\+IN}}
+\index{L\+O\+G\+IN@{L\+O\+G\+IN}!auth.\+h@{auth.\+h}}
+\subsubsection{L\+O\+G\+IN}
+{\footnotesize\ttfamily \#define L\+O\+G\+IN~1}
 
 \mbox{\label{auth_8h_a322789c10f93ef5e09a1d5f17aabf0e3}} 
 \index{auth.\+h@{auth.\+h}!U\+S\+E\+RS@{U\+S\+E\+RS}}
@@ -89,7 +98,124 @@ Change user pass in DB.
 {\em pass} & \\
 \hline
 \end{DoxyParams}
-\mbox{\label{auth_8h_a6115e4f2f17d1ecbd69a148fbc06b830}} 
+\mbox{\label{auth_8h_a3bf3271f2878741a36a522714fc1180b}} 
+\index{auth.\+h@{auth.\+h}!check\+\_\+block@{check\+\_\+block}}
+\index{check\+\_\+block@{check\+\_\+block}!auth.\+h@{auth.\+h}}
+\subsubsection{check\+\_\+block()}
+{\footnotesize\ttfamily int check\+\_\+block (\begin{DoxyParamCaption}\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Check the number of user blocks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 if user have 3 or more blocks else 0 
+\end{DoxyReturn}
+\mbox{\label{auth_8h_ac577f045e4bf8abe2128eb727bf5edb7}} 
+\index{auth.\+h@{auth.\+h}!cmd\+\_\+handler@{cmd\+\_\+handler}}
+\index{cmd\+\_\+handler@{cmd\+\_\+handler}!auth.\+h@{auth.\+h}}
+\subsubsection{cmd\+\_\+handler()}
+{\footnotesize\ttfamily int cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{msqid,  }\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Login handler between [A\+UT] and [S\+RV]. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{auth_8h_ab699bd210dfe5219d858aeb212650f47}} 
+\index{auth.\+h@{auth.\+h}!get\+\_\+pass@{get\+\_\+pass}}
+\index{get\+\_\+pass@{get\+\_\+pass}!auth.\+h@{auth.\+h}}
+\subsubsection{get\+\_\+pass()}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+pass (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Returns the pass substr of str. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
+\end{DoxyReturn}
+\mbox{\label{auth_8h_ac2d257768c5b44d17c6fe989707468a5}} 
+\index{auth.\+h@{auth.\+h}!get\+\_\+status@{get\+\_\+status}}
+\index{get\+\_\+status@{get\+\_\+status}!auth.\+h@{auth.\+h}}
+\subsubsection{get\+\_\+status()}
+{\footnotesize\ttfamily int get\+\_\+status (\begin{DoxyParamCaption}\item[{char $\ast$}]{userpass,  }\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Get the status of check userpass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em userpass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1\+: user and pass correct 0\+: pass wrong -\/1\+: user wrong -\/2\+: user blocked 
+\end{DoxyReturn}
+\mbox{\label{auth_8h_a7262d58710ad875161637d4d2ae75009}} 
+\index{auth.\+h@{auth.\+h}!increase\+\_\+block@{increase\+\_\+block}}
+\index{increase\+\_\+block@{increase\+\_\+block}!auth.\+h@{auth.\+h}}
+\subsubsection{increase\+\_\+block()}
+{\footnotesize\ttfamily void increase\+\_\+block (\begin{DoxyParamCaption}\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Increase number of blocks according to user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{auth_8h_a45125798b5e6b7446e4f699ff5d5ce7e}} 
+\index{auth.\+h@{auth.\+h}!last\+\_\+connect@{last\+\_\+connect}}
+\index{last\+\_\+connect@{last\+\_\+connect}!auth.\+h@{auth.\+h}}
+\subsubsection{last\+\_\+connect()}
+{\footnotesize\ttfamily void last\+\_\+connect (\begin{DoxyParamCaption}\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Registers the date of the login of a user saving the value in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{auth_8h_aac12c870325e2f9d95be2cffb49abe78}} 
+\index{auth.\+h@{auth.\+h}!list\+\_\+users@{list\+\_\+users}}
+\index{list\+\_\+users@{list\+\_\+users}!auth.\+h@{auth.\+h}}
+\subsubsection{list\+\_\+users()}
+{\footnotesize\ttfamily char $\ast$ list\+\_\+users (\begin{DoxyParamCaption}\item[{char $\ast$}]{str\+Users }\end{DoxyParamCaption})}
+
+
+
+List users in DB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str\+Users} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ with users information 
+\end{DoxyReturn}
+\mbox{\label{auth_8h_aca138a298c612a14d6fb2c16672f8c87}} 
 \index{auth.\+h@{auth.\+h}!load\+\_\+db@{load\+\_\+db}}
 \index{load\+\_\+db@{load\+\_\+db}!auth.\+h@{auth.\+h}}
 \subsubsection{load\+\_\+db()}
@@ -99,7 +225,22 @@ Change user pass in DB.
 
 Load users to DB from C\+SV file. 
 
-\mbox{\label{auth_8h_afeb75f74451938ff9dc7617224f6fe3f}} 
+\mbox{\label{auth_8h_a83d64e63f624455cc546824658a42969}} 
+\index{auth.\+h@{auth.\+h}!login\+\_\+handler@{login\+\_\+handler}}
+\index{login\+\_\+handler@{login\+\_\+handler}!auth.\+h@{auth.\+h}}
+\subsubsection{login\+\_\+handler()}
+{\footnotesize\ttfamily char $\ast$ login\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{msqid,  }\item[{char $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and srv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{auth_8h_a7145eb48ec5e46fbb39b0b174a026cd1}} 
 \index{auth.\+h@{auth.\+h}!save\+\_\+db@{save\+\_\+db}}
 \index{save\+\_\+db@{save\+\_\+db}!auth.\+h@{auth.\+h}}
 \subsubsection{save\+\_\+db()}

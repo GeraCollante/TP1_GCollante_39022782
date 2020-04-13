@@ -1,0 +1,94 @@
+\section{include/fileserv.h File Reference}
+\label{fileserv_8h}\index{include/fileserv.\+h@{include/fileserv.\+h}}
+{\ttfamily \#include \char`\"{}md5.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for fileserv.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fileserv_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{fileserv_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ cmd\+\_\+handler} (int)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and srv. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ files\+\_\+info} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ readable\+\_\+fs} (long int, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{fileserv_8h_a17e3a23bd1ae378882eab0ef0f856de1}} 
+\index{fileserv.\+h@{fileserv.\+h}!cmd\+\_\+handler@{cmd\+\_\+handler}}
+\index{cmd\+\_\+handler@{cmd\+\_\+handler}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{cmd\+\_\+handler()}
+{\footnotesize\ttfamily int cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and srv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{fileserv_8h_a49cfaf7b6d546c559fb0901bd5ba3e65}} 
+\index{fileserv.\+h@{fileserv.\+h}!files\+\_\+info@{files\+\_\+info}}
+\index{files\+\_\+info@{files\+\_\+info}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{files\+\_\+info()}
+{\footnotesize\ttfamily char$\ast$ files\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{files\+Info }\end{DoxyParamCaption})}
+
+
+
+Collection of the required information for each file in a specific folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files\+Info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string ready to be printed or sent 
+\end{DoxyReturn}
+\mbox{\label{fileserv_8h_aaa60420f4ed2522f7e58eedb72afea48}} 
+\index{fileserv.\+h@{fileserv.\+h}!readable\+\_\+fs@{readable\+\_\+fs}}
+\index{readable\+\_\+fs@{readable\+\_\+fs}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{readable\+\_\+fs()}
+{\footnotesize\ttfamily char$\ast$ readable\+\_\+fs (\begin{DoxyParamCaption}\item[{long int}]{size,  }\item[{char $\ast$}]{buf }\end{DoxyParamCaption})}
+
+
+
+Parser that returns in human-\/readable format the size of a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & in bytes from file \\
+\hline
+{\em buf} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string what contains human-\/readable size of file 
+\end{DoxyReturn}

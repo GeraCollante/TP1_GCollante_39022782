@@ -15,7 +15,8 @@ Include dependency graph for mq.\+h\+:\nopagebreak
 \includegraphics[width=350pt]{mq_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,14 +38,14 @@ struct \textbf{ my\+\_\+msgbuf}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \textbf{ mqid} ()
+int \textbf{ mqid} (void)
 \begin{DoxyCompactList}\small\item\em Creation of the message queue id. \end{DoxyCompactList}\item 
+void \textbf{ mq\+\_\+info} (int)
+\item 
 char $\ast$ \textbf{ rcv\+\_\+msg} (int, char $\ast$, long)
 \begin{DoxyCompactList}\small\item\em Wrapper to receive messages from the message queue. \end{DoxyCompactList}\item 
 void \textbf{ snd\+\_\+msg} (int, char $\ast$, long)
-\begin{DoxyCompactList}\small\item\em Wrapper to send messages to the message queue. \end{DoxyCompactList}\item 
-void \textbf{ mq\+\_\+info} (int msqid)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Wrapper to send messages to the message queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
@@ -63,17 +64,17 @@ void \textbf{ mq\+\_\+info} (int msqid)
 
 
 \subsection{Function Documentation}
-\mbox{\label{mq_8h_ad6373ac4d80e0c6198e95bb3a0515ff4}} 
+\mbox{\label{mq_8h_abd23771ce4522444ca0cbdad8413515d}} 
 \index{mq.\+h@{mq.\+h}!mq\+\_\+info@{mq\+\_\+info}}
 \index{mq\+\_\+info@{mq\+\_\+info}!mq.\+h@{mq.\+h}}
 \subsubsection{mq\+\_\+info()}
-{\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
 
-\mbox{\label{mq_8h_aa6a2e92e60754c750bebd73bced350fd}} 
+\mbox{\label{mq_8h_a09c20d0a7874e29781d83b7243f58582}} 
 \index{mq.\+h@{mq.\+h}!mqid@{mqid}}
 \index{mqid@{mqid}!mq.\+h@{mq.\+h}}
 \subsubsection{mqid()}
-{\footnotesize\ttfamily int mqid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int mqid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 

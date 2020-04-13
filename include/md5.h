@@ -4,4 +4,4 @@
 #include <errno.h>
 #include <string.h>
 
-char* file_md5(char *, char *);
+char *  file_md5    (char *, char *);

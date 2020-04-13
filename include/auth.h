@@ -6,20 +6,25 @@
 #include <time.h>
 
 #define USERS 3
-#define DEBUG 0
 
 struct user
 {
-    char username[BUFFSIZE];
-    char password[BUFFSIZE];
+    char username   [BUFFSIZE];
+    char password   [BUFFSIZE];
     char lastconnect[BUFFSIZE];
-    char block[BUFFSIZE];
+    char block      [BUFFSIZE];
 };
 
 struct user users[USERS];
-// int usuarios = 3;
-// struct user* array = malloc(usuarios * sizeof(struct user));
 
-void load_db();
-void change_pass(char *, char *);
-void save_db();
+void    change_pass     (char *, char *);
+int     check_block     (char *);
+int     cmd_handler     (int, char *);
+void    increase_block  (char *);
+char *  get_pass        (char *);
+int     get_status      (char *, char *);
+void    last_connect    (char *);
+char *  list_users      (char *);
+void    load_db         (void);
+char *  login_handler   (int, char *);
+void    save_db         (void);

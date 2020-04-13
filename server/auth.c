@@ -11,10 +11,9 @@ char *  login_handler(int, char *);
 void    save_db(void);
 
 /**
- * @brief Variable that determines the id of the message queue corresponding to the process
+ * @brief   Registers the date of the login of a user saving the value in the database
+ * @param   user 
  */
-// long mtype = 10;
-
 void last_connect(char* user){
     char * connect_time = (char*) malloc((BUFFSIZE*USERS+1)*sizeof(char));
     time_t rawtime;
@@ -43,8 +42,8 @@ void last_connect(char* user){
 }
 
 /**
- * @brief Increase number of blocks according to user
- * @param user 
+ * @brief   Increase number of blocks according to user
+ * @param   user 
  */
 void increase_block(char* user){
     int blocks;
@@ -64,11 +63,11 @@ void increase_block(char* user){
 }
 
 /**
- * @brief Check the number of user blocks
- * @param user
- * @return int
- * 0 if user is ok
- * 1 if user is block
+ * @brief   Check the number of user blocks
+ * @param   user
+ * @return  int
+ *          1 if user have 3 or more blocks
+ *          else 0
  */
 int check_block(char* user){
     int status;
@@ -98,17 +97,12 @@ int check_block(char* user){
 int get_status(char * userpass, char * user){
     int status;
     char * tok  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    // char * user = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     char * pass = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    // char str[] ="- This, a sample string.";
-    // sprintf(str, "%s", "GeraCollante,steven95");
-    // char * tok;
-    // printf ("Splitting string \"%s\" into toks:\n",str);
+
     tok = strtok(userpass,",");
     sprintf(user,"%s", tok);
     while (tok != NULL)
     {
-        // printf ("%s\n",tok);
         sprintf(pass,"%s", tok);
         tok = strtok (NULL, ",");
     }
@@ -134,12 +128,15 @@ char * login_handler(int msqid, char * user){
         /*  Receive userpass from [SVR] */
         rcv_msg(msqid, str, auth_type);
         printf("[AUT]<-[SRV]: %s\n",str);
+
         /*  Get status of userpass and convert to int */
         sprintf(str, "%d", get_status(str, user));
         status = atoi(str);
         printf("[AUT]->[SRV]: %s\n",str);
-        /*  Send status to server */ 
+
+        /*  Send status to [SRV] */ 
         snd_msg(msqid, str, auth_type);
+
         if(status==1)
         { 
             if(DEBUG) printf("Successful login_handler...\n"); 
@@ -149,6 +146,11 @@ char * login_handler(int msqid, char * user){
     return user;
 }
 
+/**
+ * @brief   Returns the pass substr of str
+ * @param   str 
+ * @return  char* 
+ */
 char * get_pass(char * str)
 {
     char * aux = (char*) malloc((BUFFSIZE+1)*sizeof(char));
@@ -158,12 +160,12 @@ char * get_pass(char * str)
 }
 
 /**
- * @brief   Login handler between auth and srv
+ * @brief   Login handler between [AUT] and [SRV]
  * @param   msqid 
 */
 int cmd_handler(int msqid, char * user){
     int status;
-    // int salir = 0;
+    int end;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     
     /*  Receive userpass from [SVR] */
@@ -173,30 +175,27 @@ int cmd_handler(int msqid, char * user){
 
     /*  Get status of userpass and convert to int */
     status = atoi(str);
-    // printf("predecoder\n");
-    // cmd_decoder(status, str);
-    // printf("postdecoder\n");
     
     /*  Decode cmd  */
     switch (status)
     {
     case 0:
-        printf("[AUT] salir\n");
-        // salir=1;
+        if(DEBUG)   printf("[AUT] end\n");
+        end=1;
         sprintf(str, "%s", "Closed session.");
         break;
     case 1:
-        printf("[AUT] user ls\n");
+        if(DEBUG)   printf("[AUT] user ls\n");
         list_users(str);
         break;
     case 2:
-        printf("[AUT] user passwd\n");
+        if(DEBUG)   printf("[AUT] user passwd\n");
         change_pass(user, get_pass(str));
         sprintf(str, "Password correctly modified.");
         break;
     }
 
-    /*  Send msg to server  */ 
+    /*  Send msg to [SRV]   */ 
     snd_msg(msqid, str, auth_type);
 
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
@@ -204,45 +203,48 @@ int cmd_handler(int msqid, char * user){
     //     exit(EXIT_FAILURE);
     // }
 
-    return status;
+    return end;
 }
 
 int main(void){
-    /*  Load DB and create
-        message queue */
-    load_db();
-    int msqid = mqid();
-    printf("%s\n", "[AUT] Messages queue created...");
-    fflush(stdout);
-    // int sesion = 0;
     char * user = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    int salir = 1;
+    int msqid, end = 1, contador = 0;
+    
+    /*  Load DB */
+    load_db();
+    if(DEBUG)   printf("[AUT] Database loaded successfully...\n");
+    
+    /*  Create message queue */
+    msqid = mqid();
+    if(DEBUG)   printf("[AUT] Messages queue created...\n");
+    fflush(stdout);
+
     if (LOGIN)
     {
+        /*  Login handler   */
         login_handler(msqid, user);
-        printf("[AUT] %s has logged in. \n", user);
+        if(DEBUG)   printf("[AUT] %s has logged in... \n", user);
+
+        /*  Registered connection   */
         last_connect(user);
-        printf("%s\n", "[AUT] Successful login...");
+        if(DEBUG)   printf("[AUT] Successful login...\n");
         fflush(stdout);
     }
-    int contador = 0;
+
+    /*  Waiting for cmd from [SRV]  */
     do
     {
-        printf("[AUT] precmdhandler\n");
-        salir = cmd_handler(msqid, user);
-        printf("status: %d\n", salir);
-        printf("[AUT] postcmdhandler\n");
+        /*  Handler of cmd  */
+        end = cmd_handler(msqid, user);
+        printf("end: %d\n", end);
+
+        /*  Counter of msg  */
         contador++;
-        if (!salir)
-        {
-            puts("SALIMOSSSSSSSSSSSS");
-        }
-        printf("Contador de mensajes: %d\n", contador);
-        printf("Exit %d;\n", salir);
-    }while(salir!=0);
+        printf("[AUT] Contador de mensajes: %d\n", contador);
+    }while(end!=0);
 
-    printf("Finalice auth.\n");
-
+    printf("End [AUT].\n");
+    fflush(stdout);
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
     //     fprintf(stderr, "Message queue could not be deleted.\n");
     //     exit(EXIT_FAILURE);
@@ -251,9 +253,11 @@ int main(void){
     return 0;
 }
 
+
 /**
- * @brief 
- * Print users in DB
+ * @brief   List users in DB
+ * @param   strUsers 
+ * @return  char* with users information
  */
 char * list_users(char * strUsers){
     char * aux = (char*) malloc((BUFFSIZE*USERS+1)*sizeof(char));
@@ -269,16 +273,12 @@ char * list_users(char * strUsers){
 }
 
 /**
- * @brief Load users to DB from CSV file
+ * @brief   Load users to DB from CSV file
  */
-void load_db(){
+void load_db(void){
     char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     char buf[BUFFSIZE];
-    // if (chdir("../db") != 0)
-    // {
-    //     perror("Can't change directory.\n");
-    //     exit(EXIT_FAILURE);
-    // }
+
     sprintf(filename, "sample.csv");
     FILE *fp = fopen(filename, "r");
 
@@ -318,15 +318,14 @@ void load_db(){
         row_count++;
     }
 
-    // if(DEBUG) list_users();
     free(filename);
     fclose(fp);
 }
 
 /**
- * @brief Change user pass in DB
- * @param user 
- * @param pass 
+ * @brief   Change user pass in DB
+ * @param   user 
+ * @param   pass 
  */
 void change_pass(char* user, char* pass){
     for (int i = 0; i < USERS; i++)
@@ -341,8 +340,7 @@ void change_pass(char* user, char* pass){
 }
 
 /**
- * @brief 
- * Save DB changes in CSV file
+ * @brief   Save DB changes in CSV file
  */
 void save_db(){
     FILE *fp;
@@ -355,10 +353,9 @@ void save_db(){
 }
 
 /**
- * @brief 
- * Change user pass in DB
- * @param user 
- * @param pass 
+ * @brief   Change user pass in DB
+ * @param   user 
+ * @param   pass 
  */
 int check_pass(char* user, char* pass){
     int status;

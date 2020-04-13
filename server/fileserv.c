@@ -1,18 +1,36 @@
+#include "fileserv.h"
 
-#include "md5.h"
-#include "mq.h"
-#include "common.h"
-#include <dirent.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <sys/stat.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <openssl/md5.h>
-#include <errno.h>
-#include <string.h>
+int main(void){
+    int end = 1, counter=0, msqid;
+    /*  Create message queue    */
+    msqid = mqid();
+    /*  Message queue info  */
+    if(DEBUG)   mq_info(msqid);
+    printf("[FLS] Messages queue created...\n");
+    fflush(stdout);
+
+    /*  Waiting for cmd from [SRV]   */
+    do
+    {
+        /*  Handler of cmd  */
+        end = cmd_handler(msqid);
+        if(DEBUG)   printf("end: %d\n", end);
+
+        /*  Counter of msg  */
+        counter++;
+        if(DEBUG)   printf("[FLS] Message counter: %d\n", counter);
+    }while(end);
+
+    if(DEBUG)   printf("[FLS] End.\n");
+
+    // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
+    //     fprintf(stderr, "Message queue could not be deleted.\n");
+    //     exit(EXIT_FAILURE);
+    // }
+
+    return 0;
+}
+
 
 /**
  * @brief   Parser that returns in human-readable format the size of a file
@@ -134,39 +152,4 @@ int cmd_handler(int msqid){
     // }
 
     return status;
-}
-
-int main(void){
-    int msqid = mqid();
-    printf("%s\n", "[FLS] Messages queue created...");
-    fflush(stdout);
-    // int session = 0;
-    int end     = 1;
-    int counter = 0;
-    do
-    {
-        printf("[FLS] precmdhandler\n");
-
-        mq_info(msqid);
-        
-        end = cmd_handler(msqid);
-        printf("status: %d\n", end);
-        printf("[FLS] postcmdhandler\n");
-        counter++;
-        if (!end)
-        {
-            puts("SALIMOSSSSSSSSSSSS");
-        }
-        printf("Contador de mensajes: %d\n", counter);
-        printf("Exit %d;\n", end);
-    }while(end);
-
-    printf("Finalice file.\n");
-
-    // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
-    //     fprintf(stderr, "Message queue could not be deleted.\n");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    return 0;
 }

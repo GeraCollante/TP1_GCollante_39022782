@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "termios.h": "c",
+        "common.h": "c",
+        "prompt.h": "c",
+        "auth.h": "c",
+        "fileserv.h": "c",
+        "mq.h": "c"
+    }
+}

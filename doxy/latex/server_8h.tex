@@ -1,0 +1,109 @@
+\section{include/server.h File Reference}
+\label{server_8h}\index{include/server.\+h@{include/server.\+h}}
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+Include dependency graph for server.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{server_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \textbf{ get\+\_\+1st\+\_\+char} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Get the 1st char of str. \end{DoxyCompactList}\item 
+long \textbf{ cmd\+\_\+handler} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Decode the str that comes from the client and then be forwarded to A\+UT or F\+LS as appropriate. \end{DoxyCompactList}\item 
+void \textbf{ login\+\_\+handler} (int, int)
+\begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
+void \textbf{ rcv\+\_\+cmd} (int, int)
+\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{server_8h_a4199c4fe35b146a5a21818e16572ce17}} 
+\index{server.\+h@{server.\+h}!cmd\+\_\+handler@{cmd\+\_\+handler}}
+\index{cmd\+\_\+handler@{cmd\+\_\+handler}!server.\+h@{server.\+h}}
+\subsubsection{cmd\+\_\+handler()}
+{\footnotesize\ttfamily long cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{char $\ast$}]{cmd,  }\item[{char $\ast$}]{msg }\end{DoxyParamCaption})}
+
+
+
+Decode the str that comes from the client and then be forwarded to A\+UT or F\+LS as appropriate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & \\
+\hline
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+long m\+\_\+type 
+\end{DoxyReturn}
+\mbox{\label{server_8h_a293029f59f0b388380b8491d52f8e867}} 
+\index{server.\+h@{server.\+h}!get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}}
+\index{get\+\_\+1st\+\_\+char@{get\+\_\+1st\+\_\+char}!server.\+h@{server.\+h}}
+\subsubsection{get\+\_\+1st\+\_\+char()}
+{\footnotesize\ttfamily long get\+\_\+1st\+\_\+char (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Get the 1st char of str. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+long 
+\end{DoxyReturn}
+\mbox{\label{server_8h_ac8306e493111b55b1bcf59a26e9a45b6}} 
+\index{server.\+h@{server.\+h}!login\+\_\+handler@{login\+\_\+handler}}
+\index{login\+\_\+handler@{login\+\_\+handler}!server.\+h@{server.\+h}}
+\subsubsection{login\+\_\+handler()}
+{\footnotesize\ttfamily void login\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between auth and server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{server_8h_a9e01af92870c6e74d3b55dd7aab75cb7}} 
+\index{server.\+h@{server.\+h}!rcv\+\_\+cmd@{rcv\+\_\+cmd}}
+\index{rcv\+\_\+cmd@{rcv\+\_\+cmd}!server.\+h@{server.\+h}}
+\subsubsection{rcv\+\_\+cmd()}
+{\footnotesize\ttfamily void rcv\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{int}]{msqid }\end{DoxyParamCaption})}
+
+
+
+Login handler between [A\+UT] and [S\+RV]. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em msqid} & \\
+\hline
+\end{DoxyParams}

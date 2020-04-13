@@ -1,12 +1,8 @@
 \section{cliente/client.c File Reference}
 \label{client_8c}\index{cliente/client.\+c@{cliente/client.\+c}}
-{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}prompt.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$termios.\+h$>$}\newline
-{\ttfamily \#include $<$errno.\+h$>$}\newline
-{\ttfamily \#include $<$unistd.\+h$>$}\newline
-Include dependency graph for client.\+c\+:\nopagebreak
+{\ttfamily \#include \char`\"{}client.\+h\char`\"{}}\newline
+Include dependency graph for client.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,16 +12,16 @@ Include dependency graph for client.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \textbf{ main} ()
+\item 
 char $\ast$ \textbf{ login} (char $\ast$userpass)
 \begin{DoxyCompactList}\small\item\em Prompt for userpass ingress. \end{DoxyCompactList}\item 
 int \textbf{ check\+\_\+status} (int status)
-\begin{DoxyCompactList}\small\item\em Check if status if 0. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Check status. \end{DoxyCompactList}\item 
 void \textbf{ login\+\_\+handler} (int sockfd)
 \begin{DoxyCompactList}\small\item\em The connection between the server and the client is handled from this function, which is also responsible for the message passage between these. \end{DoxyCompactList}\item 
 void \textbf{ send\+\_\+cmd} (int sockfd, char $\ast$cmd)
-\item 
-int \textbf{ main} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send message to the server through a socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -37,7 +33,7 @@ int \textbf{ main} ()
 
 
 
-Check if status if 0. 
+Check status. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -92,3 +88,14 @@ The connection between the server and the client is handled from this function, 
 \subsubsection{send\+\_\+cmd()}
 {\footnotesize\ttfamily void send\+\_\+cmd (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{char $\ast$}]{cmd }\end{DoxyParamCaption})}
 
+
+
+Send message to the server through a socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+{\em cmd} & \\
+\hline
+\end{DoxyParams}

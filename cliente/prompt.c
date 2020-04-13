@@ -1,96 +1,74 @@
 #include "prompt.h"
 
-// int main(int argc, char **argv)
-// {
-//     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-//     // Run command loop.
-//     do
-//     {
-//         cmd_prompt(str);
-//         printf("Comando: -%s-\n", str);
-//     } while(is_exit(str));
-    
-//     return EXIT_SUCCESS;
-// }
-
 /**
- * @brief read line from stdin
- * 
- * @return char * with the line
+ * @brief   read line from stdin
+ * @return  char * with the line
  */
-char *read_line(void)
-{
-  unsigned long bufsize = LSH_RL_BUFSIZE;
-  unsigned long position = 0;
-  char * buffer = (char*) malloc(sizeof(char)*bufsize);
-//   char * buffer = (char*) malloc((BUFFSIZE)*sizeof(char));
-  int c;
+char *read_line(void){
+    unsigned long bufsize = LSH_RL_BUFSIZE;
+    unsigned long position = 0;
+    char * buffer = (char*) malloc(sizeof(char)*bufsize);
+    int c;
 
-  if (!buffer) {
-    fprintf(stderr, "lsh: allocation error\n");
-    exit(EXIT_FAILURE);
-  }
-
-  while (1) {
-    /* Read a character */
-    c = getchar();
-
-    /* If we hit EOF, replace it with a null character and return. */
-    if (c == EOF || c == '\n') 
-    {
-        buffer[position] = '\0';
-        return buffer;
-    } 
-    else 
-    {
-        buffer[position] = (char)c;
-    }
-    position++;
-
-    /* If we have exceeded the buffer, reallocate. */
-    if (position >= bufsize) {
-      bufsize += LSH_RL_BUFSIZE;
-      buffer = realloc(buffer, bufsize);
-      if (!buffer) {
-        fprintf(stderr, "lsh: allocation error\n");
+    if (!buffer){
+        perror("lsh: allocation error\n");
         exit(EXIT_FAILURE);
-      }
     }
-  }
+
+    while(1){
+        /*  Read a character */
+        c = getchar();
+
+        /*  If we hit EOF, replace it with a null character and return. */
+        if (c == EOF || c == '\n'){
+            buffer[position] = '\0';
+            return buffer;
+        } 
+        else{
+            buffer[position] = (char)c;
+        }
+        position++;
+
+        /*  If we have exceeded the buffer, reallocate. */
+        if (position >= bufsize){
+            bufsize += LSH_RL_BUFSIZE;
+            buffer = realloc(buffer, bufsize);
+            if (!buffer){
+                fprintf(stderr, "lsh: allocation error\n");
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
 }
 
 /**
- * @brief 
- * 
- * @param line 
- * @return char** 
+ * @brief   
+ * @param   line 
+ * @return  char** 
  */
-char ** split_line(char *line)
-{
+char ** split_line(char *line){
     unsigned long bufsize = LSH_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char*));
     char *token;
 
-    if (!tokens) 
-    {
+    if (!tokens){
         fprintf(stderr, "lsh: allocation error\n");
         exit(EXIT_FAILURE);
     }
 
     token = strtok(line, LSH_TOK_DELIM);
-    while (token != NULL) {
+    while (token != NULL){
         tokens[position] = token;
         position++;
 
-        if (position >= bufsize) {
+        if(position >= bufsize){
             bufsize += LSH_TOK_BUFSIZE;
             tokens = realloc(tokens, bufsize * sizeof(char*));
-            if (!tokens) {
+            if (!tokens){
                 fprintf(stderr, "lsh: allocation error\n");
                 exit(EXIT_FAILURE);
             }
         }
-
         token = strtok(NULL, LSH_TOK_DELIM);
     }
     tokens[position] = NULL;
@@ -98,15 +76,13 @@ char ** split_line(char *line)
 }
 
 /**
- * @brief Count the number of strings in a string array
- * 
- * @param n array of strings
- * @return number of strings
+ * @brief   Count the number of strings in a string array
+ * @param   n array of strings
+ * @return  number of strings
  */
 int argc(char ** n){
     int counter = 0;
-    while (*n != NULL) {
-        // printf("%s\n",  *n++);
+    while (*n != NULL){
         (void) *n++;
         counter++;
     }
@@ -114,27 +90,25 @@ int argc(char ** n){
 }
 
 /**
- * @brief Select type of command
+ * @brief   Select type of command
  * 
- * In case the first argument is any of the valid commands, 
- * the function will return an int greater than or equal to zero. 
- * If not it will return a negative int.
- * @param args  Array of tokenized strings coming from user prompt
- * @param n_args Number of elements of array args
- * @return int 
+ *          In case the first argument is any of the valid commands, 
+ *          the function will return an int greater than or equal to zero. 
+ *          If not it will return a negative int.
+ * @param   args  Array of tokenized strings coming from user prompt
+ * @param   n_args Number of elements of array args
+ * @return  int 
  */
 int get_cmd(char ** args, int n_args){
     int status=-1;
     /*  If there is only one argument and exit was entered,
         status is set to 0  */
-    if(n_args==1&&!strcmp(args[0],"exit"))
-    {
+    if(n_args==1&&!strcmp(args[0],"exit")){
         status=0;
     }
     /*  If there is more than one argument, 
         status is set depending on the option selected  */
-    else if(n_args>1)
-    {
+    else if(n_args>1){
         if(!strcmp(args[0],"user")) status = 1;
         if(!strcmp(args[0],"file")) status = 2;
     }
@@ -144,16 +118,15 @@ int get_cmd(char ** args, int n_args){
 }
 
 /**
- * @brief Prompt for the user
+ * @brief   Prompt for the user
  * 
- * All possibilities are contemplated to achieve robust
- * behavior of the function. This may make it look a
- * bit complex but it is properly documented for understanding the code.
- * @param str_to_server String to be sent to the server
- * @return pointer to string @str_server
+ *          All possibilities are contemplated to achieve robust
+ *          behavior of the function. This may make it look a
+ *          bit complex but it is properly documented for understanding the code.
+ * @param   str_to_server String to be sent to the server
+ * @return  pointer to string @str_server
  */
-char * cmd_prompt(char * str_to_server)
-{
+char * cmd_prompt(char * str_to_server){
     char *line;
     char **args;
     int cmd, n_args, valid_cmd = 0;
@@ -162,18 +135,20 @@ char * cmd_prompt(char * str_to_server)
      * @brief Start of the prompt, it is kept in a do-while
      * loop until the user enters a valid command.
      */
-    do {
+    do{
         printf("> ");
         /* Read a line of the prompt */
         line = read_line();
+
         /* Tokenize by spaces */
         args = split_line(line);
+
         /* Get number of arguments */
         n_args = argc(args);
+
         /* Check if 1st argument is valid */
         cmd = get_cmd(args, n_args);
-        switch (cmd)
-        {
+        switch (cmd){
             /* Wrong command */
             case -1:
                 printf("%s\n", "Wrong command. Retry again.");
@@ -194,8 +169,7 @@ char * cmd_prompt(char * str_to_server)
                         printf("Correct command.\n");
                         valid_cmd = 1;
                     }
-                    else
-                    {
+                    else{
                         printf("Incorrect number of arguments. Retry again. \n");
                     }
                 }
@@ -249,15 +223,15 @@ char * cmd_prompt(char * str_to_server)
         free(line);
         free(args);
     }while(!valid_cmd);
+
     /* User entered a valid command */
     return str_to_server;
 }
 
 /**
- * @brief In case of the user has selected the exit command, then exit the prompt
- * 
- * @param str str_to_server
- * @return int 
+ * @brief   In case of the user has selected the exit command, then exit the prompt
+ * @param   str str_to_server
+ * @return  int 
  */
 int is_exit(char * str){
     int value = (!strcmp(str,"0")) ? 0 : 1;

@@ -9,9 +9,10 @@
 #include <errno.h>
 #include <arpa/inet.h>
 
-#define MAX     1024
-#define PORT    10035
-#define SA struct sockaddr 
+#define MAX         1024
+#define PORT        10035
+#define SA struct   sockaddr 
 
-int srv_socket();
-int cli_socket();
+int     srv_socket  (void);
+int     cli_socket  (void);
+int     wait_cli    (int);

@@ -1,9 +1,36 @@
-#include "socket.h"
-#include "prompt.h"
-#include "common.h"
-#include <termios.h>
-#include <errno.h>
-#include <unistd.h>
+#include "client.h"
+
+int main(){ 
+    /*  Declaration of variables    */
+    int sockfd, contador = 0;
+    char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    
+    /*  Create and connect client socket    */
+    sockfd = cli_socket();
+    
+    /*  Handler for login   */
+    if(LOGIN)   login_handler(sockfd);
+
+    /*  Command handler */
+    do{
+        /*  Prompt for the user, 
+            the function returns only valid commands */
+        cmd_prompt(str);
+        if(DEBUG)   printf("Comando: -%s-\n", str);
+
+        /*  Send the command to the server */
+        send_cmd(sockfd, str);
+
+        /*  Counter of messages */
+        contador ++;
+        if(DEBUG)   printf("Contador de mensajes: %d\n", contador);
+    } while(1);
+
+    /*  close the socket    */
+    close(sockfd); 
+    return 0;
+} 
+
 
 /**
  * @brief   Prompt for userpass ingress
@@ -15,8 +42,9 @@ char * login(char * userpass){
     char    user[BUFFSIZE];
     char    pass[BUFFSIZE];
 
+    /*  Get user */
     printf("Ingress user: ");
-    if( fgets (user, sizeof(user), stdin)!=NULL ) {
+    if( fgets (user, sizeof(user), stdin)!=NULL ){
         user[strlen(user) - 1] = 0;
     }
 
@@ -29,18 +57,17 @@ char * login(char * userpass){
     // nflags.c_lflag |= ECHONL;
     nflags.c_lflag = 35443;
 
-    printf("nflags %d\n",nflags.c_lflag);
+    if(DEBUG)   printf("nflags %d\n",nflags.c_lflag);
 
     /*  Set new terminal */
-    if (tcsetattr(fileno(stdin), TCSADRAIN, &nflags) != 0) // Set new terminal
-    {
+    if (tcsetattr(fileno(stdin), TCSADRAIN, &nflags) != 0){
         perror("tcsetattr");
         exit(EXIT_FAILURE);
     }
 
-    /*  Prompt for userpass */
+    /*  Get userpass */
     printf("Ingress pass: ");
-    if( fgets (pass, sizeof(pass), stdin)!=NULL ) {
+    if( fgets (pass, sizeof(pass), stdin)!=NULL ){
         pass[strlen(pass) - 1] = 0;
     }
     sprintf(userpass, "%s,%s", user, pass);
@@ -50,17 +77,16 @@ char * login(char * userpass){
     // login == 1 ? printf("Contraseña correcta") : printf("Contraseña incorrecta");
 
     /*  Active old terminal */
-    if (tcsetattr(fileno(stdin), TCSANOW, &oflags) != 0)
-    { 
+    if (tcsetattr(fileno(stdin), TCSANOW, &oflags) != 0){ 
         perror("tcsetattr");
         exit(EXIT_FAILURE);
     }
-    // printf("Userpass: %s", userpass);
+
     return userpass;
 }
 
 /**
- * @brief   Check if status if 0
+ * @brief   Check status
  * @param   status 
  * @return  status
  */
@@ -76,29 +102,37 @@ int check_status(int status){
  */
 void login_handler(int sockfd){
     int status;
-    /*  Buffer for sockets */
+    /*  Buffer for sockets  */
     char buff[MAX];
     char * userpass = (char*) malloc((BUFFSIZE*2+1)*sizeof(char));
 
     do
     {
-        /*  Get userpass from prompt */
+        /*  Get userpass from prompt    */
         login(userpass);
         sprintf(buff, "%s", userpass);
 
-        /*  Send socket message from client to server */
-        printf("[SRV]<-[CLI]: %s\n", buff);
-        send(sockfd, buff, sizeof(buff),0);
-        memset(buff, 0, MAX);
+        /*  Send socket message from client to server   */
+        if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", buff);
+        if(send(sockfd, buff, sizeof(buff),0)<0){
+            perror("Error in sending message to the server [login].");
+            exit(EXIT_FAILURE);
+        };
 
-        /*  Receive socket message from server */
-        recv(sockfd, buff, sizeof(buff),0);
-        printf("[SRV]->[CLI]: %s\n", buff);
+        /*  Receive socket message from server  */
+        memset(buff, 0, MAX);
+        if(recv(sockfd, buff, sizeof(buff),0)<0){
+            perror("Error in receiving message from server [login].");
+            exit(EXIT_FAILURE);
+        };
+        if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+
+        /*  Convert socket message to int for decoding  */
         status = atoi(buff);
-        // printf("status: %d\n", status);
+        if(DEBUG)   printf("status: %d\n", status);
         
         /*  According to the status obtained from the server,
-            it is decided what to print and what actions to take */
+            it is decided what to print and what actions to take    */
         switch(status)
         {
         case 1:
@@ -115,45 +149,34 @@ void login_handler(int sockfd){
             break;
         }
     }while(check_status(status));
-    printf("%s\n", "Salimos de login");
+
+    if(DEBUG)   printf("%s\n", "Salimos de login");
 }
 
+/**
+ * @brief   Send message to the server through a socket
+ * @param   sockfd 
+ * @param   cmd 
+ */
 void send_cmd(int sockfd, char * cmd){
+    /*  Variables declaration   */
     char buff[MAX];
+
+    /*  Copy cmd to buff    */
     sprintf(buff, "%s", cmd);
 
     /*  Send socket message from client to server */
-    printf("[SRV]<-[CLI]: %s\n", buff);
-    send(sockfd, buff, sizeof(buff),0);
+    if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", buff);
+    if(send(sockfd, buff, sizeof(buff),0)<0){
+        perror("Error in sending message to the server [cmd].");
+        exit(EXIT_FAILURE);
+    };
 
     /*  Receive socket message from server */
     memset(buff, 0, MAX);
-    recv(sockfd, buff, sizeof(buff),0);
-    printf("[SRV]->[CLI]: %s\n", buff);
+    if(recv(sockfd, buff, sizeof(buff),0)<0){
+        perror("Error in receiving message from server [cmd].");
+        exit(EXIT_FAILURE);
+    };
+    if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
 }
-
-int main() 
-{ 
-    int sockfd;    // Create and connect client socket
-    sockfd = cli_socket();
-    // function for chat 
-    // func(sockfd);
-    if(LOGIN){
-        login_handler(sockfd);
-    }
-    char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    // // Run command loop.
-    int contador = 0;
-    do
-    {
-        cmd_prompt(str);
-        printf("Comando: -%s-\n", str);
-        send_cmd(sockfd, str);
-        contador ++;
-        printf("Contador de mensajes: %d\n", contador);
-    } while(1);
-
-    // send_cmd(sockfd);
-    // close the socket 
-    close(sockfd); 
-} 

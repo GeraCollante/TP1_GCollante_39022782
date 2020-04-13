@@ -73,16 +73,12 @@ void snd_msg(int msqid, char * msg, long mtype){
     /*  Send message    */
     if (msgsnd(msqid, buf, len+1, 0) == -1) /* +1 for '\0' */
         perror("msgsnd");
-    // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
-    //     perror("msgctl");
-    //     exit(1);
-    // }
 }
 
 void mq_info(int msqid){
     struct msqid_ds buf;
     msgctl(msqid, IPC_STAT, &buf);
-    uint msg = (uint)(buf.msg_qnum);
+    unsigned int msg = (unsigned int)(buf.msg_qnum);
     printf("Mensajes en la cola: %u\n", msg);
     printf("pid last msgsnd = %ld\n", (long) buf.msg_lspid);
     printf("pid last msgrcv = %ld\n", (long) buf.msg_lrpid);

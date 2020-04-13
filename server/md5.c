@@ -17,7 +17,7 @@ char* file_md5(char * filename, char * md5){
     unsigned char data[BUFFSIZE*4];
     char temp[20];
 
-    if (fp == NULL) {
+    if (fp == NULL){
         perror("File can't be opened.\n");
         exit(EXIT_FAILURE);
     }
