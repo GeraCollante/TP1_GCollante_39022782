@@ -5,7 +5,8 @@
 #include <termios.h>
 #include <unistd.h>
 
-char *  login           (char *);
+void    burn_usb        (char *, char *);
 int     check_status    (int);
+char *  login           (char *);
 void    login_handler   (int);
 void    send_cmd        (int, char *);

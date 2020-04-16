@@ -54,7 +54,7 @@ server:
 .PHONY: client
 client:
 	clear
-	./$(BINARY_DIR)/$(CLIENT)
+	sudo ./$(BINARY_DIR)/$(CLIENT)
 
 doxygen:
 	$(DOXYGEN) $(DOXY)/$(DOXYFILE)
@@ -62,7 +62,7 @@ doxygen:
 
 $(BINARY_DIR)/$(CLIENT): $(OBJSCLIENT)
 	@echo "Client objects created..."
-	$(LINK.c) $^ -o $@
+	$(LINK.c) $^ server/md5.c $(LDLIBS) -o $@
 	@echo "Client binary created..."
 
 $(BINARY_DIR)/$(AUTH): $(OBJSAUTH)

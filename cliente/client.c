@@ -1,4 +1,5 @@
 #include "client.h"
+#include "md5.h"
 
 int main(){ 
     /*  Declaration of variables    */
@@ -160,6 +161,12 @@ void login_handler(int sockfd){
 void send_cmd(int sockfd, char * cmd){
     /*  Variables declaration   */
     char buff[MAX];
+    char * usb = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * md5 = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+
+    sprintf(usb, "%s", "/dev/sdf");
+    sprintf(img, "%s", "img2burn");
     // char * buff = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
     /*  Copy cmd to buff    */
@@ -179,11 +186,49 @@ void send_cmd(int sockfd, char * cmd){
         exit(EXIT_FAILURE);
     };
 
+    if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+
     if(atoi(buff)==1){
         int socket = cli_socket(PORT_FLS);
         transfer_file(socket);
-        printf("Terminamos de enviar archivo");
+        printf("The file was successfully received.\n");
+        printf("Burning image on USB. Please wait and do not disconnect the device.\n");
+        burn_usb(img, usb);
+        if(remove(img)<0){
+            perror("Can't delete img.\n");
+            exit(EXIT_FAILURE);
+        };
+        printf("The image was successfully burned on the USB device!\n");
+        sprintf(usb, "%s1", usb);
+        printf("The image is in partition %s\n", usb);
+        file_md5(usb, md5);
+        printf("md5: %s \n", md5);
     }
 
-    if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+}
+
+void burn_usb(char * img, char * usb){
+
+    int imgfd = open(img, O_RDONLY);
+    if(imgfd<0){
+        perror("Error getting image file descriptor");
+        exit(EXIT_FAILURE);
+    }
+
+    int usbfd = open(usb, O_WRONLY);
+    if(usbfd<0){
+        perror("Error getting usb file descriptor");
+        exit(EXIT_FAILURE);
+    }
+
+    struct stat file_stat;
+    fstat(imgfd, &file_stat);
+
+    if(sendfile(usbfd, imgfd, 0, (unsigned long) file_stat.st_size)<0){
+        perror("Error sending file.\n");
+        exit(EXIT_FAILURE);
+    };
+
+    close(imgfd);
+    close(usbfd);
 }
