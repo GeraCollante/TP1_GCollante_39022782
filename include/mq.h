@@ -1,10 +1,10 @@
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
-#include <sys/types.h>
+#include <string.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
-#include <string.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define  PERMS       0644

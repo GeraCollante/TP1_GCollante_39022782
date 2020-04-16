@@ -1,26 +1,32 @@
 \section{cliente/socket\+\_\+client.c File Reference}
 \label{socket__client_8c}\index{cliente/socket\+\_\+client.\+c@{cliente/socket\+\_\+client.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-Include dependency graph for socket\+\_\+client.\+c\+:\nopagebreak
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+Include dependency graph for socket\+\_\+client.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{socket__client_8c__incl}
+\includegraphics[width=214pt]{socket__client_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \textbf{ cli\+\_\+socket} ()
-\begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \textbf{ cli\+\_\+socket} (int port)
+\begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\item 
+void \textbf{ recv\+\_\+file} (int newsockfd, int fd)
+\begin{DoxyCompactList}\small\item\em The file is received from the fileserver through a socket. \end{DoxyCompactList}\item 
+void \textbf{ transfer\+\_\+file} (int newsockfd)
+\begin{DoxyCompactList}\small\item\em File is created and proceeds to receive while the transfer time is calculated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\mbox{\label{socket__client_8c_a9c129efbce40f3061d7899d2adf36a55}} 
+\mbox{\label{socket__client_8c_ad00c6fbc3ed7bc44f4e78ad434174830}} 
 \index{socket\+\_\+client.\+c@{socket\+\_\+client.\+c}!cli\+\_\+socket@{cli\+\_\+socket}}
 \index{cli\+\_\+socket@{cli\+\_\+socket}!socket\+\_\+client.\+c@{socket\+\_\+client.\+c}}
 \subsubsection{cli\+\_\+socket()}
-{\footnotesize\ttfamily int cli\+\_\+socket (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int cli\+\_\+socket (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
 
 
 
@@ -29,3 +35,35 @@ Creation, assign IP and port of client socket. Connect to server is included.
 \begin{DoxyReturn}{Returns}
 sockfd 
 \end{DoxyReturn}
+\mbox{\label{socket__client_8c_adb6899099476fe2ee0d39ca1ac603c09}} 
+\index{socket\+\_\+client.\+c@{socket\+\_\+client.\+c}!recv\+\_\+file@{recv\+\_\+file}}
+\index{recv\+\_\+file@{recv\+\_\+file}!socket\+\_\+client.\+c@{socket\+\_\+client.\+c}}
+\subsubsection{recv\+\_\+file()}
+{\footnotesize\ttfamily void recv\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd,  }\item[{int}]{fd }\end{DoxyParamCaption})}
+
+
+
+The file is received from the fileserver through a socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newsockfd} & \\
+\hline
+{\em fd} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{socket__client_8c_a82f7baba357b9320dc3a1f61718f8b48}} 
+\index{socket\+\_\+client.\+c@{socket\+\_\+client.\+c}!transfer\+\_\+file@{transfer\+\_\+file}}
+\index{transfer\+\_\+file@{transfer\+\_\+file}!socket\+\_\+client.\+c@{socket\+\_\+client.\+c}}
+\subsubsection{transfer\+\_\+file()}
+{\footnotesize\ttfamily void transfer\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd }\end{DoxyParamCaption})}
+
+
+
+File is created and proceeds to receive while the transfer time is calculated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newsockfd} & \\
+\hline
+\end{DoxyParams}

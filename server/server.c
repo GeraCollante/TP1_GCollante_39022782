@@ -32,7 +32,7 @@ int main()
             if(DEBUG)   printf("[SRV] Created message queue...\n");
 
             /*  Bind and listing server socket  */
-            sockfd = srv_socket();
+            sockfd = srv_socket(PORT_SRV);
             /*  Waiting for client  */
             connfd = wait_cli(sockfd);
             /*  Close initial fd    */
@@ -97,29 +97,6 @@ void login_handler(int sockfd, int msqid)
 
     if(DEBUG)   printf("[SRV] Successful login...\n");
 }  
-
-/**
- * @brief   Waiting for the client to connect
- * @param   sockfd 
- * @return  int sockfd
- */
-int wait_cli(int sockfd){
-    /*  Variables */
-    struct sockaddr_in cli;
-    unsigned int len;
-    int connfd;
-    len = sizeof(cli);
-
-    /*  Accept the data packet from client and verification */
-    connfd = accept(sockfd, (SA*)&cli, &len); 
-    if (connfd < 0) { 
-        perror("[SRV] Server accept failed...\n"); 
-        exit(EXIT_FAILURE); 
-    } 
-    else
-        printf("[SRV] Server accept the client...\n"); 
-    return connfd;
-}
 
 /**
  * @brief   Get the 1st char of str   
@@ -192,6 +169,8 @@ long cmd_handler(char * cmd, char * msg){
     default:
         break;
     }
+
+    printf("msg: %s\n", msg);
     
     return m_type;
 }
@@ -211,17 +190,22 @@ void rcv_cmd(int sockfd, int msqid)
         /*  [SRV] <- [CLI]  */ 
         memset(buff,0, MAX);
         recv(sockfd, buff, sizeof(buff),0);
-        printf("[SRV]<-[CLI]: %s\n", buff);
+        printf("[SRV]<-[CLI]hola: %s\n", buff);
         fflush(stdout);
 
         /*  Pass cmd to the handler  */
+        printf("pre_handler buff: %s, str: %s", buff, str);
+        fflush(stdout);
         m_type = cmd_handler(buff, str);
+        printf("post_handler buff: %s, str: %s", buff, str);
+        fflush(stdout);
 
         /*  This is exit command    */
         if(m_type==0)  m_type = auth_type;
         if(DEBUG)   printf("m_type: %ld\n", m_type);
 
         /*  [AUT] <- [SRV]  */
+        printf("[AUT]<-[SRV]: %s\n", str);
         snd_msg(msqid, str, m_type);
         
         /*  [AUT] -> [SRV]  */

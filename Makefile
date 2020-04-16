@@ -13,8 +13,9 @@ FILES			:=fileserv
 AUTH			:=auth
 
 # 	COMPILE OPTIONS 
+#  -Werror
 CC				:= gcc
-CFLAGS			:= -I$(INCLUDE) -std=gnu11 -Wall -Werror -pedantic -Wextra -Wconversion -O1
+CFLAGS			:= -I$(INCLUDE) -std=gnu11 -Wall -pedantic -Wextra -Wconversion -O1
 LDLIBS			:= -lssl -lcrypto
 DOXYGEN 		:= doxygen
 DOXYFILE 		:= doxyfile
@@ -24,7 +25,7 @@ BROWSER			:= google-chrome
 SRCSCLIENT		:= client.c prompt.c socket_client.c
 SRCSSERVER 		:= server.c socket_server.c mq.c
 SRCSAUTH		:= auth.c mq.c
-SRCSFILES		:= $(addprefix $(SERVER_SOURCE)/, fileserv.c mq.c md5.c)
+SRCSFILES		:= $(addprefix $(SERVER_SOURCE)/, fileserv.c mq.c md5.c socket_server.c)
 
 #	OBJECTS
 OBJSCLIENT		:= $(addprefix $(CLIENT_SOURCE)/, $(SRCSCLIENT:.c=.o))
@@ -47,10 +48,12 @@ create:	$(BINARY_DIR)/$(CLIENT) $(BINARY_DIR)/$(AUTH) $(BINARY_DIR)/$(SERVER) $(
 
 .PHONY: server
 server:
+	clear
 	./$(BINARY_DIR)/$(SERVER)
 
 .PHONY: client
 client:
+	clear
 	./$(BINARY_DIR)/$(CLIENT)
 
 doxygen:

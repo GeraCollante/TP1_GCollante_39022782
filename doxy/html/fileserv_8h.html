@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TP2: include/fileserv.h File Reference</title>
+<title>TP1_GCollante_39022782: include/fileserv.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TP2
+   <div id="projectname">TP1_GCollante_39022782
    </div>
   </td>
  </tr>
@@ -71,6 +71,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="md5_8h_source.html">md5.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mq_8h_source.html">mq.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="include_2socket_8h_source.html">socket.h</a>&quot;</code><br />
 <code>#include &lt;dirent.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -84,9 +85,10 @@ Include dependency graph for fileserv.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileserv_8h__incl.png" border="0" usemap="#include_2fileserv_8h" alt=""/></div>
 <map name="include_2fileserv_8h" id="include_2fileserv_8h">
-<area shape="rect" id="node2" href="md5_8h.html" title="md5.h" alt="" coords="249,80,308,107"/>
-<area shape="rect" id="node8" href="mq_8h.html" title="mq.h" alt="" coords="433,80,484,107"/>
-<area shape="rect" id="node13" href="common_8h.html" title="common.h" alt="" coords="508,80,591,107"/>
+<area shape="rect" id="node2" href="md5_8h.html" title="md5.h" alt="" coords="225,80,284,107"/>
+<area shape="rect" id="node8" href="mq_8h.html" title="mq.h" alt="" coords="468,80,519,107"/>
+<area shape="rect" id="node13" href="common_8h.html" title="common.h" alt="" coords="891,80,973,107"/>
+<area shape="rect" id="node14" href="include_2socket_8h.html" title="socket.h" alt="" coords="744,80,816,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -103,7 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a17e3a23bd1ae378882eab0ef0f856de1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#a17e3a23bd1ae378882eab0ef0f856de1">cmd_handler</a> (int)</td></tr>
-<tr class="memdesc:a17e3a23bd1ae378882eab0ef0f856de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Login handler between auth and srv.  <a href="#a17e3a23bd1ae378882eab0ef0f856de1">More...</a><br /></td></tr>
+<tr class="memdesc:a17e3a23bd1ae378882eab0ef0f856de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command handler.  <a href="#a17e3a23bd1ae378882eab0ef0f856de1">More...</a><br /></td></tr>
 <tr class="separator:a17e3a23bd1ae378882eab0ef0f856de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49cfaf7b6d546c559fb0901bd5ba3e65"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#a49cfaf7b6d546c559fb0901bd5ba3e65">files_info</a> (char *)</td></tr>
 <tr class="memdesc:a49cfaf7b6d546c559fb0901bd5ba3e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of the required information for each file in a specific folder.  <a href="#a49cfaf7b6d546c559fb0901bd5ba3e65">More...</a><br /></td></tr>
@@ -129,7 +131,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Login handler between auth and srv. </p>
+<p>Command handler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msqid</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int exit</dd></dl>
+<p>Command handler.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">msqid</td><td></td></tr>

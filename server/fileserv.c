@@ -31,12 +31,11 @@ int main(void){
     return 0;
 }
 
-
 /**
- * @brief   Parser that returns in human-readable format the size of a file
+ * @brief   Parser that returns in human-readable format the size of a file.
  * @param   size  in bytes from file
  * @param   buf   string
- * @return  Formatted string what contains human-readable size of file
+ * @return  Formatted string what contains human-readable size of file.
  */
 char* readable_fs(long int size/*in bytes*/, char *buf) {
     int i = 0;
@@ -113,10 +112,116 @@ char * files_info(char * filesInfo){
     return filesInfo;
 }
 
+
+/**
+ * @brief   Iterates through all the items in the folder until find the required file.
+ * @param   str filename
+ * @return  int 
+ */
+int is_valid_file(char * str){
+    /*  Pointers */
+    int exist = 0;
+    DIR *d;
+    struct dirent *dir;
+
+    /*  Allocate memory for structs */
+    dir = malloc(sizeof(struct dirent));
+
+    /*  Allocate memory for strings */
+    char * folder   = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+
+    /*  Folder where the images are stored*/
+    char path[]  = "img";
+    sprintf(folder, "%s", path);
+    
+    /*  Open folder */
+    d = opendir(folder);
+
+    if(d)
+    {
+        /*  Iterate each element in folder */
+        while ((dir = readdir(d)) != NULL) 
+        {
+            /*  File name */
+            sprintf(filename, "%s/%s", folder, dir->d_name);
+            printf("%s\n", dir->d_name);
+            printf("%s\n", str);
+            if(!strcmp(dir->d_name, str)){
+                if(DEBUG)   printf("Existe el archivo. \n");
+                exist = 1;
+                break;
+            }
+        }
+        closedir(d);
+    }
+    /* Free memory allocated */
+    // free(buf);
+    // free(dir);
+    // free(folder);
+    // free(filename);
+    // free(fsize);
+    // free(aux);
+    return exist;
+}
+
+/**
+ * @brief   Checks the existence of the image in the folder img.
+ * @param   str     string to client
+ * @param   file    filename
+ * @return  int     tf
+ */
+int check_file(char * str, char * file){
+    /*  Variables declaration   */
+    int ft = 0;
+    /*  Get filename    */
+    strtok(str, ",");
+    sprintf(file, "%s", strtok(NULL, ","));
+
+    /*  Check if we have the requested image in img folder  */
+    if(is_valid_file(file)==1){
+        if(DEBUG)   printf("We will transfer the file. \n");
+        ft=1;
+    }
+    else{
+        if(DEBUG)   printf("The file does not exists. \n");
+    };
+
+    /*  Copy the result of the verification in the chain that we will 
+        send to the client so that they know if the transfer will be made   */
+    sprintf(str, "%d", ft);
+    return ft;
+}
+
+/**
+ * @brief   Sockets are created and the file is sent to the client.
+ * @param   file 
+ */
+void transfer_fs(char * file){
+    if(DEBUG) printf("Begin transfer file... \n");
+    if(DEBUG) printf("File: %s\n", file);
+
+    /*  Create sockets and listening    */
+    int socket = srv_socket(PORT_FLS);
+
+    /*  Client will connect for transfer    */
+    int connfd = wait_cli(socket);
+    send_file(connfd, file);
+
+    /*  File transferred successfully   */
+    close(connfd);
+    if(DEBUG) printf("End transfer file...\n");
+}
+
+/**
+ * @brief   Command handler.
+ * @param   msqid 
+ * @return  int exit
+ */
 int cmd_handler(int msqid){
-    int status;
-    // int end = 0;
+    int status, tf=0;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * file  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     
     /*  Receive userpass from [SVR] */
     rcv_msg(msqid, str, files_type);
@@ -125,10 +230,7 @@ int cmd_handler(int msqid){
 
     /*  Get status of userpass and convert to int */
     status = atoi(str);
-    // printf("predecoder\n");
-    // cmd_decoder(status, str);
-    // printf("postdecoder\n");
-    
+
     /*  Decode cmd  */
     switch (status)
     {
@@ -139,6 +241,7 @@ int cmd_handler(int msqid){
         break;
     case 2:
         printf("[FLS] file down\n");
+        tf = check_file(str, file);
         // sprintf(str, "File down.");
         break;
     }
@@ -146,10 +249,22 @@ int cmd_handler(int msqid){
     /*  Send msg to server  */ 
     snd_msg(msqid, str, files_type);
 
+    /*  If the required file exists we proceed 
+        to create a socket to send it */
+    if(tf)  transfer_fs(file);
+
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
     //     fprintf(stderr, "[FLS] Message queue could not be deleted.\n");
     //     exit(EXIT_FAILURE);
     // }
+    // if(tf)
+    // {
+    // }
 
     return status;
 }
+
+//TODO  Hacer free de casi todo
+//TODO  MBR
+//TODO  Reiniciar todo
+//TODO  Latex

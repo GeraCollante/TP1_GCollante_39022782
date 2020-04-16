@@ -1,7 +1,8 @@
-\section{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/socket.c File Reference}
-\label{socket_8c}\index{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/socket.\+c@{/home/gerac/\+Facultad/\+S\+O2/2020\+T\+P1/ejemplos/socket.\+c}}
+\section{thrash/socket.c File Reference}
+\label{socket_8c}\index{thrash/socket.\+c@{thrash/socket.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-Include dependency graph for socket.\+c\+:\nopagebreak
+Include dependency graph for socket.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,8 +14,14 @@ Include dependency graph for socket.\+c\+:\nopagebreak
 \item 
 int \textbf{ srv\+\_\+socket} ()
 \begin{DoxyCompactList}\small\item\em Create, assign port, bind and listen of socket server. \end{DoxyCompactList}\item 
+int \textbf{ wait\+\_\+cli} (int sockfd)
+\begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
 int \textbf{ cli\+\_\+socket} ()
-\begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\item 
+void \textbf{ send\+\_\+file} (int connfd, char $\ast$filename)
+\item 
+void \textbf{ recv\+\_\+file} (int newsockfd)
+\begin{DoxyCompactList}\small\item\em Función para recibir archivos vía T\+CP. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -22,7 +29,7 @@ int \textbf{ cli\+\_\+socket} ()
 \index{socket.\+c@{socket.\+c}!cli\+\_\+socket@{cli\+\_\+socket}}
 \index{cli\+\_\+socket@{cli\+\_\+socket}!socket.\+c@{socket.\+c}}
 \subsubsection{cli\+\_\+socket()}
-{\footnotesize\ttfamily int cli\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int cli\+\_\+socket (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -31,16 +38,57 @@ Creation, assign IP and port of client socket. Connect to server is included.
 \begin{DoxyReturn}{Returns}
 sockfd 
 \end{DoxyReturn}
+\mbox{\label{socket_8c_afe49ab8d5d6dbc407156f33dce0152cf}} 
+\index{socket.\+c@{socket.\+c}!recv\+\_\+file@{recv\+\_\+file}}
+\index{recv\+\_\+file@{recv\+\_\+file}!socket.\+c@{socket.\+c}}
+\subsubsection{recv\+\_\+file()}
+{\footnotesize\ttfamily void recv\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd }\end{DoxyParamCaption})}
+
+
+
+Función para recibir archivos vía T\+CP. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newsockfd} & \\
+\hline
+{\em nombre\+Archivo} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{socket_8c_a91bd21665371000f5251a149716f82fb}} 
+\index{socket.\+c@{socket.\+c}!send\+\_\+file@{send\+\_\+file}}
+\index{send\+\_\+file@{send\+\_\+file}!socket.\+c@{socket.\+c}}
+\subsubsection{send\+\_\+file()}
+{\footnotesize\ttfamily void send\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{connfd,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
 \mbox{\label{socket_8c_abaa85d7aff16c338adf9a408c151bc28}} 
 \index{socket.\+c@{socket.\+c}!srv\+\_\+socket@{srv\+\_\+socket}}
 \index{srv\+\_\+socket@{srv\+\_\+socket}!socket.\+c@{socket.\+c}}
 \subsubsection{srv\+\_\+socket()}
-{\footnotesize\ttfamily int srv\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int srv\+\_\+socket (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
 
 Create, assign port, bind and listen of socket server. 
 
+\begin{DoxyReturn}{Returns}
+int sockfd 
+\end{DoxyReturn}
+\mbox{\label{socket_8c_ad26b08974642b47dc5bf48289824f655}} 
+\index{socket.\+c@{socket.\+c}!wait\+\_\+cli@{wait\+\_\+cli}}
+\index{wait\+\_\+cli@{wait\+\_\+cli}!socket.\+c@{socket.\+c}}
+\subsubsection{wait\+\_\+cli()}
+{\footnotesize\ttfamily int wait\+\_\+cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+
+
+Waiting for the client to connect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int sockfd 
 \end{DoxyReturn}

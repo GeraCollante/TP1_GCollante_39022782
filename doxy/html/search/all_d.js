@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['user',['user',['../structuser.html',1,'']]],
-  ['username',['username',['../structuser.html#a0a3e67b9f144f2f261876a12d350395b',1,'user']]],
-  ['users',['USERS',['../auth_8h.html#a322789c10f93ef5e09a1d5f17aabf0e3',1,'USERS():&#160;auth.h'],['../auth_8h.html#ad1b6438b2448da2b01d9887f58f5fb66',1,'users():&#160;auth.h']]]
+  ['tp1_3a_20ipc_20_2d_20sockets_20unix',['TP1: IPC - Sockets UNIX',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['test_2ec',['test.c',['../test_8c.html',1,'']]],
+  ['transfer_5ffile',['transfer_file',['../socket__client_8c.html#a82f7baba357b9320dc3a1f61718f8b48',1,'transfer_file(int newsockfd):&#160;socket_client.c'],['../include_2socket_8h.html#a6fe72396afe8e9b3a3bfe25c9229eb1b',1,'transfer_file(int):&#160;socket_client.c']]],
+  ['transfer_5ffs',['transfer_fs',['../fileserv_8c.html#a5ea0687811fad6f1c67348a52ec2bb7a',1,'fileserv.c']]]
 ];

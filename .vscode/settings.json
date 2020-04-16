@@ -5,6 +5,9 @@
         "prompt.h": "c",
         "auth.h": "c",
         "fileserv.h": "c",
-        "mq.h": "c"
+        "mq.h": "c",
+        "types.h": "c",
+        "server.h": "c",
+        "socket.h": "c"
     }
 }

@@ -11,6 +11,8 @@ bin/
 *.ko
 *.obj
 *.elf
+*.iso
+*
 
 # Linker output
 *.ilk

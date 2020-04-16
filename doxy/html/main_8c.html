@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TP2: /home/gerac/Descargas/SO2-master/TP2/src/main.c File Reference</title>
+<title>TP1_GCollante_39022782: thrash/main.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TP2
+   <div id="projectname">TP1_GCollante_39022782
    </div>
   </td>
  </tr>
@@ -58,243 +58,26 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_c379293c836f304268e92f9c3073abed.html">thrash</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;netcdf.h&gt;</code><br />
-<code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;omp.h&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for main.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8c__incl.png" border="0" usemap="#_2home_2gerac_2_descargas_2_s_o2-master_2_t_p2_2src_2main_8c" alt=""/></div>
-<map name="_2home_2gerac_2_descargas_2_s_o2-master_2_t_p2_2src_2main_8c" id="_2home_2gerac_2_descargas_2_s_o2-master_2_t_p2_2src_2main_8c">
-</map>
-</div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a59923948809cf280fff5a914cc1e3781"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a59923948809cf280fff5a914cc1e3781">ERRCODE</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a59923948809cf280fff5a914cc1e3781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588357de2986fdf4c1380190f7ae9f37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a588357de2986fdf4c1380190f7ae9f37">ERR</a>(e)&#160;&#160;&#160;{printf(&quot;Error: %s\n&quot;, nc_strerror(e)); exit(<a class="el" href="main_8c.html#a59923948809cf280fff5a914cc1e3781">ERRCODE</a>);}</td></tr>
-<tr class="separator:a588357de2986fdf4c1380190f7ae9f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab117546549783a058d0321a287699579"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ab117546549783a058d0321a287699579">FILE_NAME</a>&#160;&#160;&#160;&quot;../includes/OR_ABI-L2-CMIPF-M6C02_G16_s20191011800206_e20191011809514_c20191011809591.nc&quot;</td></tr>
-<tr class="separator:ab117546549783a058d0321a287699579"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2f8017a27496885626ba13b101b020b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac2f8017a27496885626ba13b101b020b">FILE_OUT_NC</a>&#160;&#160;&#160;&quot;../includes/convolved_out.nc&quot;</td></tr>
-<tr class="separator:ac2f8017a27496885626ba13b101b020b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fdec11bedf862a1861da6d0216c0853"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4fdec11bedf862a1861da6d0216c0853">FILE_OUT_BIN</a>&#160;&#160;&#160;&quot;../includes/convolved_out.bin&quot;</td></tr>
-<tr class="separator:a4fdec11bedf862a1861da6d0216c0853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa5c422f85ae3c5f141aafda017861b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afa5c422f85ae3c5f141aafda017861b0">FILE_OUT_TIMES</a>&#160;&#160;&#160;&quot;../data/tiempos_omp_32.txt&quot;</td></tr>
-<tr class="separator:afa5c422f85ae3c5f141aafda017861b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a9d32ff035c82119003134767948ebf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4a9d32ff035c82119003134767948ebf">NX</a>&#160;&#160;&#160;21696</td></tr>
-<tr class="separator:a4a9d32ff035c82119003134767948ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a652e87ecc9140879666ae9d6bf4ca893"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a652e87ecc9140879666ae9d6bf4ca893">NY</a>&#160;&#160;&#160;21696</td></tr>
-<tr class="separator:a652e87ecc9140879666ae9d6bf4ca893"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a250de86d225826237eaff8637ee6c3ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a250de86d225826237eaff8637ee6c3ea">N_KERNEL</a>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a250de86d225826237eaff8637ee6c3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af3ba38684e66acbd4190dbd55e6228da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af3ba38684e66acbd4190dbd55e6228da">convolve</a> (float *data_in, float kernel[][<a class="el" href="main_8c.html#a250de86d225826237eaff8637ee6c3ea">N_KERNEL</a>], float *data_out)</td></tr>
-<tr class="memdesc:af3ba38684e66acbd4190dbd55e6228da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza la convolucion de data_in * kernel y la almacena en data_out.  <a href="#af3ba38684e66acbd4190dbd55e6228da">More...</a><br /></td></tr>
-<tr class="separator:af3ba38684e66acbd4190dbd55e6228da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f8e9b2da505c680d5f11eeaff42c56c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4f8e9b2da505c680d5f11eeaff42c56c">write_to_nc</a> (float *data_out)</td></tr>
-<tr class="memdesc:a4f8e9b2da505c680d5f11eeaff42c56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exporta la imagen de salida en el archivo FILE_OUT_NB definido como macro.  <a href="#a4f8e9b2da505c680d5f11eeaff42c56c">More...</a><br /></td></tr>
-<tr class="separator:a4f8e9b2da505c680d5f11eeaff42c56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a973ca89eb4aff25e00089eb1ebf64fd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a973ca89eb4aff25e00089eb1ebf64fd6">write_to_bin</a> (float *data_out)</td></tr>
-<tr class="memdesc:a973ca89eb4aff25e00089eb1ebf64fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guarda la imagen de salida como un archivo binario de floats.  <a href="#a973ca89eb4aff25e00089eb1ebf64fd6">More...</a><br /></td></tr>
-<tr class="separator:a973ca89eb4aff25e00089eb1ebf64fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb8985a720cf17b68e99872ba793f2cc"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#acb8985a720cf17b68e99872ba793f2cc">readable_fs</a> (long int size, char *buf)</td></tr>
+<tr class="memdesc:acb8985a720cf17b68e99872ba793f2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parser that returns in human-readable format the size of a file.  <a href="#acb8985a720cf17b68e99872ba793f2cc">More...</a><br /></td></tr>
+<tr class="separator:acb8985a720cf17b68e99872ba793f2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funcion principal que aloca memoria para la imagen de entrada y la convolucionada de salida. Hace uso de la libreria netcdf para importar la imagen y luego llama a la función convolve para realizar la convolución.  <a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">More...</a><br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a588357de2986fdf4c1380190f7ae9f37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a588357de2986fdf4c1380190f7ae9f37">&#9670;&nbsp;</a></span>ERR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ERR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">e</td><td>)</td>
-          <td>&#160;&#160;&#160;{printf(&quot;Error: %s\n&quot;, nc_strerror(e)); exit(<a class="el" href="main_8c.html#a59923948809cf280fff5a914cc1e3781">ERRCODE</a>);}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a59923948809cf280fff5a914cc1e3781"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59923948809cf280fff5a914cc1e3781">&#9670;&nbsp;</a></span>ERRCODE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ERRCODE&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab117546549783a058d0321a287699579"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab117546549783a058d0321a287699579">&#9670;&nbsp;</a></span>FILE_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FILE_NAME&#160;&#160;&#160;&quot;../includes/OR_ABI-L2-CMIPF-M6C02_G16_s20191011800206_e20191011809514_c20191011809591.nc&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4fdec11bedf862a1861da6d0216c0853"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fdec11bedf862a1861da6d0216c0853">&#9670;&nbsp;</a></span>FILE_OUT_BIN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FILE_OUT_BIN&#160;&#160;&#160;&quot;../includes/convolved_out.bin&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac2f8017a27496885626ba13b101b020b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2f8017a27496885626ba13b101b020b">&#9670;&nbsp;</a></span>FILE_OUT_NC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FILE_OUT_NC&#160;&#160;&#160;&quot;../includes/convolved_out.nc&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afa5c422f85ae3c5f141aafda017861b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa5c422f85ae3c5f141aafda017861b0">&#9670;&nbsp;</a></span>FILE_OUT_TIMES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FILE_OUT_TIMES&#160;&#160;&#160;&quot;../data/tiempos_omp_32.txt&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a250de86d225826237eaff8637ee6c3ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a250de86d225826237eaff8637ee6c3ea">&#9670;&nbsp;</a></span>N_KERNEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define N_KERNEL&#160;&#160;&#160;3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4a9d32ff035c82119003134767948ebf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a9d32ff035c82119003134767948ebf">&#9670;&nbsp;</a></span>NX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NX&#160;&#160;&#160;21696</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a652e87ecc9140879666ae9d6bf4ca893"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a652e87ecc9140879666ae9d6bf4ca893">&#9670;&nbsp;</a></span>NY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NY&#160;&#160;&#160;21696</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af3ba38684e66acbd4190dbd55e6228da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3ba38684e66acbd4190dbd55e6228da">&#9670;&nbsp;</a></span>convolve()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void convolve </td>
-          <td>(</td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>data_in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>kernel</em>[][N_KERNEL], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>data_out</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Realiza la convolucion de data_in * kernel y la almacena en data_out. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data_in</td><td>Puntero a float que contiene la imagen de entrada </td></tr>
-    <tr><td class="paramname">kernel</td><td>Arreglo de float con el kernel para la convolucion </td></tr>
-    <tr><td class="paramname">data_out</td><td>Puntero a float que contiene la imagen de salida </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -304,66 +87,50 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int main </td>
           <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Funcion principal que aloca memoria para la imagen de entrada y la convolucionada de salida. Hace uso de la libreria netcdf para importar la imagen y luego llama a la función convolve para realizar la convolución. </p>
-<dl class="section return"><dt>Returns</dt><dd>Siempre retorna 0 y sale del programa </dd></dl>
-
 </div>
 </div>
-<a id="a973ca89eb4aff25e00089eb1ebf64fd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a973ca89eb4aff25e00089eb1ebf64fd6">&#9670;&nbsp;</a></span>write_to_bin()</h2>
+<a id="acb8985a720cf17b68e99872ba793f2cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb8985a720cf17b68e99872ba793f2cc">&#9670;&nbsp;</a></span>readable_fs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void write_to_bin </td>
+          <td class="memname">char* readable_fs </td>
           <td>(</td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>data_out</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">long int&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Guarda la imagen de salida como un archivo binario de floats. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data_out</td><td>Puntero a float que contiene la imagen de salida </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4f8e9b2da505c680d5f11eeaff42c56c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f8e9b2da505c680d5f11eeaff42c56c">&#9670;&nbsp;</a></span>write_to_nc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void write_to_nc </td>
-          <td>(</td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>data_out</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Exporta la imagen de salida en el archivo FILE_OUT_NB definido como macro. </p>
+<p>Parser that returns in human-readable format the size of a file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data_out</td><td>Puntero a float que contiene la imagen de salida </td></tr>
+    <tr><td class="paramname">size</td><td>in bytes from file </td></tr>
+    <tr><td class="paramname">buf</td><td>string </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted string what contains human-readable size of file </dd></dl>
 
 </div>
 </div>

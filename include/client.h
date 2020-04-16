@@ -1,8 +1,8 @@
 #include "socket.h"
 #include "prompt.h"
 #include "common.h"
-#include <termios.h>
 #include <errno.h>
+#include <termios.h>
 #include <unistd.h>
 
 char *  login           (char *);

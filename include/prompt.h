@@ -1,6 +1,6 @@
 #include "common.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define LSH_RL_BUFSIZE  1024

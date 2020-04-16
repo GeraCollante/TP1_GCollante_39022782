@@ -1,6 +1,7 @@
 \section{server/fileserv.c File Reference}
 \label{fileserv_8c}\index{server/fileserv.\+c@{server/fileserv.\+c}}
 {\ttfamily \#include \char`\"{}fileserv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 Include dependency graph for fileserv.\+c\+:
 \nopagebreak
 \begin{figure}[H]
@@ -18,22 +19,78 @@ char $\ast$ \textbf{ readable\+\_\+fs} (long int size, char $\ast$buf)
 \begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ files\+\_\+info} (char $\ast$files\+Info)
 \begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+int \textbf{ is\+\_\+valid\+\_\+file} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+int \textbf{ check\+\_\+file} (char $\ast$str, char $\ast$file)
+\begin{DoxyCompactList}\small\item\em The existence of the image in the folder img is checked. \end{DoxyCompactList}\item 
+void \textbf{ transfer\+\_\+fs} (char $\ast$file)
+\begin{DoxyCompactList}\small\item\em Sockets are created and the file is sent to the client. \end{DoxyCompactList}\item 
 int \textbf{ cmd\+\_\+handler} (int msqid)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Command handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\mbox{\label{fileserv_8c_a934e48b50634987f1069e535f4f9753a}} 
+\index{fileserv.\+c@{fileserv.\+c}!check\+\_\+file@{check\+\_\+file}}
+\index{check\+\_\+file@{check\+\_\+file}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{check\+\_\+file()}
+{\footnotesize\ttfamily int check\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+The existence of the image in the folder img is checked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & string to client \\
+\hline
+{\em file} & filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int tf 
+\end{DoxyReturn}
 \mbox{\label{fileserv_8c_a975d9337db509c0204b110f51d723160}} 
 \index{fileserv.\+c@{fileserv.\+c}!cmd\+\_\+handler@{cmd\+\_\+handler}}
 \index{cmd\+\_\+handler@{cmd\+\_\+handler}!fileserv.\+c@{fileserv.\+c}}
 \subsubsection{cmd\+\_\+handler()}
 {\footnotesize\ttfamily int cmd\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
 
+
+
+Command handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int exit 
+\end{DoxyReturn}
 \mbox{\label{fileserv_8c_a28f9a6d37e4dbc8b5bf5fad1025285e3}} 
 \index{fileserv.\+c@{fileserv.\+c}!files\+\_\+info@{files\+\_\+info}}
 \index{files\+\_\+info@{files\+\_\+info}!fileserv.\+c@{fileserv.\+c}}
 \subsubsection{files\+\_\+info()}
 {\footnotesize\ttfamily char$\ast$ files\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{files\+Info }\end{DoxyParamCaption})}
+
+
+
+Collection of the required information for each file in a specific folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files\+Info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string ready to be printed or sent 
+\end{DoxyReturn}
+\mbox{\label{fileserv_8c_aaac1f10c2cd0525412fb92d9279b0670}} 
+\index{fileserv.\+c@{fileserv.\+c}!is\+\_\+valid\+\_\+file@{is\+\_\+valid\+\_\+file}}
+\index{is\+\_\+valid\+\_\+file@{is\+\_\+valid\+\_\+file}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{is\+\_\+valid\+\_\+file()}
+{\footnotesize\ttfamily int is\+\_\+valid\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
 
 
 
@@ -73,3 +130,18 @@ Parser that returns in human-\/readable format the size of a file.
 \begin{DoxyReturn}{Returns}
 Formatted string what contains human-\/readable size of file 
 \end{DoxyReturn}
+\mbox{\label{fileserv_8c_a5ea0687811fad6f1c67348a52ec2bb7a}} 
+\index{fileserv.\+c@{fileserv.\+c}!transfer\+\_\+fs@{transfer\+\_\+fs}}
+\index{transfer\+\_\+fs@{transfer\+\_\+fs}!fileserv.\+c@{fileserv.\+c}}
+\subsubsection{transfer\+\_\+fs()}
+{\footnotesize\ttfamily void transfer\+\_\+fs (\begin{DoxyParamCaption}\item[{char $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+Sockets are created and the file is sent to the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}

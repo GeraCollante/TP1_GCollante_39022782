@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['waitcli',['waitCli',['../srv_8c.html#a3ce2890f28931d91797e27834f0a1bfa',1,'srv.c']]]
+  ['transfer_5ffile',['transfer_file',['../socket__client_8c.html#a82f7baba357b9320dc3a1f61718f8b48',1,'transfer_file(int newsockfd):&#160;socket_client.c'],['../include_2socket_8h.html#a6fe72396afe8e9b3a3bfe25c9229eb1b',1,'transfer_file(int):&#160;socket_client.c']]],
+  ['transfer_5ffs',['transfer_fs',['../fileserv_8c.html#a5ea0687811fad6f1c67348a52ec2bb7a',1,'fileserv.c']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['wait_5fcli',['wait_cli',['../socket_8h.html#aa1bc7f68e6545e809e6b75b737fcbbe3',1,'wait_cli(int):&#160;server.c'],['../server_8c.html#ad26b08974642b47dc5bf48289824f655',1,'wait_cli(int sockfd):&#160;server.c']]]
+  ['user',['user',['../structuser.html',1,'']]],
+  ['username',['username',['../structuser.html#a0a3e67b9f144f2f261876a12d350395b',1,'user']]],
+  ['users',['users',['../auth_8h.html#ad1b6438b2448da2b01d9887f58f5fb66',1,'users():&#160;auth.h'],['../auth_8h.html#a322789c10f93ef5e09a1d5f17aabf0e3',1,'USERS():&#160;auth.h']]]
 ];

@@ -3,6 +3,7 @@
 {\ttfamily \#include \char`\"{}md5.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$dirent.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
@@ -31,7 +32,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 int \textbf{ cmd\+\_\+handler} (int)
-\begin{DoxyCompactList}\small\item\em Login handler between auth and srv. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Command handler. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ files\+\_\+info} (char $\ast$)
 \begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ readable\+\_\+fs} (long int, char $\ast$)
@@ -47,7 +48,17 @@ char $\ast$ \textbf{ readable\+\_\+fs} (long int, char $\ast$)
 
 
 
-Login handler between auth and srv. 
+Command handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int exit
+\end{DoxyReturn}
+Command handler.
 
 
 \begin{DoxyParams}{Parameters}

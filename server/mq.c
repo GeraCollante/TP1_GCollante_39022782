@@ -75,6 +75,10 @@ void snd_msg(int msqid, char * msg, long mtype){
         perror("msgsnd");
 }
 
+/**
+ * @brief   Get info from message queue
+ * @param   msqid 
+ */
 void mq_info(int msqid){
     struct msqid_ds buf;
     msgctl(msqid, IPC_STAT, &buf);

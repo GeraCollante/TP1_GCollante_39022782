@@ -3,10 +3,10 @@
 int main(){ 
     /*  Declaration of variables    */
     int sockfd, contador = 0;
-    char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * str = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     
     /*  Create and connect client socket    */
-    sockfd = cli_socket();
+    sockfd = cli_socket(PORT_SRV);
     
     /*  Handler for login   */
     if(LOGIN)   login_handler(sockfd);
@@ -17,7 +17,7 @@ int main(){
             the function returns only valid commands */
         cmd_prompt(str);
         if(DEBUG)   printf("Comando: -%s-\n", str);
-
+        
         /*  Send the command to the server */
         send_cmd(sockfd, str);
 
@@ -30,7 +30,6 @@ int main(){
     close(sockfd); 
     return 0;
 } 
-
 
 /**
  * @brief   Prompt for userpass ingress
@@ -161,12 +160,13 @@ void login_handler(int sockfd){
 void send_cmd(int sockfd, char * cmd){
     /*  Variables declaration   */
     char buff[MAX];
+    // char * buff = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
     /*  Copy cmd to buff    */
     sprintf(buff, "%s", cmd);
 
     /*  Send socket message from client to server */
-    if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", buff);
+    if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", cmd);
     if(send(sockfd, buff, sizeof(buff),0)<0){
         perror("Error in sending message to the server [cmd].");
         exit(EXIT_FAILURE);
@@ -178,5 +178,12 @@ void send_cmd(int sockfd, char * cmd){
         perror("Error in receiving message from server [cmd].");
         exit(EXIT_FAILURE);
     };
+
+    if(atoi(buff)==1){
+        int socket = cli_socket(PORT_FLS);
+        transfer_file(socket);
+        printf("Terminamos de enviar archivo");
+    }
+
     if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
 }

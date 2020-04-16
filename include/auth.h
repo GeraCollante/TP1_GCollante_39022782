@@ -1,8 +1,10 @@
 #include "common.h"
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <time.h>
 
 #define USERS 3
@@ -19,6 +21,7 @@ struct user users[USERS];
 
 void    change_pass     (char *, char *);
 int     check_block     (char *);
+int     check_pass      (char *, char *);
 int     cmd_handler     (int, char *);
 void    increase_block  (char *);
 char *  get_pass        (char *);

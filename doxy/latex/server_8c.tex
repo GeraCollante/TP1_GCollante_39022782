@@ -16,8 +16,6 @@ int \textbf{ main} ()
 \item 
 void \textbf{ login\+\_\+handler} (int sockfd, int msqid)
 \begin{DoxyCompactList}\small\item\em Login handler between auth and server. \end{DoxyCompactList}\item 
-int \textbf{ wait\+\_\+cli} (int sockfd)
-\begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
 long \textbf{ get\+\_\+1st\+\_\+char} (char $\ast$str)
 \begin{DoxyCompactList}\small\item\em Get the 1st char of str. \end{DoxyCompactList}\item 
 long \textbf{ cmd\+\_\+handler} (char $\ast$cmd, char $\ast$msg)
@@ -105,21 +103,3 @@ Login handler between [A\+UT] and [S\+RV].
 {\em msqid} & \\
 \hline
 \end{DoxyParams}
-\mbox{\label{server_8c_ad26b08974642b47dc5bf48289824f655}} 
-\index{server.\+c@{server.\+c}!wait\+\_\+cli@{wait\+\_\+cli}}
-\index{wait\+\_\+cli@{wait\+\_\+cli}!server.\+c@{server.\+c}}
-\subsubsection{wait\+\_\+cli()}
-{\footnotesize\ttfamily int wait\+\_\+cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
-
-
-
-Waiting for the client to connect. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em sockfd} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-int sockfd 
-\end{DoxyReturn}

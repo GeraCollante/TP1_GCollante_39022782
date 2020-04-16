@@ -1,31 +1,61 @@
 \section{server/socket\+\_\+server.c File Reference}
 \label{socket__server_8c}\index{server/socket\+\_\+server.\+c@{server/socket\+\_\+server.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-Include dependency graph for socket\+\_\+server.\+c\+:\nopagebreak
+{\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
+Include dependency graph for socket\+\_\+server.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{socket__server_8c__incl}
+\includegraphics[width=214pt]{socket__server_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \textbf{ srv\+\_\+socket} ()
-\begin{DoxyCompactList}\small\item\em Create, assign port, bind and listen of socket server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \textbf{ wait\+\_\+cli} (int sockfd)
+\begin{DoxyCompactList}\small\item\em Waiting for the client to connect. \end{DoxyCompactList}\item 
+int \textbf{ srv\+\_\+socket} (int port)
+\begin{DoxyCompactList}\small\item\em Create, assign port, bind and listen of socket server. \end{DoxyCompactList}\item 
+void \textbf{ send\+\_\+file} (int connfd, char $\ast$str)
+\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\mbox{\label{socket__server_8c_abaa85d7aff16c338adf9a408c151bc28}} 
+\mbox{\label{socket__server_8c_a5f68249c4a06c39600eba28ae2a2f061}} 
+\index{socket\+\_\+server.\+c@{socket\+\_\+server.\+c}!send\+\_\+file@{send\+\_\+file}}
+\index{send\+\_\+file@{send\+\_\+file}!socket\+\_\+server.\+c@{socket\+\_\+server.\+c}}
+\subsubsection{send\+\_\+file()}
+{\footnotesize\ttfamily void send\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{connfd,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\label{socket__server_8c_a8c5fec800b50ceb5bb108fb72a4b50b1}} 
 \index{socket\+\_\+server.\+c@{socket\+\_\+server.\+c}!srv\+\_\+socket@{srv\+\_\+socket}}
 \index{srv\+\_\+socket@{srv\+\_\+socket}!socket\+\_\+server.\+c@{socket\+\_\+server.\+c}}
 \subsubsection{srv\+\_\+socket()}
-{\footnotesize\ttfamily int srv\+\_\+socket (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int srv\+\_\+socket (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
 
 
 
 Create, assign port, bind and listen of socket server. 
 
+\begin{DoxyReturn}{Returns}
+int sockfd 
+\end{DoxyReturn}
+\mbox{\label{socket__server_8c_ad26b08974642b47dc5bf48289824f655}} 
+\index{socket\+\_\+server.\+c@{socket\+\_\+server.\+c}!wait\+\_\+cli@{wait\+\_\+cli}}
+\index{wait\+\_\+cli@{wait\+\_\+cli}!socket\+\_\+server.\+c@{socket\+\_\+server.\+c}}
+\subsubsection{wait\+\_\+cli()}
+{\footnotesize\ttfamily int wait\+\_\+cli (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})}
+
+
+
+Waiting for the client to connect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 int sockfd 
 \end{DoxyReturn}
