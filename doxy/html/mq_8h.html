@@ -70,13 +70,13 @@ $(function() {
 <div class="title">mq.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;errno.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/ipc.h&gt;</code><br />
 <code>#include &lt;sys/msg.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mq.h:</div>
@@ -120,6 +120,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a09c20d0a7874e29781d83b7243f58582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation of the message queue id.  <a href="#a09c20d0a7874e29781d83b7243f58582">More...</a><br /></td></tr>
 <tr class="separator:a09c20d0a7874e29781d83b7243f58582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd23771ce4522444ca0cbdad8413515d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mq_8h.html#abd23771ce4522444ca0cbdad8413515d">mq_info</a> (int)</td></tr>
+<tr class="memdesc:abd23771ce4522444ca0cbdad8413515d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get info from message queue.  <a href="#abd23771ce4522444ca0cbdad8413515d">More...</a><br /></td></tr>
 <tr class="separator:abd23771ce4522444ca0cbdad8413515d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07daba13b107a4b924dafaa1acf84235"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mq_8h.html#a07daba13b107a4b924dafaa1acf84235">rcv_msg</a> (int, char *, long)</td></tr>
 <tr class="memdesc:a07daba13b107a4b924dafaa1acf84235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper to receive messages from the message queue.  <a href="#a07daba13b107a4b924dafaa1acf84235">More...</a><br /></td></tr>
@@ -168,11 +169,19 @@ Functions</h2></td></tr>
           <td class="memname">void mq_info </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>msqid</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get info from message queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msqid</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -8,6 +8,7 @@
         "mq.h": "c",
         "types.h": "c",
         "server.h": "c",
-        "socket.h": "c"
+        "socket.h": "c",
+        "client.h": "c"
     }
 }

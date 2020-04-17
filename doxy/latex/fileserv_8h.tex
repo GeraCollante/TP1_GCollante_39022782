@@ -6,22 +6,20 @@
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$dirent.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$sys/stat.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
 {\ttfamily \#include $<$errno.\+h$>$}\newline
-Include dependency graph for fileserv.\+h\+:
-\nopagebreak
+Include dependency graph for fileserv.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{fileserv_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,15 +29,41 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \textbf{ check\+\_\+file} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Checks the existence of the image in the folder img. \end{DoxyCompactList}\item 
 int \textbf{ cmd\+\_\+handler} (int)
 \begin{DoxyCompactList}\small\item\em Command handler. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ files\+\_\+info} (char $\ast$)
 \begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+int \textbf{ is\+\_\+valid\+\_\+file} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Iterates through all the items in the folder until find the required file. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ readable\+\_\+fs} (long int, char $\ast$)
-\begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Parser that returns in human-\/readable format the size of a file. \end{DoxyCompactList}\item 
+void \textbf{ transfer\+\_\+fs} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Sockets are created and the file is sent to the client. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\mbox{\label{fileserv_8h_aa1925fbc16c1c8da726b22fdc83576e6}} 
+\index{fileserv.\+h@{fileserv.\+h}!check\+\_\+file@{check\+\_\+file}}
+\index{check\+\_\+file@{check\+\_\+file}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{check\+\_\+file()}
+{\footnotesize\ttfamily int check\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{char $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+Checks the existence of the image in the folder img. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & string to client \\
+\hline
+{\em file} & filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int tf 
+\end{DoxyReturn}
 \mbox{\label{fileserv_8h_a17e3a23bd1ae378882eab0ef0f856de1}} 
 \index{fileserv.\+h@{fileserv.\+h}!cmd\+\_\+handler@{cmd\+\_\+handler}}
 \index{cmd\+\_\+handler@{cmd\+\_\+handler}!fileserv.\+h@{fileserv.\+h}}
@@ -83,6 +107,24 @@ Collection of the required information for each file in a specific folder.
 \begin{DoxyReturn}{Returns}
 Formatted string ready to be printed or sent 
 \end{DoxyReturn}
+\mbox{\label{fileserv_8h_ae4881ba8b98bb6338ccb68559be18c9a}} 
+\index{fileserv.\+h@{fileserv.\+h}!is\+\_\+valid\+\_\+file@{is\+\_\+valid\+\_\+file}}
+\index{is\+\_\+valid\+\_\+file@{is\+\_\+valid\+\_\+file}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{is\+\_\+valid\+\_\+file()}
+{\footnotesize\ttfamily int is\+\_\+valid\+\_\+file (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Iterates through all the items in the folder until find the required file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
 \mbox{\label{fileserv_8h_aaa60420f4ed2522f7e58eedb72afea48}} 
 \index{fileserv.\+h@{fileserv.\+h}!readable\+\_\+fs@{readable\+\_\+fs}}
 \index{readable\+\_\+fs@{readable\+\_\+fs}!fileserv.\+h@{fileserv.\+h}}
@@ -101,5 +143,30 @@ Parser that returns in human-\/readable format the size of a file.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
+Formatted string what contains human-\/readable size of file.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & in bytes from file \\
+\hline
+{\em buf} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 Formatted string what contains human-\/readable size of file 
 \end{DoxyReturn}
+\mbox{\label{fileserv_8h_a90d26f00da86797bf53c2582e23d6350}} 
+\index{fileserv.\+h@{fileserv.\+h}!transfer\+\_\+fs@{transfer\+\_\+fs}}
+\index{transfer\+\_\+fs@{transfer\+\_\+fs}!fileserv.\+h@{fileserv.\+h}}
+\subsubsection{transfer\+\_\+fs()}
+{\footnotesize\ttfamily void transfer\+\_\+fs (\begin{DoxyParamCaption}\item[{char $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+Sockets are created and the file is sent to the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}

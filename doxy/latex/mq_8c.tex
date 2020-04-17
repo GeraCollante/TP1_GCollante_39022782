@@ -18,7 +18,7 @@ char $\ast$ \textbf{ rcv\+\_\+msg} (int msqid, char $\ast$msg, long mtype)
 void \textbf{ snd\+\_\+msg} (int msqid, char $\ast$msg, long mtype)
 \begin{DoxyCompactList}\small\item\em Wrapper to send messages to the message queue. \end{DoxyCompactList}\item 
 void \textbf{ mq\+\_\+info} (int msqid)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get info from message queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -28,6 +28,15 @@ void \textbf{ mq\+\_\+info} (int msqid)
 \subsubsection{mq\+\_\+info()}
 {\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
 
+
+
+Get info from message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
 \mbox{\label{mq_8c_aa6a2e92e60754c750bebd73bced350fd}} 
 \index{mq.\+c@{mq.\+c}!mqid@{mqid}}
 \index{mqid@{mqid}!mq.\+c@{mq.\+c}}

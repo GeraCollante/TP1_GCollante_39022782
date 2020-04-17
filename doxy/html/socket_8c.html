@@ -90,6 +90,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9c129efbce40f3061d7899d2adf36a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation, assign IP and port of client socket. Connect to server is included.  <a href="#a9c129efbce40f3061d7899d2adf36a55">More...</a><br /></td></tr>
 <tr class="separator:a9c129efbce40f3061d7899d2adf36a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91bd21665371000f5251a149716f82fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8c.html#a91bd21665371000f5251a149716f82fb">send_file</a> (int connfd, char *filename)</td></tr>
+<tr class="memdesc:a91bd21665371000f5251a149716f82fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the file through sendfile function that maximizes the transfer speed using zero copy.  <a href="#a91bd21665371000f5251a149716f82fb">More...</a><br /></td></tr>
 <tr class="separator:a91bd21665371000f5251a149716f82fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe49ab8d5d6dbc407156f33dce0152cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8c.html#afe49ab8d5d6dbc407156f33dce0152cf">recv_file</a> (int newsockfd)</td></tr>
 <tr class="memdesc:afe49ab8d5d6dbc407156f33dce0152cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Función para recibir archivos vía TCP.  <a href="#afe49ab8d5d6dbc407156f33dce0152cf">More...</a><br /></td></tr>
@@ -169,6 +170,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Send the file through sendfile function that maximizes the transfer speed using zero copy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connfd</td><td>socket file descriptor </td></tr>
+    <tr><td class="paramname">str</td><td>file without folder path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

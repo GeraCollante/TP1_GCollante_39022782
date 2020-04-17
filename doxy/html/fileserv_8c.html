@@ -69,14 +69,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="fileserv_8h_source.html">fileserv.h</a>&quot;</code><br />
-<code>#include &quot;socket.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for fileserv.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileserv_8c__incl.png" border="0" usemap="#server_2fileserv_8c" alt=""/></div>
 <map name="server_2fileserv_8c" id="server_2fileserv_8c">
 <area shape="rect" id="node2" href="fileserv_8h.html" title="fileserv.h" alt="" coords="424,80,499,107"/>
-<area shape="rect" id="node3" href="md5_8h.html" title="md5.h" alt="" coords="225,155,284,181"/>
+<area shape="rect" id="node3" href="md5_8h.html" title="md5.h" alt="" coords="228,155,287,181"/>
 <area shape="rect" id="node9" href="mq_8h.html" title="mq.h" alt="" coords="468,155,519,181"/>
 <area shape="rect" id="node14" href="common_8h.html" title="common.h" alt="" coords="891,155,973,181"/>
 <area shape="rect" id="node15" href="include_2socket_8h.html" title="socket.h" alt="" coords="744,155,816,181"/>
@@ -94,10 +93,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a28f9a6d37e4dbc8b5bf5fad1025285e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of the required information for each file in a specific folder.  <a href="#a28f9a6d37e4dbc8b5bf5fad1025285e3">More...</a><br /></td></tr>
 <tr class="separator:a28f9a6d37e4dbc8b5bf5fad1025285e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac1f10c2cd0525412fb92d9279b0670"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8c.html#aaac1f10c2cd0525412fb92d9279b0670">is_valid_file</a> (char *str)</td></tr>
-<tr class="memdesc:aaac1f10c2cd0525412fb92d9279b0670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of the required information for each file in a specific folder.  <a href="#aaac1f10c2cd0525412fb92d9279b0670">More...</a><br /></td></tr>
+<tr class="memdesc:aaac1f10c2cd0525412fb92d9279b0670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through all the items in the folder until find the required file.  <a href="#aaac1f10c2cd0525412fb92d9279b0670">More...</a><br /></td></tr>
 <tr class="separator:aaac1f10c2cd0525412fb92d9279b0670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a934e48b50634987f1069e535f4f9753a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8c.html#a934e48b50634987f1069e535f4f9753a">check_file</a> (char *str, char *file)</td></tr>
-<tr class="memdesc:a934e48b50634987f1069e535f4f9753a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The existence of the image in the folder img is checked.  <a href="#a934e48b50634987f1069e535f4f9753a">More...</a><br /></td></tr>
+<tr class="memdesc:a934e48b50634987f1069e535f4f9753a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the existence of the image in the folder img.  <a href="#a934e48b50634987f1069e535f4f9753a">More...</a><br /></td></tr>
 <tr class="separator:a934e48b50634987f1069e535f4f9753a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ea0687811fad6f1c67348a52ec2bb7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8c.html#a5ea0687811fad6f1c67348a52ec2bb7a">transfer_fs</a> (char *file)</td></tr>
 <tr class="memdesc:a5ea0687811fad6f1c67348a52ec2bb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sockets are created and the file is sent to the client.  <a href="#a5ea0687811fad6f1c67348a52ec2bb7a">More...</a><br /></td></tr>
@@ -133,7 +132,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The existence of the image in the folder img is checked. </p>
+<p>Checks the existence of the image in the folder img. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str</td><td>string to client </td></tr>
@@ -215,14 +214,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Collection of the required information for each file in a specific folder. </p>
+<p>Iterates through all the items in the folder until find the required file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filesInfo</td><td></td></tr>
+    <tr><td class="paramname">str</td><td>filename </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Formatted string ready to be printed or sent </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
 </div>
 </div>
@@ -278,7 +277,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Formatted string what contains human-readable size of file </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted string what contains human-readable size of file. </dd></dl>
 
 </div>
 </div>

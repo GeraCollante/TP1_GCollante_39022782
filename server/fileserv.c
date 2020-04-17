@@ -5,9 +5,9 @@ int main(void){
     /*  Create message queue    */
     msqid = mqid();
     /*  Message queue info  */
-    if(DEBUG)   mq_info(msqid);
+    //TODO  error cola de mensajes con mensajes
+    // if(DEBUG)   mq_info(msqid);
     printf("[FLS] Messages queue created...\n");
-    fflush(stdout);
 
     /*  Waiting for cmd from [SRV]   */
     do
@@ -173,7 +173,7 @@ int is_valid_file(char * str){
  */
 int check_file(char * str, char * file){
     /*  Variables declaration   */
-    int ft = 0;
+    int ft;
     /*  Get filename    */
     strtok(str, ",");
     sprintf(file, "%s", strtok(NULL, ","));
@@ -185,6 +185,7 @@ int check_file(char * str, char * file){
     }
     else{
         if(DEBUG)   printf("The file does not exists. \n");
+        ft=-1;
     };
 
     /*  Copy the result of the verification in the chain that we will 
@@ -251,7 +252,7 @@ int cmd_handler(int msqid){
 
     /*  If the required file exists we proceed 
         to create a socket to send it */
-    if(tf)  transfer_fs(file);
+    if(tf==1)  transfer_fs(file);
 
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
     //     fprintf(stderr, "[FLS] Message queue could not be deleted.\n");
@@ -268,4 +269,3 @@ int cmd_handler(int msqid){
 //TODO  MBR
 //TODO  Reiniciar todo
 //TODO  Latex
-//TODO  Burn USB

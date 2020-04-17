@@ -8,7 +8,7 @@ int main()
     if (child_a == 0) 
     {
         /*  Child A code    */
-        printf("auth_pid: %d \n", getpid());
+        printf("[AUT]_pid: %d \n", getpid());
         execv("./bin/auth", (char *[]){ NULL });
     } 
     else 
@@ -17,18 +17,18 @@ int main()
         if (child_b == 0) 
         {
             /*  Child B code    */
-            printf("file_pid: %d \n", getpid());
+            printf("[FLS]_pid: %d \n", getpid());
             execv("./bin/fileserv", (char *[]){ NULL });
         } 
         else 
         {
             /*  Parent Code     */
-            printf("srv_pid: %d \n", getpid());
+            printf("[SRV]_pid: %d \n", getpid());
             int sockfd, connfd, mqsid;
 
             /*  Create message queue */
             mqsid = mqid();
-            if(DEBUG)   mq_info(mqsid);
+            // if(DEBUG)   mq_info(mqsid);
             if(DEBUG)   printf("[SRV] Created message queue...\n");
 
             /*  Bind and listing server socket  */
@@ -190,19 +190,15 @@ void rcv_cmd(int sockfd, int msqid)
         /*  [SRV] <- [CLI]  */ 
         memset(buff,0, MAX);
         recv(sockfd, buff, sizeof(buff),0);
-        printf("[SRV]<-[CLI]hola: %s\n", buff);
+        printf("[SRV]<-[CLI]: %s\n", buff);
         fflush(stdout);
 
         /*  Pass cmd to the handler  */
-        printf("pre_handler buff: %s, str: %s", buff, str);
-        fflush(stdout);
         m_type = cmd_handler(buff, str);
-        printf("post_handler buff: %s, str: %s", buff, str);
-        fflush(stdout);
 
         /*  This is exit command    */
         if(m_type==0)  m_type = auth_type;
-        if(DEBUG)   printf("m_type: %ld\n", m_type);
+        // if(DEBUG)   printf("m_type: %ld\n", m_type);
 
         /*  [AUT] <- [SRV]  */
         printf("[AUT]<-[SRV]: %s\n", str);

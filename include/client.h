@@ -7,6 +7,7 @@
 
 void    burn_usb        (char *, char *);
 int     check_status    (int);
+void    file_down       (void);
 char *  login           (char *);
 void    login_handler   (int);
 void    send_cmd        (int, char *);

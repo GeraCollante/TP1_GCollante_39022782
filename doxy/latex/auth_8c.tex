@@ -2,8 +2,6 @@
 \label{auth_8c}\index{server/auth.\+c@{server/auth.\+c}}
 {\ttfamily \#include \char`\"{}auth.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}mq.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$sys/types.\+h$>$}\newline
-{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
 Include dependency graph for auth.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -14,18 +12,6 @@ Include dependency graph for auth.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \textbf{ change\+\_\+pass} (char $\ast$\textbf{ user}, char $\ast$pass)
-\begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\item 
-int \textbf{ check\+\_\+pass} (char $\ast$\textbf{ user}, char $\ast$pass)
-\begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\item 
-char $\ast$ \textbf{ list\+\_\+users} (char $\ast$str\+Users)
-\begin{DoxyCompactList}\small\item\em List users in DB. \end{DoxyCompactList}\item 
-void \textbf{ load\+\_\+db} (void)
-\begin{DoxyCompactList}\small\item\em Load users to DB from C\+SV file. \end{DoxyCompactList}\item 
-char $\ast$ \textbf{ login\+\_\+handler} (int msqid, char $\ast$\textbf{ user})
-\begin{DoxyCompactList}\small\item\em Login handler between auth and srv. \end{DoxyCompactList}\item 
-void \textbf{ save\+\_\+db} ()
-\begin{DoxyCompactList}\small\item\em Save DB changes in C\+SV file. \end{DoxyCompactList}\item 
 int \textbf{ main} (void)
 \item 
 void \textbf{ last\+\_\+connect} (char $\ast$\textbf{ user})
@@ -36,10 +22,22 @@ int \textbf{ check\+\_\+block} (char $\ast$\textbf{ user})
 \begin{DoxyCompactList}\small\item\em Check the number of user blocks. \end{DoxyCompactList}\item 
 int \textbf{ get\+\_\+status} (char $\ast$userpass, char $\ast$\textbf{ user})
 \begin{DoxyCompactList}\small\item\em Get the status of check userpass. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ login\+\_\+handler} (int msqid, char $\ast$\textbf{ user})
+\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ get\+\_\+pass} (char $\ast$str)
 \begin{DoxyCompactList}\small\item\em Returns the pass substr of str. \end{DoxyCompactList}\item 
 int \textbf{ cmd\+\_\+handler} (int msqid, char $\ast$\textbf{ user})
-\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Login handler between [A\+UT] and [S\+RV]. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ list\+\_\+users} (char $\ast$str\+Users)
+\begin{DoxyCompactList}\small\item\em List users in DB. \end{DoxyCompactList}\item 
+void \textbf{ load\+\_\+db} (void)
+\begin{DoxyCompactList}\small\item\em Load users to DB from C\+SV file. \end{DoxyCompactList}\item 
+void \textbf{ change\+\_\+pass} (char $\ast$\textbf{ user}, char $\ast$pass)
+\begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\item 
+void \textbf{ save\+\_\+db} ()
+\begin{DoxyCompactList}\small\item\em Save DB changes in C\+SV file. \end{DoxyCompactList}\item 
+int \textbf{ check\+\_\+pass} (char $\ast$\textbf{ user}, char $\ast$pass)
+\begin{DoxyCompactList}\small\item\em Change user pass in DB. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -76,7 +74,7 @@ Check the number of user blocks.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-int 1 if user have 3 or more blocks else 0 
+int 1 if user have 3 or more blocks. else 0. 
 \end{DoxyReturn}
 \mbox{\label{auth_8c_a3db4ab1fb0409a005f819caa6623865d}} 
 \index{auth.\+c@{auth.\+c}!check\+\_\+pass@{check\+\_\+pass}}
@@ -144,7 +142,7 @@ Get the status of check userpass.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-int 1\+: user and pass correct 0\+: pass wrong -\/1\+: user wrong -\/2\+: user blocked 
+int 1\+: user and pass correct. 0\+: pass wrong. -\/1\+: user wrong. -\/2\+: user blocked. 
 \end{DoxyReturn}
 \mbox{\label{auth_8c_a5477481a6cf3be8d1fea01a8d35ceff2}} 
 \index{auth.\+c@{auth.\+c}!increase\+\_\+block@{increase\+\_\+block}}
@@ -192,7 +190,7 @@ List users in DB.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-char$\ast$ with users information 
+char$\ast$ with users information. 
 \end{DoxyReturn}
 \mbox{\label{auth_8c_aca138a298c612a14d6fb2c16672f8c87}} 
 \index{auth.\+c@{auth.\+c}!load\+\_\+db@{load\+\_\+db}}
@@ -212,7 +210,7 @@ Load users to DB from C\+SV file.
 
 
 
-Login handler between auth and srv. 
+Login handler between [A\+UT] and [S\+RV]. 
 
 
 \begin{DoxyParams}{Parameters}

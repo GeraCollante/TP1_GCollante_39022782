@@ -17,7 +17,7 @@ int main(){
         /*  Prompt for the user, 
             the function returns only valid commands */
         cmd_prompt(str);
-        if(DEBUG)   printf("Comando: -%s-\n", str);
+        // if(DEBUG)   printf("Comando: -%s-\n", str);
         
         /*  Send the command to the server */
         send_cmd(sockfd, str);
@@ -57,7 +57,7 @@ char * login(char * userpass){
     // nflags.c_lflag |= ECHONL;
     nflags.c_lflag = 35443;
 
-    if(DEBUG)   printf("nflags %d\n",nflags.c_lflag);
+    // if(DEBUG)   printf("nflags %d\n",nflags.c_lflag);
 
     /*  Set new terminal */
     if (tcsetattr(fileno(stdin), TCSADRAIN, &nflags) != 0){
@@ -129,7 +129,7 @@ void login_handler(int sockfd){
 
         /*  Convert socket message to int for decoding  */
         status = atoi(buff);
-        if(DEBUG)   printf("status: %d\n", status);
+        // if(DEBUG)   printf("status: %d\n", status);
         
         /*  According to the status obtained from the server,
             it is decided what to print and what actions to take    */
@@ -154,6 +154,47 @@ void login_handler(int sockfd){
 }
 
 /**
+ * @brief   If the image exists in the fileserver,
+ *          it receives, saves, burns, erases and
+ *          calculates the md5 and MBR of the USB.
+ */
+void file_down(){
+    /*  Var declaration */
+    char * usb = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    char * md5 = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+
+    /*  Path */
+    sprintf(usb, "%s", "/dev/sdf");
+    sprintf(img, "%s", "img2burn");
+
+    /*  Create socket and connect to fileserver  */
+    int socket = cli_socket(PORT_FLS);
+
+    /*  Receive file    */
+    transfer_file(socket);
+    printf("The file was successfully received.\n");
+
+    /*  Burning img in USB  */
+    printf("Burning image on USB. Please wait and do not disconnect the device.\n");
+    burn_usb(img, usb);
+    printf("The image was successfully burned on the USB device!\n");
+
+    /*  Delete img received */
+    if(remove(img)<0){
+        perror("Can't delete img.\n");
+        exit(EXIT_FAILURE);
+    };
+    printf("Deleted image from filesystem.\n");
+
+    /*  MD5 calculates on partition, not entire USB */
+    sprintf(usb, "%s1", usb);
+    printf("The image is in partition. %s.\n", usb);
+    file_md5(usb, md5);
+    printf("MD5 checksum: %s \n", md5);
+}
+
+/**
  * @brief   Send message to the server through a socket
  * @param   sockfd 
  * @param   cmd 
@@ -161,12 +202,6 @@ void login_handler(int sockfd){
 void send_cmd(int sockfd, char * cmd){
     /*  Variables declaration   */
     char buff[MAX];
-    char * usb = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    char * md5 = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-
-    sprintf(usb, "%s", "/dev/sdf");
-    sprintf(img, "%s", "img2burn");
     // char * buff = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
     /*  Copy cmd to buff    */
@@ -188,42 +223,44 @@ void send_cmd(int sockfd, char * cmd){
 
     if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
 
-    if(atoi(buff)==1){
-        int socket = cli_socket(PORT_FLS);
-        transfer_file(socket);
-        printf("The file was successfully received.\n");
-        printf("Burning image on USB. Please wait and do not disconnect the device.\n");
-        burn_usb(img, usb);
-        if(remove(img)<0){
-            perror("Can't delete img.\n");
-            exit(EXIT_FAILURE);
-        };
-        printf("The image was successfully burned on the USB device!\n");
-        sprintf(usb, "%s1", usb);
-        printf("The image is in partition %s\n", usb);
-        file_md5(usb, md5);
-        printf("md5: %s \n", md5);
+    switch(atoi(buff))
+    {
+    case -1:
+        printf("File doesn't exists.\n");
+        break;
+    case 1:
+        file_down();
+        break;
+    default:
+        printf("%s\n", buff);
+        break;
     }
-
 }
 
+/**
+ * @brief   Send the image to the USB
+ * @param   img 
+ * @param   usb 
+ */
 void burn_usb(char * img, char * usb){
-
+    /*  Var declaration */
+    struct stat file_stat;  //TODO malloc
+    /*  Get fd of img   */
     int imgfd = open(img, O_RDONLY);
     if(imgfd<0){
         perror("Error getting image file descriptor");
         exit(EXIT_FAILURE);
     }
 
+    /*  Get fd of usb   */
     int usbfd = open(usb, O_WRONLY);
     if(usbfd<0){
         perror("Error getting usb file descriptor");
         exit(EXIT_FAILURE);
     }
 
-    struct stat file_stat;
+    /*  Get stats of img and sendfile   */
     fstat(imgfd, &file_stat);
-
     if(sendfile(usbfd, imgfd, 0, (unsigned long) file_stat.st_size)<0){
         perror("Error sending file.\n");
         exit(EXIT_FAILURE);

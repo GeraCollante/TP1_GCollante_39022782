@@ -1,12 +1,12 @@
 \section{include/mq.h File Reference}
 \label{mq_8h}\index{include/mq.\+h@{include/mq.\+h}}
+{\ttfamily \#include $<$errno.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
-{\ttfamily \#include $<$errno.\+h$>$}\newline
-{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$sys/ipc.\+h$>$}\newline
 {\ttfamily \#include $<$sys/msg.\+h$>$}\newline
-{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
 Include dependency graph for mq.\+h\+:\nopagebreak
 \begin{figure}[H]
@@ -40,7 +40,7 @@ struct \textbf{ my\+\_\+msgbuf}
 int \textbf{ mqid} (void)
 \begin{DoxyCompactList}\small\item\em Creation of the message queue id. \end{DoxyCompactList}\item 
 void \textbf{ mq\+\_\+info} (int)
-\item 
+\begin{DoxyCompactList}\small\item\em Get info from message queue. \end{DoxyCompactList}\item 
 char $\ast$ \textbf{ rcv\+\_\+msg} (int, char $\ast$, long)
 \begin{DoxyCompactList}\small\item\em Wrapper to receive messages from the message queue. \end{DoxyCompactList}\item 
 void \textbf{ snd\+\_\+msg} (int, char $\ast$, long)
@@ -67,8 +67,17 @@ void \textbf{ snd\+\_\+msg} (int, char $\ast$, long)
 \index{mq.\+h@{mq.\+h}!mq\+\_\+info@{mq\+\_\+info}}
 \index{mq\+\_\+info@{mq\+\_\+info}!mq.\+h@{mq.\+h}}
 \subsubsection{mq\+\_\+info()}
-{\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void mq\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{msqid }\end{DoxyParamCaption})}
 
+
+
+Get info from message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msqid} & \\
+\hline
+\end{DoxyParams}
 \mbox{\label{mq_8h_a09c20d0a7874e29781d83b7243f58582}} 
 \index{mq.\+h@{mq.\+h}!mqid@{mqid}}
 \index{mqid@{mqid}!mq.\+h@{mq.\+h}}

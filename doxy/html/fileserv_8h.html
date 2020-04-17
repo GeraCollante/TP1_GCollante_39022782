@@ -74,8 +74,8 @@ $(function() {
 <code>#include &quot;<a class="el" href="include_2socket_8h_source.html">socket.h</a>&quot;</code><br />
 <code>#include &lt;dirent.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;openssl/md5.h&gt;</code><br />
@@ -85,7 +85,7 @@ Include dependency graph for fileserv.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="fileserv_8h__incl.png" border="0" usemap="#include_2fileserv_8h" alt=""/></div>
 <map name="include_2fileserv_8h" id="include_2fileserv_8h">
-<area shape="rect" id="node2" href="md5_8h.html" title="md5.h" alt="" coords="225,80,284,107"/>
+<area shape="rect" id="node2" href="md5_8h.html" title="md5.h" alt="" coords="228,80,287,107"/>
 <area shape="rect" id="node8" href="mq_8h.html" title="mq.h" alt="" coords="468,80,519,107"/>
 <area shape="rect" id="node13" href="common_8h.html" title="common.h" alt="" coords="891,80,973,107"/>
 <area shape="rect" id="node14" href="include_2socket_8h.html" title="socket.h" alt="" coords="744,80,816,107"/>
@@ -104,17 +104,64 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa1925fbc16c1c8da726b22fdc83576e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#aa1925fbc16c1c8da726b22fdc83576e6">check_file</a> (char *, char *)</td></tr>
+<tr class="memdesc:aa1925fbc16c1c8da726b22fdc83576e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the existence of the image in the folder img.  <a href="#aa1925fbc16c1c8da726b22fdc83576e6">More...</a><br /></td></tr>
+<tr class="separator:aa1925fbc16c1c8da726b22fdc83576e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e3a23bd1ae378882eab0ef0f856de1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#a17e3a23bd1ae378882eab0ef0f856de1">cmd_handler</a> (int)</td></tr>
 <tr class="memdesc:a17e3a23bd1ae378882eab0ef0f856de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command handler.  <a href="#a17e3a23bd1ae378882eab0ef0f856de1">More...</a><br /></td></tr>
 <tr class="separator:a17e3a23bd1ae378882eab0ef0f856de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49cfaf7b6d546c559fb0901bd5ba3e65"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#a49cfaf7b6d546c559fb0901bd5ba3e65">files_info</a> (char *)</td></tr>
 <tr class="memdesc:a49cfaf7b6d546c559fb0901bd5ba3e65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of the required information for each file in a specific folder.  <a href="#a49cfaf7b6d546c559fb0901bd5ba3e65">More...</a><br /></td></tr>
 <tr class="separator:a49cfaf7b6d546c559fb0901bd5ba3e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4881ba8b98bb6338ccb68559be18c9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#ae4881ba8b98bb6338ccb68559be18c9a">is_valid_file</a> (char *)</td></tr>
+<tr class="memdesc:ae4881ba8b98bb6338ccb68559be18c9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through all the items in the folder until find the required file.  <a href="#ae4881ba8b98bb6338ccb68559be18c9a">More...</a><br /></td></tr>
+<tr class="separator:ae4881ba8b98bb6338ccb68559be18c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa60420f4ed2522f7e58eedb72afea48"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#aaa60420f4ed2522f7e58eedb72afea48">readable_fs</a> (long int, char *)</td></tr>
 <tr class="memdesc:aaa60420f4ed2522f7e58eedb72afea48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parser that returns in human-readable format the size of a file.  <a href="#aaa60420f4ed2522f7e58eedb72afea48">More...</a><br /></td></tr>
 <tr class="separator:aaa60420f4ed2522f7e58eedb72afea48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d26f00da86797bf53c2582e23d6350"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fileserv_8h.html#a90d26f00da86797bf53c2582e23d6350">transfer_fs</a> (char *)</td></tr>
+<tr class="memdesc:a90d26f00da86797bf53c2582e23d6350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sockets are created and the file is sent to the client.  <a href="#a90d26f00da86797bf53c2582e23d6350">More...</a><br /></td></tr>
+<tr class="separator:a90d26f00da86797bf53c2582e23d6350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aa1925fbc16c1c8da726b22fdc83576e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1925fbc16c1c8da726b22fdc83576e6">&#9670;&nbsp;</a></span>check_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int check_file </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks the existence of the image in the folder img. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>string to client </td></tr>
+    <tr><td class="paramname">file</td><td>filename </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int tf </dd></dl>
+
+</div>
+</div>
 <a id="a17e3a23bd1ae378882eab0ef0f856de1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17e3a23bd1ae378882eab0ef0f856de1">&#9670;&nbsp;</a></span>cmd_handler()</h2>
 
@@ -176,6 +223,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ae4881ba8b98bb6338ccb68559be18c9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4881ba8b98bb6338ccb68559be18c9a">&#9670;&nbsp;</a></span>is_valid_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_valid_file </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iterates through all the items in the folder until find the required file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>filename </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="aaa60420f4ed2522f7e58eedb72afea48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa60420f4ed2522f7e58eedb72afea48">&#9670;&nbsp;</a></span>readable_fs()</h2>
 
@@ -210,7 +284,41 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted string what contains human-readable size of file.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>in bytes from file </td></tr>
+    <tr><td class="paramname">buf</td><td>string </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Formatted string what contains human-readable size of file </dd></dl>
+
+</div>
+</div>
+<a id="a90d26f00da86797bf53c2582e23d6350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d26f00da86797bf53c2582e23d6350">&#9670;&nbsp;</a></span>transfer_fs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void transfer_fs </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sockets are created and the file is sent to the client. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

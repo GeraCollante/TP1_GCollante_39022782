@@ -7,21 +7,20 @@ int main(void){
     
     /*  Load DB */
     load_db();
-    if(DEBUG)   printf("[AUT] Database loaded successfully...\n");
+    if(DEBUG)   printf("[AUT] Database loaded successfully!\n");
     
     /*  Create message queue */
     msqid = mqid();
-    if(DEBUG)   printf("[AUT] Messages queue created...\n");
-    fflush(stdout);
+    if(DEBUG)   printf("[AUT] Messages queue created!\n");
 
     /*  Login handler   */
-    printf("Login handler.\n");
+    if(DEBUG)   printf("[AUT] Login handler.\n");
     login_handler(msqid, user);
-    if(DEBUG)   printf("[AUT] %s has logged in... \n", user);
+    if(DEBUG)   printf("[AUT] %s has logged in!\n", user);
 
     /*  Registered connection   */
     last_connect(user);
-    if(DEBUG)   printf("[AUT] Successful login...\n");
+    if(DEBUG)   printf("[AUT] Register last connect.\n");
     fflush(stdout);
 
     /*  Waiting for cmd from [SRV]  */
@@ -29,15 +28,13 @@ int main(void){
     {
         /*  Handler of cmd  */
         end = cmd_handler(msqid, user);
-        printf("end: %d\n", end);
 
         /*  Counter of msg  */
         contador++;
-        printf("[AUT] Contador de mensajes: %d\n", contador);
+        if(DEBUG)   printf("[AUT] Message counter: %d\n", contador);
     }while(end!=0);
 
-    printf("End [AUT].\n");
-    fflush(stdout);
+    if(DEBUG)   printf("[AUT] End.\n");
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
     //     fprintf(stderr, "Message queue could not be deleted.\n");
     //     exit(EXIT_FAILURE);
@@ -70,7 +67,7 @@ void last_connect(char* user){
     {
         if(!strcmp(user, users[i].username)){
             strcpy(users[i].lastconnect, connect_time);
-            printf("Nueva lastconnect: %s\n", users[i].lastconnect);
+            // printf("Nueva lastconnect: %s\n", users[i].lastconnect);
             break;
         }
     }
@@ -142,14 +139,14 @@ int get_status(char * userpass, char * user){
         sprintf(pass,"%s", tok);
         tok = strtok (NULL, ",");
     }
-    printf("user: %s \n", user);
-    printf("pass: %s \n", pass);
+    // printf("user: %s \n", user);
+    // printf("pass: %s \n", pass);
 
     /*  Check if user is blocked if not check password */
     status = (check_block(user)) ? -2 : check_pass(user,pass);
     /*  If wrong password then increase blocks value */
     if(!status)     increase_block(user);
-    if(DEBUG) printf("status: %d\n",status);
+    // if(DEBUG) printf("status: %d\n",status);
     return status;
 }
 
@@ -160,15 +157,14 @@ int get_status(char * userpass, char * user){
 char * login_handler(int msqid, char * user){
     int status;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+
     do{
         /*  Receive userpass from [SVR] */
         rcv_msg(msqid, str, auth_type);
         printf("[AUT]<-[SRV]: %s\n",str);
 
         /*  Get status of userpass and convert to int */
-        printf("pre-getstatus");
         sprintf(str, "%d", get_status(str, user));
-        printf("post-getstatus");
 
         status = atoi(str);
         printf("[AUT]->[SRV]: %s\n",str);
@@ -176,15 +172,11 @@ char * login_handler(int msqid, char * user){
         /*  Send status to [SRV] */ 
         snd_msg(msqid, str, auth_type);
 
-        if(status==1)
-        { 
-            if(DEBUG) printf("Successful login_handler...\n"); 
-            break;
-        }
-    }while(status!=0);
-
-    if(DEBUG) printf("Successful login_handler...\n"); 
+        
+    }while(status!=1);
     
+    if(DEBUG) printf("[AUT] Successful login_handler...\n"); 
+
     return user;
 }
 
@@ -302,7 +294,7 @@ void load_db(void){
                 strcpy(users[row_count].block, field);
             }
 
-            if(DEBUG) printf("%s\n", field);
+            // if(DEBUG) printf("%s\n", field);
             field = strtok(NULL, ",");
 
             field_count++;
@@ -355,6 +347,8 @@ int check_pass(char* user, char* pass){
     int status;
     for (int i = 0; i < USERS; i++)
     {
+        printf("user: %s\n", user);
+        printf("pass: %s\n", pass);
         if(!strcmp(user, users[i].username)){
             // User exists, password will be checked
             status = (!strcmp(users[i].password, pass)) ? 1 : 0;

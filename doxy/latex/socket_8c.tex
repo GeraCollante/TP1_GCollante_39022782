@@ -1,8 +1,7 @@
 \section{thrash/socket.c File Reference}
 \label{socket_8c}\index{thrash/socket.\+c@{thrash/socket.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-Include dependency graph for socket.\+c\+:
-\nopagebreak
+Include dependency graph for socket.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,7 +18,7 @@ int \textbf{ wait\+\_\+cli} (int sockfd)
 int \textbf{ cli\+\_\+socket} ()
 \begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\item 
 void \textbf{ send\+\_\+file} (int connfd, char $\ast$filename)
-\item 
+\begin{DoxyCompactList}\small\item\em Send the file through sendfile function that maximizes the transfer speed using zero copy. \end{DoxyCompactList}\item 
 void \textbf{ recv\+\_\+file} (int newsockfd)
 \begin{DoxyCompactList}\small\item\em Función para recibir archivos vía T\+CP. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -61,6 +60,17 @@ Función para recibir archivos vía T\+CP.
 \subsubsection{send\+\_\+file()}
 {\footnotesize\ttfamily void send\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{connfd,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
 
+
+
+Send the file through sendfile function that maximizes the transfer speed using zero copy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connfd} & socket file descriptor \\
+\hline
+{\em str} & file without folder path \\
+\hline
+\end{DoxyParams}
 \mbox{\label{socket_8c_abaa85d7aff16c338adf9a408c151bc28}} 
 \index{socket.\+c@{socket.\+c}!srv\+\_\+socket@{srv\+\_\+socket}}
 \index{srv\+\_\+socket@{srv\+\_\+socket}!socket.\+c@{socket.\+c}}

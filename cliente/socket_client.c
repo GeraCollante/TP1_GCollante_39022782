@@ -76,7 +76,6 @@ void recv_file(int newsockfd, int fd){
 	close(newsockfd);
 }
 
-
 /**
  * @brief 	File is created and proceeds to receive
  * 			while the transfer time is calculated

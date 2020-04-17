@@ -25,7 +25,6 @@ int wait_cli(int sockfd){
     return connfd;
 }
 
-
 /**
  * @brief   Create, assign port, bind and listen of socket server
  * @return  int sockfd
@@ -36,12 +35,12 @@ int srv_socket(int port){
   
     /*  Socket create and verification */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd == -1) { 
-        perror("[SRV] Socket creation failed...\n"); 
+    if (sockfd < 0) { 
+        perror("Socket creation failed.\n"); 
         exit(EXIT_FAILURE); 
     } 
     else
-        printf("[SRV] Socket successfully created..\n");
+        printf("Socket successfully created!\n");
     
     /*  The socket can enter a TIME_WAIT state
         (to ensure all data has been transmitted, 
@@ -51,7 +50,7 @@ int srv_socket(int port){
         SO_REUSEADDR is set that allows the socket
         to be available for immediate use.  */
     if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int)) < 0)
-        perror("setsockopt(SO_REUSEADDR) failed");
+        perror("setsockopt(SO_REUSEADDR) failed.");
     
     memset(&servaddr, 0, sizeof(servaddr));
     
@@ -61,20 +60,20 @@ int srv_socket(int port){
     servaddr.sin_port           = htons(port); 
 
     /*  Binding newly created socket to given IP and verification */
-    if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) { 
-        perror("[SRV] Socket bind failed\n"); 
+    if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) < 0) { 
+        perror("Socket bind failed.\n"); 
         exit(EXIT_FAILURE); 
     } 
     else
-        printf("[SRV] Socket successfully binded..\n");
+        printf("Socket successfully binded!\n");
   
     /*  Now server is ready to listen and verification  */
-    if ((listen(sockfd, 5)) != 0) { 
-        perror("[SRV] Listen failed...\n"); 
+    if ((listen(sockfd, 5)) < 0) { 
+        perror("Listen failed.\n"); 
         exit(EXIT_FAILURE); 
     } 
     else
-        printf("[SRV] Server listening...\n"); 
+        printf("Server listening!\n"); 
     
     return sockfd;
 }
@@ -96,7 +95,7 @@ void send_file(int connfd, char * str){
     int filefd = open(filename2, O_RDONLY);
 
     if(filefd < 0){
-        perror("Can't open file");
+        perror("Can't open file.\n");
         exit(EXIT_FAILURE);
     };
 

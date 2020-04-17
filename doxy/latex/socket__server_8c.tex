@@ -2,8 +2,7 @@
 \label{socket__server_8c}\index{server/socket\+\_\+server.\+c@{server/socket\+\_\+server.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
-Include dependency graph for socket\+\_\+server.\+c\+:
-\nopagebreak
+Include dependency graph for socket\+\_\+server.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,7 +17,7 @@ int \textbf{ wait\+\_\+cli} (int sockfd)
 int \textbf{ srv\+\_\+socket} (int port)
 \begin{DoxyCompactList}\small\item\em Create, assign port, bind and listen of socket server. \end{DoxyCompactList}\item 
 void \textbf{ send\+\_\+file} (int connfd, char $\ast$str)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send the file through sendfile function that maximizes the transfer speed using zero copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -28,6 +27,17 @@ void \textbf{ send\+\_\+file} (int connfd, char $\ast$str)
 \subsubsection{send\+\_\+file()}
 {\footnotesize\ttfamily void send\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{connfd,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
 
+
+
+Send the file through sendfile function that maximizes the transfer speed using zero copy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connfd} & socket file descriptor \\
+\hline
+{\em str} & file without folder path \\
+\hline
+\end{DoxyParams}
 \mbox{\label{socket__server_8c_a8c5fec800b50ceb5bb108fb72a4b50b1}} 
 \index{socket\+\_\+server.\+c@{socket\+\_\+server.\+c}!srv\+\_\+socket@{srv\+\_\+socket}}
 \index{srv\+\_\+socket@{srv\+\_\+socket}!socket\+\_\+server.\+c@{socket\+\_\+server.\+c}}

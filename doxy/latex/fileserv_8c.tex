@@ -1,9 +1,7 @@
 \section{server/fileserv.c File Reference}
 \label{fileserv_8c}\index{server/fileserv.\+c@{server/fileserv.\+c}}
 {\ttfamily \#include \char`\"{}fileserv.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
-Include dependency graph for fileserv.\+c\+:
-\nopagebreak
+Include dependency graph for fileserv.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,9 +18,9 @@ char $\ast$ \textbf{ readable\+\_\+fs} (long int size, char $\ast$buf)
 char $\ast$ \textbf{ files\+\_\+info} (char $\ast$files\+Info)
 \begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
 int \textbf{ is\+\_\+valid\+\_\+file} (char $\ast$str)
-\begin{DoxyCompactList}\small\item\em Collection of the required information for each file in a specific folder. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Iterates through all the items in the folder until find the required file. \end{DoxyCompactList}\item 
 int \textbf{ check\+\_\+file} (char $\ast$str, char $\ast$file)
-\begin{DoxyCompactList}\small\item\em The existence of the image in the folder img is checked. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks the existence of the image in the folder img. \end{DoxyCompactList}\item 
 void \textbf{ transfer\+\_\+fs} (char $\ast$file)
 \begin{DoxyCompactList}\small\item\em Sockets are created and the file is sent to the client. \end{DoxyCompactList}\item 
 int \textbf{ cmd\+\_\+handler} (int msqid)
@@ -38,7 +36,7 @@ int \textbf{ cmd\+\_\+handler} (int msqid)
 
 
 
-The existence of the image in the folder img is checked. 
+Checks the existence of the image in the folder img. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -94,15 +92,15 @@ Formatted string ready to be printed or sent
 
 
 
-Collection of the required information for each file in a specific folder. 
+Iterates through all the items in the folder until find the required file. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em files\+Info} & \\
+{\em str} & filename \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Formatted string ready to be printed or sent 
+int 
 \end{DoxyReturn}
 \mbox{\label{fileserv_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
 \index{fileserv.\+c@{fileserv.\+c}!main@{main}}
@@ -128,7 +126,7 @@ Parser that returns in human-\/readable format the size of a file.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Formatted string what contains human-\/readable size of file 
+Formatted string what contains human-\/readable size of file. 
 \end{DoxyReturn}
 \mbox{\label{fileserv_8c_a5ea0687811fad6f1c67348a52ec2bb7a}} 
 \index{fileserv.\+c@{fileserv.\+c}!transfer\+\_\+fs@{transfer\+\_\+fs}}

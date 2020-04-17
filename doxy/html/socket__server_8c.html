@@ -88,6 +88,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a8c5fec800b50ceb5bb108fb72a4b50b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create, assign port, bind and listen of socket server.  <a href="#a8c5fec800b50ceb5bb108fb72a4b50b1">More...</a><br /></td></tr>
 <tr class="separator:a8c5fec800b50ceb5bb108fb72a4b50b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f68249c4a06c39600eba28ae2a2f061"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__server_8c.html#a5f68249c4a06c39600eba28ae2a2f061">send_file</a> (int connfd, char *str)</td></tr>
+<tr class="memdesc:a5f68249c4a06c39600eba28ae2a2f061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the file through sendfile function that maximizes the transfer speed using zero copy.  <a href="#a5f68249c4a06c39600eba28ae2a2f061">More...</a><br /></td></tr>
 <tr class="separator:a5f68249c4a06c39600eba28ae2a2f061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -116,6 +117,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Send the file through sendfile function that maximizes the transfer speed using zero copy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connfd</td><td>socket file descriptor </td></tr>
+    <tr><td class="paramname">str</td><td>file without folder path </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

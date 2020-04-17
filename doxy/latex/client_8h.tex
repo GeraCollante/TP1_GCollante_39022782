@@ -3,19 +3,17 @@
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}prompt.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$termios.\+h$>$}\newline
 {\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-Include dependency graph for client.\+h\+:
-\nopagebreak
+Include dependency graph for client.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{client_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,10 +23,14 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \textbf{ login} (char $\ast$)
-\begin{DoxyCompactList}\small\item\em Prompt for userpass ingress. \end{DoxyCompactList}\item 
+void \textbf{ burn\+\_\+usb} (char $\ast$, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Send the image to the U\+SB. \end{DoxyCompactList}\item 
 int \textbf{ check\+\_\+status} (int)
 \begin{DoxyCompactList}\small\item\em Check status. \end{DoxyCompactList}\item 
+void \textbf{ file\+\_\+down} (void)
+\begin{DoxyCompactList}\small\item\em If the image exists in the fileserver, it receives, saves, burns, erases and calculates the md5 and M\+BR of the U\+SB. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ login} (char $\ast$)
+\begin{DoxyCompactList}\small\item\em Prompt for userpass ingress. \end{DoxyCompactList}\item 
 void \textbf{ login\+\_\+handler} (int)
 \begin{DoxyCompactList}\small\item\em The connection between the server and the client is handled from this function, which is also responsible for the message passage between these. \end{DoxyCompactList}\item 
 void \textbf{ send\+\_\+cmd} (int, char $\ast$)
@@ -36,6 +38,23 @@ void \textbf{ send\+\_\+cmd} (int, char $\ast$)
 
 
 \subsection{Function Documentation}
+\mbox{\label{client_8h_a8f5170bbb9c0c247151775f99a577ff5}} 
+\index{client.\+h@{client.\+h}!burn\+\_\+usb@{burn\+\_\+usb}}
+\index{burn\+\_\+usb@{burn\+\_\+usb}!client.\+h@{client.\+h}}
+\subsubsection{burn\+\_\+usb()}
+{\footnotesize\ttfamily void burn\+\_\+usb (\begin{DoxyParamCaption}\item[{char $\ast$}]{img,  }\item[{char $\ast$}]{usb }\end{DoxyParamCaption})}
+
+
+
+Send the image to the U\+SB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em usb} & \\
+\hline
+\end{DoxyParams}
 \mbox{\label{client_8h_af8b753753a0d32bcef5a40e1a49b7a18}} 
 \index{client.\+h@{client.\+h}!check\+\_\+status@{check\+\_\+status}}
 \index{check\+\_\+status@{check\+\_\+status}!client.\+h@{client.\+h}}
@@ -54,6 +73,16 @@ Check status.
 \begin{DoxyReturn}{Returns}
 status 
 \end{DoxyReturn}
+\mbox{\label{client_8h_aacd5c156cb2388028cddb5242f1fe5c2}} 
+\index{client.\+h@{client.\+h}!file\+\_\+down@{file\+\_\+down}}
+\index{file\+\_\+down@{file\+\_\+down}!client.\+h@{client.\+h}}
+\subsubsection{file\+\_\+down()}
+{\footnotesize\ttfamily void file\+\_\+down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+If the image exists in the fileserver, it receives, saves, burns, erases and calculates the md5 and M\+BR of the U\+SB. 
+
 \mbox{\label{client_8h_a184b4ae1814dc2cdcea053bafd7f097f}} 
 \index{client.\+h@{client.\+h}!login@{login}}
 \index{login@{login}!client.\+h@{client.\+h}}

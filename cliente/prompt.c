@@ -1,5 +1,7 @@
 #include "prompt.h"
 
+//TODO doxygen
+
 /**
  * @brief   read line from stdin
  * @return  char * with the line

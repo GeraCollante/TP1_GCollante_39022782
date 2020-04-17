@@ -69,22 +69,22 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="client_8h_source.html">client.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="md5_8h_source.html">md5.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for client.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="client_8c__incl.png" border="0" usemap="#cliente_2client_8c" alt=""/></div>
 <map name="cliente_2client_8c" id="cliente_2client_8c">
-<area shape="rect" id="node2" href="client_8h.html" title="client.h" alt="" coords="1199,80,1263,107"/>
-<area shape="rect" id="node3" href="include_2socket_8h.html" title="socket.h" alt="" coords="735,155,807,181"/>
-<area shape="rect" id="node18" href="prompt_8h.html" title="prompt.h" alt="" coords="1157,155,1231,181"/>
-<area shape="rect" id="node19" href="common_8h.html" title="common.h" alt="" coords="1389,229,1471,256"/>
+<area shape="rect" id="node2" href="client_8h.html" title="client.h" alt="" coords="497,80,561,107"/>
+<area shape="rect" id="node21" href="md5_8h.html" title="md5.h" alt="" coords="267,155,326,181"/>
+<area shape="rect" id="node3" href="include_2socket_8h.html" title="socket.h" alt="" coords="737,155,809,181"/>
+<area shape="rect" id="node18" href="prompt_8h.html" title="prompt.h" alt="" coords="393,155,467,181"/>
+<area shape="rect" id="node19" href="common_8h.html" title="common.h" alt="" coords="487,229,570,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5a15ee962bc03fdeb8b161755d189fd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a5a15ee962bc03fdeb8b161755d189fd7">file_down</a> (char *str)</td></tr>
-<tr class="separator:a5a15ee962bc03fdeb8b161755d189fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d2a952bfee88348e1792d66acf01e38"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a0d2a952bfee88348e1792d66acf01e38">login</a> (char *userpass)</td></tr>
@@ -96,11 +96,54 @@ Functions</h2></td></tr>
 <tr class="memitem:a471ae164131962c0fe21a47e23706139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a471ae164131962c0fe21a47e23706139">login_handler</a> (int sockfd)</td></tr>
 <tr class="memdesc:a471ae164131962c0fe21a47e23706139"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connection between the server and the client is handled from this function, which is also responsible for the message passage between these.  <a href="#a471ae164131962c0fe21a47e23706139">More...</a><br /></td></tr>
 <tr class="separator:a471ae164131962c0fe21a47e23706139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03613f9e4af8de01a3ced4a764b7ffc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#ab03613f9e4af8de01a3ced4a764b7ffc">file_down</a> ()</td></tr>
+<tr class="memdesc:ab03613f9e4af8de01a3ced4a764b7ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the image exists in the fileserver, it receives, saves, burns, erases and calculates the md5 and MBR of the USB.  <a href="#ab03613f9e4af8de01a3ced4a764b7ffc">More...</a><br /></td></tr>
+<tr class="separator:ab03613f9e4af8de01a3ced4a764b7ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4117102389756aee8467678b28f484ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#a4117102389756aee8467678b28f484ed">send_cmd</a> (int sockfd, char *cmd)</td></tr>
 <tr class="memdesc:a4117102389756aee8467678b28f484ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send message to the server through a socket.  <a href="#a4117102389756aee8467678b28f484ed">More...</a><br /></td></tr>
 <tr class="separator:a4117102389756aee8467678b28f484ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2b1932ee1ab021c4d5cef8b93a56445"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8c.html#aa2b1932ee1ab021c4d5cef8b93a56445">burn_usb</a> (char *img, char *usb)</td></tr>
+<tr class="memdesc:aa2b1932ee1ab021c4d5cef8b93a56445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the image to the USB.  <a href="#aa2b1932ee1ab021c4d5cef8b93a56445">More...</a><br /></td></tr>
+<tr class="separator:aa2b1932ee1ab021c4d5cef8b93a56445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aa2b1932ee1ab021c4d5cef8b93a56445"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b1932ee1ab021c4d5cef8b93a56445">&#9670;&nbsp;</a></span>burn_usb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void burn_usb </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>usb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send the image to the USB. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td></td></tr>
+    <tr><td class="paramname">usb</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af00002a7d3df82f54b2041a687797915"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af00002a7d3df82f54b2041a687797915">&#9670;&nbsp;</a></span>check_status()</h2>
 
@@ -128,8 +171,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a15ee962bc03fdeb8b161755d189fd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a15ee962bc03fdeb8b161755d189fd7">&#9670;&nbsp;</a></span>file_down()</h2>
+<a id="ab03613f9e4af8de01a3ced4a764b7ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab03613f9e4af8de01a3ced4a764b7ffc">&#9670;&nbsp;</a></span>file_down()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,12 +180,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void file_down </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>If the image exists in the fileserver, it receives, saves, burns, erases and calculates the md5 and MBR of the USB. </p>
 
 </div>
 </div>

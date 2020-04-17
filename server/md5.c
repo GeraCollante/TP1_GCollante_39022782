@@ -1,6 +1,7 @@
 #include "md5.h"
+#include "common.h"
 
-#define BUFFSIZE 1024
+//TODO comentar md5
 
 /**
  * @brief   Checksum MD5 of filename
