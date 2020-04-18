@@ -15,7 +15,7 @@ AUTH			:=auth
 # 	COMPILE OPTIONS 
 #  -Werror
 CC				:= gcc
-CFLAGS			:= -I$(INCLUDE) -std=gnu11 -Wall -pedantic -Wextra -Wconversion -O3
+CFLAGS			:= -I$(INCLUDE) -std=gnu11 -Wall -pedantic -Wextra -Wconversion -O1
 LDLIBS			:= -lssl -lcrypto
 DOXYGEN 		:= doxygen
 DOXYFILE 		:= doxyfile

@@ -2,11 +2,13 @@
 \label{socket__client_8c}\index{cliente/socket\+\_\+client.\+c@{cliente/socket\+\_\+client.\+c}}
 {\ttfamily \#include \char`\"{}socket.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}common.\+h\char`\"{}}\newline
-Include dependency graph for socket\+\_\+client.\+c\+:\nopagebreak
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for socket\+\_\+client.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{socket__client_8c__incl}
+\includegraphics[width=284pt]{socket__client_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -14,9 +16,9 @@ Include dependency graph for socket\+\_\+client.\+c\+:\nopagebreak
 \item 
 int \textbf{ cli\+\_\+socket} (int port)
 \begin{DoxyCompactList}\small\item\em Creation, assign IP and port of client socket. Connect to server is included. \end{DoxyCompactList}\item 
-void \textbf{ recv\+\_\+file} (int newsockfd, int fd)
+long int \textbf{ recv\+\_\+file} (int newsockfd, int fd)
 \begin{DoxyCompactList}\small\item\em The file is received from the fileserver through a socket. \end{DoxyCompactList}\item 
-void \textbf{ transfer\+\_\+file} (int newsockfd)
+long int \textbf{ transfer\+\_\+file} (int newsockfd, char $\ast$usb)
 \begin{DoxyCompactList}\small\item\em File is created and proceeds to receive while the transfer time is calculated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -34,11 +36,11 @@ Creation, assign IP and port of client socket. Connect to server is included.
 \begin{DoxyReturn}{Returns}
 sockfd 
 \end{DoxyReturn}
-\mbox{\label{socket__client_8c_adb6899099476fe2ee0d39ca1ac603c09}} 
+\mbox{\label{socket__client_8c_a621d70c2ed3ab16e2bc0c9ec45b390ce}} 
 \index{socket\+\_\+client.\+c@{socket\+\_\+client.\+c}!recv\+\_\+file@{recv\+\_\+file}}
 \index{recv\+\_\+file@{recv\+\_\+file}!socket\+\_\+client.\+c@{socket\+\_\+client.\+c}}
 \subsubsection{recv\+\_\+file()}
-{\footnotesize\ttfamily void recv\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd,  }\item[{int}]{fd }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily long int recv\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd,  }\item[{int}]{fd }\end{DoxyParamCaption})}
 
 
 
@@ -51,11 +53,11 @@ The file is received from the fileserver through a socket.
 {\em fd} & \\
 \hline
 \end{DoxyParams}
-\mbox{\label{socket__client_8c_a82f7baba357b9320dc3a1f61718f8b48}} 
+\mbox{\label{socket__client_8c_a0b59c96534746c30c167f090497a8dd0}} 
 \index{socket\+\_\+client.\+c@{socket\+\_\+client.\+c}!transfer\+\_\+file@{transfer\+\_\+file}}
 \index{transfer\+\_\+file@{transfer\+\_\+file}!socket\+\_\+client.\+c@{socket\+\_\+client.\+c}}
 \subsubsection{transfer\+\_\+file()}
-{\footnotesize\ttfamily void transfer\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily long int transfer\+\_\+file (\begin{DoxyParamCaption}\item[{int}]{newsockfd,  }\item[{char $\ast$}]{usb }\end{DoxyParamCaption})}
 
 
 

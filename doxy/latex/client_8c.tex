@@ -2,7 +2,8 @@
 \label{client_8c}\index{cliente/client.\+c@{cliente/client.\+c}}
 {\ttfamily \#include \char`\"{}client.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}md5.\+h\char`\"{}}\newline
-Include dependency graph for client.\+c\+:\nopagebreak
+Include dependency graph for client.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,29 +24,10 @@ void \textbf{ login\+\_\+handler} (int sockfd)
 void \textbf{ file\+\_\+down} ()
 \begin{DoxyCompactList}\small\item\em If the image exists in the fileserver, it receives, saves, burns, erases and calculates the md5 and M\+BR of the U\+SB. \end{DoxyCompactList}\item 
 void \textbf{ send\+\_\+cmd} (int sockfd, char $\ast$cmd)
-\begin{DoxyCompactList}\small\item\em Send message to the server through a socket. \end{DoxyCompactList}\item 
-void \textbf{ burn\+\_\+usb} (char $\ast$img, char $\ast$usb)
-\begin{DoxyCompactList}\small\item\em Send the image to the U\+SB. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send message to the server through a socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\mbox{\label{client_8c_aa2b1932ee1ab021c4d5cef8b93a56445}} 
-\index{client.\+c@{client.\+c}!burn\+\_\+usb@{burn\+\_\+usb}}
-\index{burn\+\_\+usb@{burn\+\_\+usb}!client.\+c@{client.\+c}}
-\subsubsection{burn\+\_\+usb()}
-{\footnotesize\ttfamily void burn\+\_\+usb (\begin{DoxyParamCaption}\item[{char $\ast$}]{img,  }\item[{char $\ast$}]{usb }\end{DoxyParamCaption})}
-
-
-
-Send the image to the U\+SB. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em img} & \\
-\hline
-{\em usb} & \\
-\hline
-\end{DoxyParams}
 \mbox{\label{client_8c_af00002a7d3df82f54b2041a687797915}} 
 \index{client.\+c@{client.\+c}!check\+\_\+status@{check\+\_\+status}}
 \index{check\+\_\+status@{check\+\_\+status}!client.\+c@{client.\+c}}

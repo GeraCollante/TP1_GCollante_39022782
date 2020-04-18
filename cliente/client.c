@@ -3,7 +3,7 @@
 
 int main(){ 
     /*  Declaration of variables    */
-    int sockfd, contador = 0;
+    int sockfd, counter = 0;
     char * str = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     
     /*  Create and connect client socket    */
@@ -23,8 +23,8 @@ int main(){
         send_cmd(sockfd, str);
 
         /*  Counter of messages */
-        contador ++;
-        if(DEBUG)   printf("Contador de mensajes: %d\n", contador);
+        counter ++;
+        if(DEBUG)   printf("message counter: %d\n", counter);
     } while(1);
 
     /*  close the socket    */
@@ -161,37 +161,25 @@ void login_handler(int sockfd){
 void file_down(){
     /*  Var declaration */
     char * usb = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    // char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     char * md5 = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    long int bytes;
 
     /*  Path */
-    sprintf(usb, "%s", "/dev/sdf");
-    sprintf(img, "%s", "img2burn");
+    sprintf(usb, "%s", "/dev/sdc");
+    // sprintf(img, "%s", "img2burn");
 
     /*  Create socket and connect to fileserver  */
     int socket = cli_socket(PORT_FLS);
 
     /*  Receive file    */
-    transfer_file(socket);
-    printf("The file was successfully received.\n");
-
-    /*  Burning img in USB  */
-    printf("Burning image on USB. Please wait and do not disconnect the device.\n");
-    burn_usb(img, usb);
-    printf("The image was successfully burned on the USB device!\n");
-
-    /*  Delete img received */
-    if(remove(img)<0){
-        perror("Can't delete img.\n");
-        exit(EXIT_FAILURE);
-    };
-    printf("Deleted image from filesystem.\n");
-
-    /*  MD5 calculates on partition, not entire USB */
-    sprintf(usb, "%s1", usb);
-    printf("The image is in partition. %s.\n", usb);
-    file_md5(usb, md5);
+    bytes = transfer_file(socket, usb);
+    printf("The file was successfully burned.\n");
+    
+    /*  MD5     */
+    get_md5(usb, bytes, md5);
     printf("MD5 checksum: %s \n", md5);
+
 }
 
 /**
@@ -237,35 +225,4 @@ void send_cmd(int sockfd, char * cmd){
     }
 }
 
-/**
- * @brief   Send the image to the USB
- * @param   img 
- * @param   usb 
- */
-void burn_usb(char * img, char * usb){
-    /*  Var declaration */
-    struct stat file_stat;  //TODO malloc
-    /*  Get fd of img   */
-    int imgfd = open(img, O_RDONLY);
-    if(imgfd<0){
-        perror("Error getting image file descriptor");
-        exit(EXIT_FAILURE);
-    }
-
-    /*  Get fd of usb   */
-    int usbfd = open(usb, O_WRONLY);
-    if(usbfd<0){
-        perror("Error getting usb file descriptor");
-        exit(EXIT_FAILURE);
-    }
-
-    /*  Get stats of img and sendfile   */
-    fstat(imgfd, &file_stat);
-    if(sendfile(usbfd, imgfd, 0, (unsigned long) file_stat.st_size)<0){
-        perror("Error sending file.\n");
-        exit(EXIT_FAILURE);
-    };
-
-    close(imgfd);
-    close(usbfd);
-}
+//TODO exit

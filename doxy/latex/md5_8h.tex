@@ -1,29 +1,50 @@
 \section{include/md5.h File Reference}
 \label{md5_8h}\index{include/md5.\+h@{include/md5.\+h}}
 {\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include $<$openssl/md5.\+h$>$}\newline
-Include dependency graph for md5.\+h\+:\nopagebreak
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for md5.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{md5_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{md5_8h__dep__incl}
 \end{center}
 \end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ B\+U\+F\+F\+S\+I\+ZE}~1024
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 char $\ast$ \textbf{ file\+\_\+md5} (char $\ast$, char $\ast$)
-\begin{DoxyCompactList}\small\item\em Checksum M\+D5 of filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checksum M\+D5 of filename. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ get\+\_\+md5} (char $\ast$, ssize\+\_\+t, char $\ast$)
+\begin{DoxyCompactList}\small\item\em Get the md5 object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{md5_8h_a39912bfe2a55f30e269196f9141d845d}} 
+\index{md5.\+h@{md5.\+h}!B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+S\+I\+ZE@{B\+U\+F\+F\+S\+I\+ZE}!md5.\+h@{md5.\+h}}
+\subsubsection{B\+U\+F\+F\+S\+I\+ZE}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+S\+I\+ZE~1024}
+
 
 
 \subsection{Function Documentation}
@@ -46,4 +67,24 @@ Checksum M\+D5 of filename.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Formatted string of md5 checksum of file 
+\end{DoxyReturn}
+\mbox{\label{md5_8h_a882e1f1933e1504e1bb0832a7b226719}} 
+\index{md5.\+h@{md5.\+h}!get\+\_\+md5@{get\+\_\+md5}}
+\index{get\+\_\+md5@{get\+\_\+md5}!md5.\+h@{md5.\+h}}
+\subsubsection{get\+\_\+md5()}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+md5 (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+\_\+path,  }\item[{ssize\+\_\+t}]{end,  }\item[{char $\ast$}]{md5string }\end{DoxyParamCaption})}
+
+
+
+Get the md5 object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
 \end{DoxyReturn}

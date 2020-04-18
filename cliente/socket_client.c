@@ -1,5 +1,6 @@
 #include "socket.h"
 #include "common.h"
+#include <unistd.h>
 
 /**
  * @brief   Creation, assign IP and port of client socket.
@@ -42,7 +43,7 @@ int cli_socket(int port){
  * @param 	newsockfd 
  * @param 	fd 
  */
-void recv_file(int newsockfd, int fd){
+long int recv_file(int newsockfd, int fd){
 	/*	Declaration of variables	*/
 	long int n, m, count=0;
 	char buffer[BUFFSIZE];
@@ -74,6 +75,7 @@ void recv_file(int newsockfd, int fd){
 	/*	Close file descriptor of file and socket	*/
 	close(fd);
 	close(newsockfd);
+	return count;
 }
 
 /**
@@ -81,29 +83,34 @@ void recv_file(int newsockfd, int fd){
  * 			while the transfer time is calculated
  * @param 	newsockfd
  */
-void transfer_file(int newsockfd){
+long int transfer_file(int newsockfd, char * usb){
 	/* 	Declaration of variables 	*/
 	int fd;
-	char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+	long int bytes;
+	// char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
-	/*	Set name to file	*/
-	sprintf(filename, "%s", "img2burn");
-	if(DEBUG)	printf("Receiving the image: %s\n",filename);
+	time_t start,end;
+  	double dif;
+
+	if(DEBUG)	printf("Receiving the image.\n");
 	
 	/*	Get file descriptor	*/
-	if ((fd=open(filename, O_CREAT|O_WRONLY,0600))<0){
+	if ((fd=open(usb, O_WRONLY))<0){
 		perror("Error creating file.\n");
 		exit(EXIT_FAILURE);
 	}
 	
 	/* 	Start clock		*/
-	clock_t begin = clock();	
-	/*	Receive and save file	*/
-	recv_file(newsockfd, fd);
-	/*	Stop clock	*/
-	clock_t end = clock();
+  	time (&start);
 
-	/* 	File transfer time	*/
-	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-	if(DEBUG)	printf("File transfer time: %g sec\n", time_spent);
+	/*	Receive and save file	*/
+	bytes = recv_file(newsockfd, fd);
+
+	/*	Stop clock	*/
+  	time (&end);
+  	dif = difftime (end,start);
+  	printf ("Image burn time was %.2lf seconds.\n", dif);
+	sync();
+
+	return bytes;
 }

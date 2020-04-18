@@ -70,6 +70,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;socket.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for socket_client.c:</div>
 <div class="dyncontent">
@@ -84,12 +85,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ad00c6fbc3ed7bc44f4e78ad434174830"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__client_8c.html#ad00c6fbc3ed7bc44f4e78ad434174830">cli_socket</a> (int port)</td></tr>
 <tr class="memdesc:ad00c6fbc3ed7bc44f4e78ad434174830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creation, assign IP and port of client socket. Connect to server is included.  <a href="#ad00c6fbc3ed7bc44f4e78ad434174830">More...</a><br /></td></tr>
 <tr class="separator:ad00c6fbc3ed7bc44f4e78ad434174830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb6899099476fe2ee0d39ca1ac603c09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__client_8c.html#adb6899099476fe2ee0d39ca1ac603c09">recv_file</a> (int newsockfd, int fd)</td></tr>
-<tr class="memdesc:adb6899099476fe2ee0d39ca1ac603c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file is received from the fileserver through a socket.  <a href="#adb6899099476fe2ee0d39ca1ac603c09">More...</a><br /></td></tr>
-<tr class="separator:adb6899099476fe2ee0d39ca1ac603c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82f7baba357b9320dc3a1f61718f8b48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__client_8c.html#a82f7baba357b9320dc3a1f61718f8b48">transfer_file</a> (int newsockfd)</td></tr>
-<tr class="memdesc:a82f7baba357b9320dc3a1f61718f8b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">File is created and proceeds to receive while the transfer time is calculated.  <a href="#a82f7baba357b9320dc3a1f61718f8b48">More...</a><br /></td></tr>
-<tr class="separator:a82f7baba357b9320dc3a1f61718f8b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a621d70c2ed3ab16e2bc0c9ec45b390ce"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__client_8c.html#a621d70c2ed3ab16e2bc0c9ec45b390ce">recv_file</a> (int newsockfd, int fd)</td></tr>
+<tr class="memdesc:a621d70c2ed3ab16e2bc0c9ec45b390ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file is received from the fileserver through a socket.  <a href="#a621d70c2ed3ab16e2bc0c9ec45b390ce">More...</a><br /></td></tr>
+<tr class="separator:a621d70c2ed3ab16e2bc0c9ec45b390ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b59c96534746c30c167f090497a8dd0"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket__client_8c.html#a0b59c96534746c30c167f090497a8dd0">transfer_file</a> (int newsockfd, char *usb)</td></tr>
+<tr class="memdesc:a0b59c96534746c30c167f090497a8dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">File is created and proceeds to receive while the transfer time is calculated.  <a href="#a0b59c96534746c30c167f090497a8dd0">More...</a><br /></td></tr>
+<tr class="separator:a0b59c96534746c30c167f090497a8dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ad00c6fbc3ed7bc44f4e78ad434174830"></a>
@@ -113,14 +114,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adb6899099476fe2ee0d39ca1ac603c09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb6899099476fe2ee0d39ca1ac603c09">&#9670;&nbsp;</a></span>recv_file()</h2>
+<a id="a621d70c2ed3ab16e2bc0c9ec45b390ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a621d70c2ed3ab16e2bc0c9ec45b390ce">&#9670;&nbsp;</a></span>recv_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void recv_file </td>
+          <td class="memname">long int recv_file </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>newsockfd</em>, </td>
@@ -150,18 +151,28 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a82f7baba357b9320dc3a1f61718f8b48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82f7baba357b9320dc3a1f61718f8b48">&#9670;&nbsp;</a></span>transfer_file()</h2>
+<a id="a0b59c96534746c30c167f090497a8dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b59c96534746c30c167f090497a8dd0">&#9670;&nbsp;</a></span>transfer_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void transfer_file </td>
+          <td class="memname">long int transfer_file </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>newsockfd</em></td><td>)</td>
+          <td class="paramname"><em>newsockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>usb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

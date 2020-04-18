@@ -9,6 +9,7 @@
         "types.h": "c",
         "server.h": "c",
         "socket.h": "c",
-        "client.h": "c"
+        "client.h": "c",
+        "md5.h": "c"
     }
 }

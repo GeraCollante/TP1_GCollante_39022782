@@ -16,9 +16,9 @@
 #define MAX         1024
 #define SA struct   sockaddr
 
-int     srv_socket      (int);
-int     cli_socket      (int);
-int     wait_cli        (int);
-void    send_file       (int, char *);
-void    recv_file       (int, int);
-void    transfer_file   (int);
+int         cli_socket      (int);
+long int    recv_file       (int, int);
+void        send_file       (int, char *);
+int         srv_socket      (int);
+long int    transfer_file   (int, char *);
+int         wait_cli        (int);

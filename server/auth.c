@@ -157,7 +157,7 @@ int get_status(char * userpass, char * user){
 char * login_handler(int msqid, char * user){
     int status;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-
+    puts("login handler");
     do{
         /*  Receive userpass from [SVR] */
         rcv_msg(msqid, str, auth_type);
@@ -165,6 +165,8 @@ char * login_handler(int msqid, char * user){
 
         /*  Get status of userpass and convert to int */
         sprintf(str, "%d", get_status(str, user));
+
+        printf("str: %s\n", str);
 
         status = atoi(str);
         printf("[AUT]->[SRV]: %s\n",str);
@@ -205,7 +207,6 @@ int cmd_handler(int msqid, char * user){
     /*  Receive userpass from [SVR] */
     rcv_msg(msqid, str, auth_type);
     printf("[AUT]<-[SRV]: %s\n",str);
-    fflush(stdout);
 
     /*  Get status of userpass and convert to int */
     status = atoi(str);

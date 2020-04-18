@@ -69,28 +69,37 @@ $(function() {
 <div class="title">prueba.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;openssl/md5.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for prueba.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="prueba_8c__incl.png" border="0" usemap="#thrash_2prueba_8c" alt=""/></div>
+<map name="thrash_2prueba_8c" id="thrash_2prueba_8c">
+</map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a39912bfe2a55f30e269196f9141d845d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a39912bfe2a55f30e269196f9141d845d">BUFFSIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="memitem:a39912bfe2a55f30e269196f9141d845d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a39912bfe2a55f30e269196f9141d845d">BUFFSIZE</a>&#160;&#160;&#160;1024</td></tr>
 <tr class="separator:a39912bfe2a55f30e269196f9141d845d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a224345045f1250d5768d42d8cc9e3dab"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a224345045f1250d5768d42d8cc9e3dab">get_1st_char</a> (char *str)</td></tr>
-<tr class="memdesc:a224345045f1250d5768d42d8cc9e3dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the 1st char of str.  <a href="#a224345045f1250d5768d42d8cc9e3dab">More...</a><br /></td></tr>
-<tr class="separator:a224345045f1250d5768d42d8cc9e3dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fab57195d50c5f2b55f2744232ad64d"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a9fab57195d50c5f2b55f2744232ad64d">cmd_handler</a> (char *cmd, char *msg)</td></tr>
-<tr class="memdesc:a9fab57195d50c5f2b55f2744232ad64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decode the str that comes from the client and then be forwarded to AUT or FLS as appropriate.  <a href="#a9fab57195d50c5f2b55f2744232ad64d">More...</a><br /></td></tr>
-<tr class="separator:a9fab57195d50c5f2b55f2744232ad64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a5c6d36c7e9c1b39aa1bdf8064b2844"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a7a5c6d36c7e9c1b39aa1bdf8064b2844">file_md5</a> (char *filename, char *md5, ssize_t fin)</td></tr>
+<tr class="memdesc:a7a5c6d36c7e9c1b39aa1bdf8064b2844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checksum MD5 of filename.  <a href="#a7a5c6d36c7e9c1b39aa1bdf8064b2844">More...</a><br /></td></tr>
+<tr class="separator:a7a5c6d36c7e9c1b39aa1bdf8064b2844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae630ba58a68538d567fcb403837d32"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#aaae630ba58a68538d567fcb403837d32">filesize_md5</a> (char *filename, char *md5, ssize_t end)</td></tr>
+<tr class="separator:aaae630ba58a68538d567fcb403837d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f712a1f36520724d253cae12dfb7fda"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#a3f712a1f36520724d253cae12dfb7fda">get_md5</a> (char *file_path, ssize_t end, char *md5string)</td></tr>
+<tr class="memdesc:a3f712a1f36520724d253cae12dfb7fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the md5 object.  <a href="#a3f712a1f36520724d253cae12dfb7fda">More...</a><br /></td></tr>
+<tr class="separator:a3f712a1f36520724d253cae12dfb7fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="prueba_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -102,7 +111,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BUFFSIZE&#160;&#160;&#160;256</td>
+          <td class="memname">#define BUFFSIZE&#160;&#160;&#160;1024</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -110,23 +119,29 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9fab57195d50c5f2b55f2744232ad64d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fab57195d50c5f2b55f2744232ad64d">&#9670;&nbsp;</a></span>cmd_handler()</h2>
+<a id="a7a5c6d36c7e9c1b39aa1bdf8064b2844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a5c6d36c7e9c1b39aa1bdf8064b2844">&#9670;&nbsp;</a></span>file_md5()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long cmd_handler </td>
+          <td class="memname">char* file_md5 </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>cmd</em>, </td>
+          <td class="paramname"><em>filename</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>msg</em>&#160;</td>
+          <td class="paramname"><em>md5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ssize_t&#160;</td>
+          <td class="paramname"><em>fin</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -136,42 +151,93 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Decode the str that comes from the client and then be forwarded to AUT or FLS as appropriate. </p>
+<p>Checksum MD5 of filename. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cmd</td><td></td></tr>
-    <tr><td class="paramname">msg</td><td></td></tr>
+    <tr><td class="paramname">filename</td><td></td></tr>
+    <tr><td class="paramname">md5</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>long m_type </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Formatted string of md5 checksum of file </dd></dl>
 
 </div>
 </div>
-<a id="a224345045f1250d5768d42d8cc9e3dab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a224345045f1250d5768d42d8cc9e3dab">&#9670;&nbsp;</a></span>get_1st_char()</h2>
+<a id="aaae630ba58a68538d567fcb403837d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaae630ba58a68538d567fcb403837d32">&#9670;&nbsp;</a></span>filesize_md5()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long get_1st_char </td>
+          <td class="memname">char* filesize_md5 </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>md5</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ssize_t&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the 1st char of str. </p>
+</div>
+</div>
+<a id="a3f712a1f36520724d253cae12dfb7fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f712a1f36520724d253cae12dfb7fda">&#9670;&nbsp;</a></span>get_md5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* get_md5 </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ssize_t&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>md5string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the md5 object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str</td><td></td></tr>
+    <tr><td class="paramname">file_path</td><td></td></tr>
+    <tr><td class="paramname">end</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>long </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
 
 </div>
 </div>

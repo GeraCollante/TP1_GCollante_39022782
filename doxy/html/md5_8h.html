@@ -63,20 +63,26 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">md5.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;errno.h&gt;</code><br />
+<code>#include &lt;openssl/md5.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;openssl/md5.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for md5.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="md5_8h__incl.png" border="0" usemap="#include_2md5_8h" alt=""/></div>
+<map name="include_2md5_8h" id="include_2md5_8h">
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -92,12 +98,35 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="md5_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a39912bfe2a55f30e269196f9141d845d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="md5_8h.html#a39912bfe2a55f30e269196f9141d845d">BUFFSIZE</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a39912bfe2a55f30e269196f9141d845d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abb8d33df0713fc64b9e32341af87a810"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="md5_8h.html#abb8d33df0713fc64b9e32341af87a810">file_md5</a> (char *, char *)</td></tr>
 <tr class="memdesc:abb8d33df0713fc64b9e32341af87a810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checksum MD5 of filename.  <a href="#abb8d33df0713fc64b9e32341af87a810">More...</a><br /></td></tr>
 <tr class="separator:abb8d33df0713fc64b9e32341af87a810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882e1f1933e1504e1bb0832a7b226719"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="md5_8h.html#a882e1f1933e1504e1bb0832a7b226719">get_md5</a> (char *, ssize_t, char *)</td></tr>
+<tr class="memdesc:a882e1f1933e1504e1bb0832a7b226719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the md5 object.  <a href="#a882e1f1933e1504e1bb0832a7b226719">More...</a><br /></td></tr>
+<tr class="separator:a882e1f1933e1504e1bb0832a7b226719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a39912bfe2a55f30e269196f9141d845d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39912bfe2a55f30e269196f9141d845d">&#9670;&nbsp;</a></span>BUFFSIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUFFSIZE&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="abb8d33df0713fc64b9e32341af87a810"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb8d33df0713fc64b9e32341af87a810">&#9670;&nbsp;</a></span>file_md5()</h2>
@@ -134,6 +163,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Formatted string of md5 checksum of file </dd></dl>
+
+</div>
+</div>
+<a id="a882e1f1933e1504e1bb0832a7b226719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a882e1f1933e1504e1bb0832a7b226719">&#9670;&nbsp;</a></span>get_md5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* get_md5 </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ssize_t&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>md5string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the md5 object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_path</td><td></td></tr>
+    <tr><td class="paramname">end</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>char* </dd></dl>
 
 </div>
 </div>

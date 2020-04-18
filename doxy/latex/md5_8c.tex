@@ -14,7 +14,9 @@ Include dependency graph for md5.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 char $\ast$ \textbf{ file\+\_\+md5} (char $\ast$filename, char $\ast$md5)
-\begin{DoxyCompactList}\small\item\em Checksum M\+D5 of filename. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checksum M\+D5 of filename. \end{DoxyCompactList}\item 
+char $\ast$ \textbf{ get\+\_\+md5} (char $\ast$file\+\_\+path, ssize\+\_\+t end, char $\ast$md5string)
+\begin{DoxyCompactList}\small\item\em Get the md5 object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -37,4 +39,24 @@ Checksum M\+D5 of filename.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Formatted string of md5 checksum of file 
+\end{DoxyReturn}
+\mbox{\label{md5_8c_a3f712a1f36520724d253cae12dfb7fda}} 
+\index{md5.\+c@{md5.\+c}!get\+\_\+md5@{get\+\_\+md5}}
+\index{get\+\_\+md5@{get\+\_\+md5}!md5.\+c@{md5.\+c}}
+\subsubsection{get\+\_\+md5()}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+md5 (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+\_\+path,  }\item[{ssize\+\_\+t}]{end,  }\item[{char $\ast$}]{md5string }\end{DoxyParamCaption})}
+
+
+
+Get the md5 object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
 \end{DoxyReturn}
