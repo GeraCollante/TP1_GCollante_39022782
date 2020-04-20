@@ -20,6 +20,7 @@ LDLIBS			:= -lssl -lcrypto
 DOXYGEN 		:= doxygen
 DOXYFILE 		:= doxyfile
 BROWSER			:= google-chrome
+CPPCHECK		:= cppcheck
 
 # 	SOURCES
 SRCSCLIENT		:= client.c prompt.c socket_client.c mbr.c
@@ -45,6 +46,10 @@ clean:
 	-$(RM) $(OBJSAUTH)
 
 create:	$(BINARY_DIR)/$(CLIENT) $(BINARY_DIR)/$(AUTH) $(BINARY_DIR)/$(SERVER) $(BINARY_DIR)/$(FILES)
+
+cppcheck:	
+	$(CPPCHECK) $(CLIENT_SOURCE)
+	$(CPPCHECK) $(SERVER_SOURCE)
 
 .PHONY: server
 server:

@@ -103,12 +103,13 @@ char * files_info(char * filesInfo){
         closedir(d);
     }
     /* Free memory allocated */
-    // free(buf);
-    // free(dir);
-    // free(folder);
-    // free(filename);
-    // free(fsize);
-    // free(aux);
+    free(buf);
+    free(dir);
+    free(folder);
+    free(filename);
+    free(fsize);
+    free(aux);
+    free(md5);
     return filesInfo;
 }
 
@@ -156,12 +157,8 @@ int is_valid_file(char * str){
         closedir(d);
     }
     /* Free memory allocated */
-    // free(buf);
-    // free(dir);
-    // free(folder);
-    // free(filename);
-    // free(fsize);
-    // free(aux);
+    free(folder);
+    free(filename);
     return exist;
 }
 

@@ -71,6 +71,7 @@ void last_connect(char* user){
             break;
         }
     }
+    free(connect_time);
     save_db();
 }
 
@@ -133,6 +134,7 @@ int get_status(char * userpass, char * user){
     char * pass = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
     tok = strtok(userpass,",");
+
     sprintf(user,"%s", tok);
     while (tok != NULL)
     {
@@ -147,6 +149,8 @@ int get_status(char * userpass, char * user){
     /*  If wrong password then increase blocks value */
     if(!status)     increase_block(user);
     // if(DEBUG) printf("status: %d\n",status);
+    free(tok);
+    free(pass);
     return status;
 }
 
@@ -256,6 +260,7 @@ char * list_users(char * strUsers){
         strcat(strUsers, aux);
     }
     strcat(strUsers, "\n");
+    free(aux);
     return strUsers;
 }
 

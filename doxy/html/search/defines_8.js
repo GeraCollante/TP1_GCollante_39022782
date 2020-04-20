@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['users',['USERS',['../auth_8h.html#a322789c10f93ef5e09a1d5f17aabf0e3',1,'auth.h']]]
+  ['reset',['RESET',['../include_2mbr_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;mbr.h'],['../thrash_2mbr_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;mbr.h']]]
 ];

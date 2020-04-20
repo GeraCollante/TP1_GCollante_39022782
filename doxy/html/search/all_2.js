@@ -10,5 +10,6 @@ var searchData=
   ['client_2eh',['client.h',['../client_8h.html',1,'']]],
   ['cmd_5fhandler',['cmd_handler',['../auth_8h.html#ac577f045e4bf8abe2128eb727bf5edb7',1,'cmd_handler(int, char *):&#160;auth.c'],['../fileserv_8h.html#a17e3a23bd1ae378882eab0ef0f856de1',1,'cmd_handler(int):&#160;fileserv.c'],['../server_8h.html#a4199c4fe35b146a5a21818e16572ce17',1,'cmd_handler(char *, char *):&#160;server.c'],['../auth_8c.html#a9aad4fc4e148f0c94e1c891951a824aa',1,'cmd_handler(int msqid, char *user):&#160;auth.c'],['../fileserv_8c.html#a975d9337db509c0204b110f51d723160',1,'cmd_handler(int msqid):&#160;fileserv.c'],['../server_8c.html#a9fab57195d50c5f2b55f2744232ad64d',1,'cmd_handler(char *cmd, char *msg):&#160;server.c'],['../file_8c.html#a975d9337db509c0204b110f51d723160',1,'cmd_handler(int msqid):&#160;file.c']]],
   ['cmd_5fprompt',['cmd_prompt',['../prompt_8c.html#ac78cdc81595d63a0c876d3e3e8d2db70',1,'cmd_prompt(char *str_to_server):&#160;prompt.c'],['../prompt_8h.html#ae3a964495cbc932650f78912457f90af',1,'cmd_prompt(char *):&#160;prompt.c']]],
-  ['common_2eh',['common.h',['../common_8h.html',1,'']]]
+  ['common_2eh',['common.h',['../common_8h.html',1,'']]],
+  ['cuarentena_2ec',['cuarentena.c',['../cuarentena_8c.html',1,'']]]
 ];

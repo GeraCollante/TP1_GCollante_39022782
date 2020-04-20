@@ -1,6 +1,7 @@
 var searchData=
 [
   ['last_5fconnect',['last_connect',['../auth_8h.html#a45125798b5e6b7446e4f699ff5d5ce7e',1,'last_connect(char *):&#160;auth.c'],['../auth_8c.html#adedb2d3fe2edbbc0dc8873423f20a23b',1,'last_connect(char *user):&#160;auth.c']]],
+  ['lehex_5fdec',['lehex_dec',['../cliente_2mbr_8c.html#aef6ad6848ec76bab63e017474336c9d7',1,'lehex_dec(char *str):&#160;mbr.c'],['../include_2mbr_8h.html#a46b52473c1592ed909ab0e3210e54515',1,'lehex_dec(char *):&#160;mbr.c'],['../cuarentena_8c.html#aef6ad6848ec76bab63e017474336c9d7',1,'lehex_dec(char *str):&#160;cuarentena.c'],['../thrash_2mbr_8c.html#aef6ad6848ec76bab63e017474336c9d7',1,'lehex_dec(char *str):&#160;mbr.c'],['../thrash_2mbr_8h.html#a46b52473c1592ed909ab0e3210e54515',1,'lehex_dec(char *):&#160;mbr.c'],['../reverse_8c.html#aef6ad6848ec76bab63e017474336c9d7',1,'lehex_dec(char *str):&#160;reverse.c']]],
   ['list_5fusers',['list_users',['../auth_8h.html#a56c464f7248b65a5b16a96f3d5cb94af',1,'list_users(char *):&#160;auth.c'],['../auth_8c.html#a057d702fc9dbc94e59ee567c7d9f0a6e',1,'list_users(char *strUsers):&#160;auth.c']]],
   ['load_5fdb',['load_db',['../auth_8h.html#aca138a298c612a14d6fb2c16672f8c87',1,'load_db(void):&#160;auth.c'],['../auth_8c.html#aca138a298c612a14d6fb2c16672f8c87',1,'load_db(void):&#160;auth.c']]],
   ['login',['login',['../client_8c.html#a0d2a952bfee88348e1792d66acf01e38',1,'login(char *userpass):&#160;client.c'],['../client_8h.html#a184b4ae1814dc2cdcea053bafd7f097f',1,'login(char *):&#160;client.c']]],

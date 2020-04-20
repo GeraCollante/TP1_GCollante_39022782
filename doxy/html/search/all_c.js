@@ -1,20 +1,14 @@
 var searchData=
 [
-  ['sa',['SA',['../include_2socket_8h.html#a1e43924adac4ae865aa0acf79710261c',1,'socket.h']]],
-  ['save_5fdb',['save_db',['../auth_8h.html#a7145eb48ec5e46fbb39b0b174a026cd1',1,'save_db(void):&#160;auth.c'],['../auth_8c.html#afeb75f74451938ff9dc7617224f6fe3f',1,'save_db():&#160;auth.c']]],
-  ['send_5fcmd',['send_cmd',['../client_8c.html#a4117102389756aee8467678b28f484ed',1,'send_cmd(int sockfd, char *cmd):&#160;client.c'],['../client_8h.html#a3f2e03899acbcffa63c626522bfb6c40',1,'send_cmd(int, char *):&#160;client.c']]],
-  ['send_5ffile',['send_file',['../include_2socket_8h.html#a693da9793ce6d58554c5fa264e9256e6',1,'send_file(int, char *):&#160;socket_server.c'],['../socket__server_8c.html#a5f68249c4a06c39600eba28ae2a2f061',1,'send_file(int connfd, char *str):&#160;socket_server.c'],['../socket_8c.html#a91bd21665371000f5251a149716f82fb',1,'send_file(int connfd, char *filename):&#160;socket.c'],['../thrash_2socket_8h.html#a693da9793ce6d58554c5fa264e9256e6',1,'send_file(int, char *):&#160;socket_server.c']]],
-  ['sender2_2ec',['sender2.c',['../sender2_8c.html',1,'']]],
-  ['sendfile_2ec',['sendfile.c',['../sendfile_8c.html',1,'']]],
-  ['server_2ec',['server.c',['../server_8c.html',1,'']]],
-  ['server_2eh',['server.h',['../server_8h.html',1,'']]],
-  ['sig_5fhandler',['sig_handler',['../signal_8c.html#a4f31a6fd48ee5d4579ae4aaaa3cae285',1,'signal.c']]],
-  ['signal_2ec',['signal.c',['../signal_8c.html',1,'']]],
-  ['snd_5fmsg',['snd_msg',['../mq_8h.html#a2e044d5d536ba833380870953724eb03',1,'snd_msg(int, char *, long):&#160;mq.c'],['../mq_8c.html#a7d2e21e44f7a9a63f9f7a9020dd61719',1,'snd_msg(int msqid, char *msg, long mtype):&#160;mq.c']]],
-  ['socket_2ec',['socket.c',['../socket_8c.html',1,'']]],
-  ['socket_2eh',['socket.h',['../include_2socket_8h.html',1,'(Global Namespace)'],['../thrash_2socket_8h.html',1,'(Global Namespace)']]],
-  ['socket_5fclient_2ec',['socket_client.c',['../socket__client_8c.html',1,'']]],
-  ['socket_5fserver_2ec',['socket_server.c',['../socket__server_8c.html',1,'']]],
-  ['split_5fline',['split_line',['../prompt_8c.html#a0fa6791564b78ce51a5c31ddd923b892',1,'split_line(char *line):&#160;prompt.c'],['../prompt_8h.html#ae3787b54051a7b49115846f09e9716c9',1,'split_line(char *):&#160;prompt.c']]],
-  ['srv_5fsocket',['srv_socket',['../include_2socket_8h.html#a125c611622623d60cf2e3680e39d4e56',1,'srv_socket(int):&#160;socket_server.c'],['../socket__server_8c.html#a8c5fec800b50ceb5bb108fb72a4b50b1',1,'srv_socket(int port):&#160;socket_server.c'],['../socket_8c.html#abaa85d7aff16c338adf9a408c151bc28',1,'srv_socket():&#160;socket.c'],['../thrash_2socket_8h.html#a904ce9e03065ab436ce8c5d97c557c5c',1,'srv_socket(void):&#160;socket.c']]]
+  ['rcv_5fcmd',['rcv_cmd',['../server_8h.html#a9e01af92870c6e74d3b55dd7aab75cb7',1,'rcv_cmd(int, int):&#160;server.c'],['../server_8c.html#abccdfc478d69333f46803552eba43cbb',1,'rcv_cmd(int sockfd, int msqid):&#160;server.c']]],
+  ['rcv_5fmsg',['rcv_msg',['../mq_8h.html#a07daba13b107a4b924dafaa1acf84235',1,'rcv_msg(int, char *, long):&#160;mq.c'],['../mq_8c.html#a9fdea1732b3a3772bedad98f1a635e08',1,'rcv_msg(int msqid, char *msg, long mtype):&#160;mq.c']]],
+  ['read_5fline',['read_line',['../prompt_8c.html#ac14a4d3d27ec36419b82f72342be3a65',1,'read_line(void):&#160;prompt.c'],['../prompt_8h.html#ac14a4d3d27ec36419b82f72342be3a65',1,'read_line(void):&#160;prompt.c']]],
+  ['read_5fmbr',['read_mbr',['../cliente_2mbr_8c.html#a9560e90228261f62fb0ee355aaba376f',1,'read_mbr(FILE *fp):&#160;mbr.c'],['../include_2mbr_8h.html#abca2e392a8225b16f501f229572a1624',1,'read_mbr(FILE *):&#160;mbr.c'],['../thrash_2mbr_8c.html#a9560e90228261f62fb0ee355aaba376f',1,'read_mbr(FILE *fp):&#160;mbr.c'],['../thrash_2mbr_8h.html#abca2e392a8225b16f501f229572a1624',1,'read_mbr(FILE *):&#160;mbr.c']]],
+  ['readable_5ffs',['readable_fs',['../cliente_2mbr_8c.html#acc2d85b2213dccf86e38e58380ecf804',1,'readable_fs(size_t size, char *buf):&#160;mbr.c'],['../fileserv_8h.html#aaa60420f4ed2522f7e58eedb72afea48',1,'readable_fs(long int, char *):&#160;fileserv.c'],['../include_2mbr_8h.html#ac12a2b10e7b4eeb21ac854abbd9d15f9',1,'readable_fs(size_t, char *):&#160;mbr.c'],['../fileserv_8c.html#acb8985a720cf17b68e99872ba793f2cc',1,'readable_fs(long int size, char *buf):&#160;fileserv.c'],['../cuarentena_8c.html#acc2d85b2213dccf86e38e58380ecf804',1,'readable_fs(size_t size, char *buf):&#160;cuarentena.c'],['../main_8c.html#acb8985a720cf17b68e99872ba793f2cc',1,'readable_fs(long int size, char *buf):&#160;main.c'],['../thrash_2mbr_8c.html#acc2d85b2213dccf86e38e58380ecf804',1,'readable_fs(size_t size, char *buf):&#160;mbr.c'],['../thrash_2mbr_8h.html#ac12a2b10e7b4eeb21ac854abbd9d15f9',1,'readable_fs(size_t, char *):&#160;mbr.c'],['../reverse_8c.html#acc2d85b2213dccf86e38e58380ecf804',1,'readable_fs(size_t size, char *buf):&#160;reverse.c']]],
+  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['receiver2_2ec',['receiver2.c',['../receiver2_8c.html',1,'']]],
+  ['recfile_2ec',['recfile.c',['../recfile_8c.html',1,'']]],
+  ['recv_5ffile',['recv_file',['../socket__client_8c.html#a621d70c2ed3ab16e2bc0c9ec45b390ce',1,'recv_file(int newsockfd, int fd):&#160;socket_client.c'],['../include_2socket_8h.html#affdd2bfed5a0f709043c4d089ae23b1f',1,'recv_file(int, int):&#160;socket_client.c'],['../socket_8c.html#afe49ab8d5d6dbc407156f33dce0152cf',1,'recv_file(int newsockfd):&#160;socket.c'],['../thrash_2socket_8h.html#a69066f7aa016b5791b162336d240de35',1,'recv_file(int):&#160;socket.c']]],
+  ['reset',['RESET',['../include_2mbr_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;mbr.h'],['../thrash_2mbr_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;mbr.h']]],
+  ['reverse_2ec',['reverse.c',['../reverse_8c.html',1,'']]]
 ];

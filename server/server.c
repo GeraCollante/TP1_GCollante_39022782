@@ -109,6 +109,7 @@ long get_1st_char(char * str){
 
     snprintf(aux,2,"%s", str);
     m_type = atol(aux);
+    free(aux);
     return m_type;
 }
 
@@ -171,6 +172,9 @@ long cmd_handler(char * cmd, char * msg){
     }
 
     printf("msg: %s\n", msg);
+    free(tok);
+    free(arg);
+    free(prc);
     
     return m_type;
 }
