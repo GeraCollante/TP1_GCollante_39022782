@@ -1,5 +1,6 @@
 #include "client.h"
 #include "md5.h"
+#include "mbr.h"
 
 int main(){ 
     /*  Declaration of variables    */
@@ -179,6 +180,8 @@ void file_down(){
     /*  MD5     */
     get_md5(usb, bytes, md5);
     printf("MD5 checksum: %s \n", md5);
+
+    mbr_table(usb);
 
 }
 

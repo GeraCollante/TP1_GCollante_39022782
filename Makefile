@@ -22,7 +22,7 @@ DOXYFILE 		:= doxyfile
 BROWSER			:= google-chrome
 
 # 	SOURCES
-SRCSCLIENT		:= client.c prompt.c socket_client.c
+SRCSCLIENT		:= client.c prompt.c socket_client.c mbr.c
 SRCSSERVER 		:= server.c socket_server.c mq.c
 SRCSAUTH		:= auth.c mq.c
 SRCSFILES		:= $(addprefix $(SERVER_SOURCE)/, fileserv.c mq.c md5.c socket_server.c)
