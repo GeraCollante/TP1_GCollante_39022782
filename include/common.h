@@ -5,3 +5,6 @@
 #define LOGIN       1
 #define PORT_SRV    10004
 #define PORT_FLS    10001
+#define DEBUG2      0
+#define RESET       "\033[0m"
+#define BOLDWHITE   "\033[1m\033[37m"

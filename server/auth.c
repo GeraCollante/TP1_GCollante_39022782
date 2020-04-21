@@ -2,39 +2,44 @@
 #include "mq.h"
 
 int main(void){
-    char * user = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    int msqid, end = 1, contador = 0;
-    
-    /*  Load DB */
-    load_db();
-    if(DEBUG)   printf("[AUT] Database loaded successfully!\n");
-    
-    /*  Create message queue */
-    msqid = mqid();
-    if(DEBUG)   printf("[AUT] Messages queue created!\n");
 
-    /*  Login handler   */
-    if(DEBUG)   printf("[AUT] Login handler.\n");
-    login_handler(msqid, user);
-    if(DEBUG)   printf("[AUT] %s has logged in!\n", user);
-
-    /*  Registered connection   */
-    last_connect(user);
-    if(DEBUG)   printf("[AUT] Register last connect.\n");
-    fflush(stdout);
-
-    /*  Waiting for cmd from [SRV]  */
     do
     {
-        /*  Handler of cmd  */
-        end = cmd_handler(msqid, user);
+        char * user = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+        int msqid, end = 0, contador = 0;
+        
+        /*  Load DB */
+        load_db();
+        if(DEBUG)   printf("[AUT] Database loaded successfully!\n");
+        
+        /*  Create message queue */
+        msqid = mqid();
+        if(DEBUG)   printf("[AUT] Messages queue created!\n");
 
-        /*  Counter of msg  */
-        contador++;
-        if(DEBUG)   printf("[AUT] Message counter: %d\n", contador);
-    }while(end!=0);
+        /*  Login handler   */
+        if(DEBUG)   printf("[AUT] Login handler.\n");
+        login_handler(msqid, user);
+        if(DEBUG)   printf("[AUT] %s has logged in!\n", user);
 
-    if(DEBUG)   printf("[AUT] End.\n");
+        /*  Registered connection   */
+        last_connect(user);
+        if(DEBUG)   printf("[AUT] Register last connect.\n");
+
+        /*  Waiting for cmd from [SRV]  */
+        do
+        {
+            /*  Handler of cmd  */
+            end = cmd_handler(msqid, user);
+
+            /*  Counter of msg  */
+            contador++;
+            if(DEBUG2)   printf("[AUT] Message counter: %d\n", contador);
+
+        }while(end!=1);
+
+        if(DEBUG)   printf("[AUT] Closed session.\n");
+
+    }while(1);
     // if (msgctl(msqid, IPC_RMID, NULL) == -1) {
     //     fprintf(stderr, "Message queue could not be deleted.\n");
     //     exit(EXIT_FAILURE);
@@ -89,7 +94,7 @@ void increase_block(char* user){
             blocks = atoi(users[i].block);
             blocks++;
             sprintf(users[i].block, "%d\n", blocks);
-            if(DEBUG) printf("Cantidad de bloqueos: %s\n", users[i].block);
+            if(DEBUG2) printf("Cantidad de bloqueos: %s\n", users[i].block);
             break;
         }
     }
@@ -161,19 +166,17 @@ int get_status(char * userpass, char * user){
 char * login_handler(int msqid, char * user){
     int status;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
-    puts("login handler");
+
     do{
         /*  Receive userpass from [SVR] */
         rcv_msg(msqid, str, auth_type);
-        printf("[AUT]<-[SRV]: %s\n",str);
+        if(DEBUG2)  printf("[AUT]<-[SRV]: %s\n",str);
 
         /*  Get status of userpass and convert to int */
         sprintf(str, "%d", get_status(str, user));
 
-        printf("str: %s\n", str);
-
         status = atoi(str);
-        printf("[AUT]->[SRV]: %s\n",str);
+        if(DEBUG2)  printf("[AUT]->[SRV]: %s\n",str);
 
         /*  Send status to [SRV] */ 
         snd_msg(msqid, str, auth_type);
@@ -205,12 +208,12 @@ char * get_pass(char * str)
 */
 int cmd_handler(int msqid, char * user){
     int status;
-    int end;
+    int end=0;
     char * str  = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     
     /*  Receive userpass from [SVR] */
     rcv_msg(msqid, str, auth_type);
-    printf("[AUT]<-[SRV]: %s\n",str);
+    if(DEBUG2)  printf("[AUT]<-[SRV]: %s\n",str);
 
     /*  Get status of userpass and convert to int */
     status = atoi(str);
@@ -219,9 +222,9 @@ int cmd_handler(int msqid, char * user){
     switch (status)
     {
     case 0:
-        if(DEBUG)   printf("[AUT] end\n");
+        if(DEBUG)   printf("[AUT] end cmd_handler\n");
         end=1;
-        sprintf(str, "%s", "Closed session.");
+        sprintf(str, "%s", "0");
         break;
     case 1:
         if(DEBUG)   printf("[AUT] user ls\n");
@@ -305,7 +308,6 @@ void load_db(void){
 
             field_count++;
         }
-        if(DEBUG) printf("\n");
 
         row_count++;
     }
@@ -324,7 +326,7 @@ void change_pass(char* user, char* pass){
     {
         if(!strcmp(user, users[i].username)){
             strcpy(users[i].password, pass);
-            if(DEBUG) printf("Nueva password: %s\n", users[i].password);
+            if(DEBUG2) printf("Nueva password: %s\n", users[i].password);
             break;
         }
     }
@@ -353,8 +355,8 @@ int check_pass(char* user, char* pass){
     int status;
     for (int i = 0; i < USERS; i++)
     {
-        printf("user: %s\n", user);
-        printf("pass: %s\n", pass);
+        if(DEBUG2)  printf("user: %s\n", user);
+        if(DEBUG2)  printf("pass: %s\n", pass);
         if(!strcmp(user, users[i].username)){
             // User exists, password will be checked
             status = (!strcmp(users[i].password, pass)) ? 1 : 0;

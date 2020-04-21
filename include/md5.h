@@ -11,5 +11,5 @@
 
 #define BUFFSIZE 1024
 
-char *  file_md5    (char *, char *);
 char *  get_md5     (char *, ssize_t, char *);
+char *  file_md5    (char *, char *);

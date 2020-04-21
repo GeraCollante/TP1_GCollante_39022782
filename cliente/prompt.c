@@ -1,5 +1,7 @@
 #include "prompt.h"
 
+#define     MINPASS    5
+
 //TODO doxygen
 
 /**
@@ -132,7 +134,6 @@ char * cmd_prompt(char * str_to_server){
     char *line;
     char **args;
     int cmd, n_args, valid_cmd = 0;
-    size_t min_pass = 7;
     /**
      * @brief Start of the prompt, it is kept in a do-while
      * loop until the user enters a valid command.
@@ -177,7 +178,7 @@ char * cmd_prompt(char * str_to_server){
                 }
                 /* user passwd */
                 if(!strcmp(args[1], "passwd")){
-                    if(n_args==3&&strlen(args[2])>min_pass)
+                    if(n_args==3&&strlen(args[2])>MINPASS)
                     {    
                         sprintf(str_to_server, "%d%d,%s", cmd, 1, args[2]);
                         printf("Correct password.\n");
@@ -189,7 +190,7 @@ char * cmd_prompt(char * str_to_server){
                     }
                     else
                     {
-                        printf("Minimum password size is %ld characters. Retry again.\n", min_pass+1);
+                        printf("Minimum password size is %d characters. Retry again.\n", MINPASS+1);
                     }
                 }
                 break;

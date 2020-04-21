@@ -2,11 +2,32 @@
 #include "md5.h"
 #include "mbr.h"
 
+#include <signal.h>
+
+int sockfd;
+
+void print_image(char * filename)
+{
+    FILE *fptr = NULL;
+ 
+    if((fptr = fopen(filename,"r")) == NULL)
+    {
+        perror("Error opening");
+        exit(EXIT_FAILURE);
+    }
+ 
+    char read_string[BUFFSIZE];
+    while(fgets(read_string,sizeof(read_string),fptr) != NULL)
+        printf("%s",read_string);
+}
+
 int main(){ 
     /*  Declaration of variables    */
-    int sockfd, counter = 0;
+    int counter = 0;
     char * str = (char*) malloc((BUFFSIZE+1)*sizeof(char));
+    int end;
     
+    print_image("client.txt");
     /*  Create and connect client socket    */
     sockfd = cli_socket(PORT_SRV);
     
@@ -21,14 +42,16 @@ int main(){
         // if(DEBUG)   printf("Comando: -%s-\n", str);
         
         /*  Send the command to the server */
-        send_cmd(sockfd, str);
+        end = cmd_handler(sockfd, str);
+        if(DEBUG2)  printf("end: %d\n", end);
 
         /*  Counter of messages */
         counter ++;
-        if(DEBUG)   printf("message counter: %d\n", counter);
-    } while(1);
+        if(DEBUG2)  printf("message counter: %d\n", counter);
+    } while(end!=1);
 
     /*  close the socket    */
+    printf("Clossed session.\n");
     close(sockfd); 
     return 0;
 } 
@@ -114,7 +137,7 @@ void login_handler(int sockfd){
         sprintf(buff, "%s", userpass);
 
         /*  Send socket message from client to server   */
-        if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", buff);
+        if(DEBUG2)   printf("[SRV]<-[CLI]: %s\n", buff);
         if(send(sockfd, buff, sizeof(buff),0)<0){
             perror("Error in sending message to the server [login].");
             exit(EXIT_FAILURE);
@@ -126,7 +149,7 @@ void login_handler(int sockfd){
             perror("Error in receiving message from server [login].");
             exit(EXIT_FAILURE);
         };
-        if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+        if(DEBUG2)   printf("[SRV]->[CLI]: %s\n", buff);
 
         /*  Convert socket message to int for decoding  */
         status = atoi(buff);
@@ -140,18 +163,18 @@ void login_handler(int sockfd){
             printf("%s", "Successful ingress!\n");
             break;
         case 0:
-            printf("%s", "Wrong password\n");
+            printf("%s", "Wrong password. Retry again.\n");
             break;
         case -1:
-            printf("%s", "Non-existent user\n");
+            printf("%s", "Non-existent user.\n");
             break;
         case -2:
-            printf("%s", "User blocked\n");
+            printf("%s", "User blocked.\n");
             break;
         }
     }while(check_status(status));
 
-    if(DEBUG)   printf("%s\n", "Salimos de login");
+    if(DEBUG2)   printf("%s\n", "Salimos de login");
 }
 
 /**
@@ -165,6 +188,11 @@ void file_down(){
     // char * img = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     char * md5 = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     long int bytes;
+	time_t start,end;
+  	double dif;
+
+	/* 	Start clock		*/
+  	time (&start);
 
     /*  Path */
     sprintf(usb, "%s", "/dev/sdc");
@@ -177,6 +205,11 @@ void file_down(){
     bytes = transfer_file(socket, usb);
     printf("The file was successfully burned.\n");
     
+    /*	Stop clock	*/
+  	time (&end);
+  	dif = difftime (end,start);
+  	printf ("Image burn time was %.2lf seconds.\n", dif);
+
     /*  MD5     */
     get_md5(usb, bytes, md5);
     printf("MD5 checksum: %s \n", md5);
@@ -190,16 +223,17 @@ void file_down(){
  * @param   sockfd 
  * @param   cmd 
  */
-void send_cmd(int sockfd, char * cmd){
+int cmd_handler(int sockfd, char * cmd){
     /*  Variables declaration   */
     char buff[MAX];
+    int end = 0;
     // char * buff = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
     /*  Copy cmd to buff    */
     sprintf(buff, "%s", cmd);
 
     /*  Send socket message from client to server */
-    if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", cmd);
+    if(DEBUG2)   printf("[SRV]<-[CLI]: %s\n", cmd);
     if(send(sockfd, buff, sizeof(buff),0)<0){
         perror("Error in sending message to the server [cmd].");
         exit(EXIT_FAILURE);
@@ -212,7 +246,7 @@ void send_cmd(int sockfd, char * cmd){
         exit(EXIT_FAILURE);
     };
 
-    if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+    if(DEBUG2)   printf("[SRV]->[CLI]: %s\n", buff);
 
     switch(atoi(buff))
     {
@@ -223,9 +257,53 @@ void send_cmd(int sockfd, char * cmd){
         file_down();
         break;
     default:
+        if (!strcmp(buff,"0"))
+        {
+            end = 1;
+        }
         printf("%s\n", buff);
         break;
     }
+    return end;
 }
 
-//TODO exit
+/**
+ * @brief   Send a character 0 to the server that indicates an exit
+ */
+void ctrl_c(){
+    /*  Variables declaration   */
+    char buff[BUFFSIZE];
+
+    /*  Copy cmd to buff    */
+    sprintf(buff, "%s", "0");
+
+    /*  Send socket message from client to server */
+    if(send(sockfd, buff, sizeof(buff),0)<0){
+        perror("Error in sending message to the [SRV].");
+        exit(EXIT_FAILURE);
+    };
+
+    exit(EXIT_SUCCESS);
+}
+
+/**
+ * @brief Signal handler
+ */
+void sigint_handler()
+{
+    printf("CTRL-C pressed\n");
+    ctrl_c();
+    exit(EXIT_SUCCESS);
+}
+
+/**
+ * @brief   Create the signal and its structure, 
+ *          we had to put return 0 if not give an error
+ * @return  void* 
+ */
+void signal_init() {
+  struct sigaction *sig = malloc(sizeof(struct sigaction));
+  sig->sa_handler = &sigint_handler;
+  sigaction(SIGINT, sig, NULL);
+  return 0;
+}

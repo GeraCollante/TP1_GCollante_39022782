@@ -9,17 +9,17 @@
  */
 int cli_socket(int port){
     int sockfd; 
-    struct sockaddr_in cliaddr; 
+    struct sockaddr_in cliaddr;
   
     /*  Socket create and verification */
     sockfd = socket(AF_INET, SOCK_STREAM, 0); 
     if (sockfd == -1) 
     { 
-        perror("[CLI] Socket creation failed...\n"); 
+        perror("Socket creation failed...\n"); 
         exit(EXIT_FAILURE); 
     }
     else
-        printf("[CLI] Socket successfully created..\n"); 
+        printf("Socket successfully created..\n"); 
     memset(&cliaddr, 0, sizeof(cliaddr)); 
   
     /*  Assign IP, PORT */ 
@@ -29,11 +29,11 @@ int cli_socket(int port){
   
     /*  Connect the client socket to server socket */
     if (connect(sockfd, (SA*)&cliaddr, sizeof(cliaddr)) != 0){ 
-        printf("[CLI] Connection with the server failed...\n"); 
+        printf("Connection with the server failed...\n"); 
         exit(0); 
     } 
     else
-        printf("[CLI] Connected to the server..\n");
+        printf("Connected to the server..\n");
     
     return sockfd;
 }
@@ -55,7 +55,7 @@ long int recv_file(int newsockfd, int fd){
 	/* 	Receive the file until we find the EOF string 	*/
 	while(n){
 		if(!strcmp((char *)&buffer, "EOF")){
-			if(DEBUG)	printf("End of file.\n");
+			if(DEBUG2)	printf("End of file.\n");
 			break;
 		};
 		if(n<0){
@@ -89,27 +89,17 @@ long int transfer_file(int newsockfd, char * usb){
 	long int bytes;
 	// char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
 
-	time_t start,end;
-  	double dif;
-
-	if(DEBUG)	printf("Receiving the image.\n");
+	if(DEBUG)	printf("Receiving the image...\n");
 	
 	/*	Get file descriptor	*/
 	if ((fd=open(usb, O_WRONLY))<0){
 		perror("Error creating file.\n");
 		exit(EXIT_FAILURE);
 	}
-	
-	/* 	Start clock		*/
-  	time (&start);
 
 	/*	Receive and save file	*/
 	bytes = recv_file(newsockfd, fd);
 
-	/*	Stop clock	*/
-  	time (&end);
-  	dif = difftime (end,start);
-  	printf ("Image burn time was %.2lf seconds.\n", dif);
 	sync();
 
 	return bytes;

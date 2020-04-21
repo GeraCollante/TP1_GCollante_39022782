@@ -10,6 +10,8 @@
         "server.h": "c",
         "socket.h": "c",
         "client.h": "c",
-        "md5.h": "c"
+        "md5.h": "c",
+        "cstdlib": "cpp",
+        "mbr.h": "c"
     }
 }

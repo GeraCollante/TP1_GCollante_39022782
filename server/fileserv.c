@@ -14,11 +14,11 @@ int main(void){
     {
         /*  Handler of cmd  */
         end = cmd_handler(msqid);
-        if(DEBUG)   printf("end: %d\n", end);
+        if(DEBUG2)   printf("end: %d\n", end);
 
         /*  Counter of msg  */
         counter++;
-        if(DEBUG)   printf("[FLS] Message counter: %d\n", counter);
+        if(DEBUG2)   printf("[FLS] Message counter: %d\n", counter);
     }while(end);
 
     if(DEBUG)   printf("[FLS] End.\n");
@@ -146,10 +146,10 @@ int is_valid_file(char * str){
         {
             /*  File name */
             sprintf(filename, "%s/%s", folder, dir->d_name);
-            printf("%s\n", dir->d_name);
-            printf("%s\n", str);
+            if(DEBUG2)  printf("%s\n", dir->d_name);
+            if(DEBUG2)  printf("%s\n", str);
             if(!strcmp(dir->d_name, str)){
-                if(DEBUG)   printf("Existe el archivo. \n");
+                if(DEBUG)   printf("[FLS] The file exists.. \n");
                 exist = 1;
                 break;
             }
@@ -177,11 +177,11 @@ int check_file(char * str, char * file){
 
     /*  Check if we have the requested image in img folder  */
     if(is_valid_file(file)==1){
-        if(DEBUG)   printf("We will transfer the file. \n");
+        if(DEBUG)   printf("[FLS] We will transfer the file. \n");
         ft=1;
     }
     else{
-        if(DEBUG)   printf("The file does not exists. \n");
+        if(DEBUG)   printf("[FLS] The file does not exists. \n");
         ft=-1;
     };
 
@@ -196,8 +196,8 @@ int check_file(char * str, char * file){
  * @param   file 
  */
 void transfer_fs(char * file){
-    if(DEBUG) printf("Begin transfer file... \n");
-    if(DEBUG) printf("File: %s\n", file);
+    if(DEBUG) printf("[FLS] Begin transfer file... \n");
+    if(DEBUG) printf("[FLS] File: %s\n", file);
 
     /*  Create sockets and listening    */
     int socket = srv_socket(PORT_FLS);
@@ -208,7 +208,7 @@ void transfer_fs(char * file){
 
     /*  File transferred successfully   */
     close(connfd);
-    if(DEBUG) printf("End transfer file...\n");
+    if(DEBUG) printf("[FLS] End transfer file...\n");
 }
 
 /**
@@ -223,7 +223,7 @@ int cmd_handler(int msqid){
     
     /*  Receive userpass from [SVR] */
     rcv_msg(msqid, str, files_type);
-    printf("[FLS]<-[SRV]: %s\n",str);
+    if(DEBUG2)  printf("[FLS]<-[SRV]: %s\n",str);
     fflush(stdout);
 
     /*  Get status of userpass and convert to int */

@@ -1,5 +1,20 @@
 #include "server.h"
 
+void print_image(char * filename)
+{
+    FILE *fptr = NULL;
+ 
+    if((fptr = fopen(filename,"r")) == NULL)
+    {
+        perror("Error opening");
+        exit(EXIT_FAILURE);
+    }
+ 
+    char read_string[BUFFSIZE];
+    while(fgets(read_string,sizeof(read_string),fptr) != NULL)
+        printf("%s",read_string);
+}
+
 int main() 
 { 
     /*  Create child A  */
@@ -8,7 +23,7 @@ int main()
     if (child_a == 0) 
     {
         /*  Child A code    */
-        printf("[AUT]_pid: %d \n", getpid());
+        if(DEBUG2)  printf("[AUT]_pid: %d \n", getpid());
         execv("./bin/auth", (char *[]){ NULL });
     } 
     else 
@@ -17,38 +32,42 @@ int main()
         if (child_b == 0) 
         {
             /*  Child B code    */
-            printf("[FLS]_pid: %d \n", getpid());
+            if(DEBUG2)  printf("[FLS]_pid: %d \n", getpid());
             execv("./bin/fileserv", (char *[]){ NULL });
         } 
         else 
         {
             /*  Parent Code     */
-            printf("[SRV]_pid: %d \n", getpid());
-            int sockfd, connfd, mqsid;
+            if(DEBUG2)  printf("[SRV]_pid: %d \n", getpid());
+            do
+            {
+                int sockfd, connfd, mqsid;
 
-            /*  Create message queue */
-            mqsid = mqid();
-            // if(DEBUG)   mq_info(mqsid);
-            if(DEBUG)   printf("[SRV] Created message queue...\n");
+                /*  Create message queue */
+                mqsid = mqid();
+                // if(DEBUG)   mq_info(mqsid);
+                print_image("server.txt");
+                if(DEBUG)   printf("[SRV] Created message queue...\n");
 
-            /*  Bind and listing server socket  */
-            sockfd = srv_socket(PORT_SRV);
-            /*  Waiting for client  */
-            connfd = wait_cli(sockfd);
-            /*  Close initial fd    */
-            close(sockfd); 
+                /*  Bind and listing server socket  */
+                sockfd = srv_socket(PORT_SRV);
+                /*  Waiting for client  */
+                connfd = wait_cli(sockfd);
+                /*  Close initial fd    */
+                close(sockfd); 
 
-            /*  Login handler   */
-            if (LOGIN)  login_handler(connfd, mqsid);
+                /*  Login handler   */
+                if (LOGIN)  login_handler(connfd, mqsid);
 
-            /*  Cmd handler */
-            rcv_cmd(connfd, mqsid);
+                /*  Cmd handler */
+                rcv_cmd(connfd, mqsid);
 
-            // if (msgctl(mqsid, IPC_RMID, NULL) == -1) {
-            //     fprintf(stderr, "Message queue could not be deleted.\n");
-            //     exit(EXIT_FAILURE);
-            // }
-            printf("End [SRV]. \n");
+                // if (msgctl(mqsid, IPC_RMID, NULL) == -1) {
+                //     fprintf(stderr, "Message queue could not be deleted.\n");
+                //     exit(EXIT_FAILURE);
+                // }
+                printf("[SRV] Closed session. \n");
+            } while(1);
 
             wait(NULL);
         }
@@ -72,8 +91,7 @@ void login_handler(int sockfd, int msqid)
             and copy it in buffer */ 
         memset(buff,0, MAX); 
         recv(sockfd, buff, sizeof(buff),0); 
-        if(DEBUG)   printf("[SRV]<-[CLI]: %s\n", buff); 
-        fflush(stdout);
+        if(DEBUG2)   printf("[SRV]<-[CLI]: %s\n", buff); 
 
         /*  Send userpass to [AUT] for authentication */
         snd_msg(msqid, buff, auth_type);
@@ -85,7 +103,7 @@ void login_handler(int sockfd, int msqid)
         status = atoi(buff);
 
         /*  Send status to [CLI]   */
-        printf("[SRV]->[CLI]: %s\n",buff);
+        if(DEBUG2)  printf("[SRV]->[CLI]: %s\n",buff);
         send(sockfd, buff, sizeof(buff),0); 
 
         //ARREGLAR
@@ -148,30 +166,30 @@ long cmd_handler(char * cmd, char * msg){
     switch (process)
     {
     case 0:
-        if(DEBUG)   printf("exit\n");
+        if(DEBUG2)   printf("exit\n");
         sprintf(msg, "%d", 0);
         break;
     case 10:
-        if(DEBUG)   printf("user ls\n");
+        if(DEBUG2)   printf("user ls\n");
         sprintf(msg, "%d", 1);
         break;
     case 11:
-        if(DEBUG)   printf("user passwd\n");
+        if(DEBUG2)   printf("user passwd\n");
         sprintf(msg, "%d,%s", 2, arg);
         break;
     case 20:
-        if(DEBUG)   printf("file ls\n");
+        if(DEBUG2)   printf("file ls\n");
         sprintf(msg, "%d", 1);
         break;
     case 21:
-        if(DEBUG)   printf("file down\n");
+        if(DEBUG2)   printf("file down\n");
         sprintf(msg, "%d,%s", 2, arg);
         break;
     default:
         break;
     }
 
-    printf("msg: %s\n", msg);
+    if(DEBUG2)  printf("msg: %s\n", msg);
     free(tok);
     free(arg);
     free(prc);
@@ -194,8 +212,7 @@ void rcv_cmd(int sockfd, int msqid)
         /*  [SRV] <- [CLI]  */ 
         memset(buff,0, MAX);
         recv(sockfd, buff, sizeof(buff),0);
-        printf("[SRV]<-[CLI]: %s\n", buff);
-        fflush(stdout);
+        if(DEBUG2)  printf("[SRV]<-[CLI]: %s\n", buff);
 
         /*  Pass cmd to the handler  */
         m_type = cmd_handler(buff, str);
@@ -205,7 +222,7 @@ void rcv_cmd(int sockfd, int msqid)
         // if(DEBUG)   printf("m_type: %ld\n", m_type);
 
         /*  [AUT] <- [SRV]  */
-        printf("[AUT]<-[SRV]: %s\n", str);
+        if(DEBUG2)  printf("[AUT]<-[SRV]: %s\n", str);
         snd_msg(msqid, str, m_type);
         
         /*  [AUT] -> [SRV]  */
@@ -213,13 +230,13 @@ void rcv_cmd(int sockfd, int msqid)
 
         /* If AUT sent this string it means that an exit
             was sent and the session will end   */
-        if(!strcmp(str,"Closed session."))  end = 0;
-        if(DEBUG)   printf("[AUT]->[SRV]: -%s-\n",str);
+        if(!strcmp(str,"0"))  end = 0;
+        if(DEBUG2)   printf("[AUT]->[SRV]: -%s-\n",str);
         
         /*  [SRV] -> [CLI]  */
         sprintf(buff,"%s", str);
         send(sockfd, buff, sizeof(buff),0);
-        if(DEBUG)   printf("[SRV]->[CLI]: %s\n", buff);
+        if(DEBUG2)   printf("[SRV]->[CLI]: %s\n", buff);
     }while(end);
 
     close(sockfd);

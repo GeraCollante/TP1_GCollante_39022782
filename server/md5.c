@@ -74,5 +74,4 @@ char* get_md5(char* file_path, ssize_t end, char * md5string){
 }
 
 //TODO  size_t
-//TODO  signal
 //TODO  create mq
