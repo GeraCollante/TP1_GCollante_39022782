@@ -14,4 +14,4 @@ void    file_down       (void);
 char *  login           (char *);
 void    login_handler   (int);
 void    signal_init     (void);
-void    sigint_handler  (void);
+void    sigint_handler  (int);

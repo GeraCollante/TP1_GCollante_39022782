@@ -274,7 +274,7 @@ void load_db(void){
     char * filename = (char*) malloc((BUFFSIZE+1)*sizeof(char));
     char buf[BUFFSIZE];
 
-    sprintf(filename, "sample.csv");
+    sprintf(filename, "db.csv");
     FILE *fp = fopen(filename, "r");
 
     if (!fp) {
@@ -338,7 +338,7 @@ void change_pass(char* user, char* pass){
  */
 void save_db(){
     FILE *fp;
-    fp  = fopen ("sample.csv", "w");
+    fp  = fopen ("db.csv", "w");
     for (int i = 0; i < USERS; i++)
     {
         fprintf(fp, "%s,%s,%s,%s", users[i].username, users[i].password, users[i].lastconnect, users[i].block);

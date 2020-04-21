@@ -2,8 +2,6 @@
 #include "md5.h"
 #include "mbr.h"
 
-#include <signal.h>
-
 int sockfd;
 
 void print_image(char * filename)
@@ -289,9 +287,9 @@ void ctrl_c(){
 /**
  * @brief Signal handler
  */
-void sigint_handler()
+void sigint_handler(int sig_no)
 {
-    printf("CTRL-C pressed\n");
+    printf("%d\n", sig_no);
     ctrl_c();
     exit(EXIT_SUCCESS);
 }
@@ -305,5 +303,4 @@ void signal_init() {
   struct sigaction *sig = malloc(sizeof(struct sigaction));
   sig->sa_handler = &sigint_handler;
   sigaction(SIGINT, sig, NULL);
-  return 0;
 }
